@@ -35,18 +35,20 @@
     <%= form.label :Mail, style: "display: block" %>
     <%= form.text_field :Mail %>
   </div>
-  <%= form_tag({:action => :upload}, :multipart => true) do %>
-    <%= file_field_tag 'picture' %>
-  <% end %>
-  <div>
+  
+  </div>
     <%= form.label :Direccion, style: "display: block" %>
     <%= form.text_field :Direccion %>
     
   </div>
-  
+  </div>
+  <%= form.label :foto, style: "display: block"%><br>
+  </div>
+  <%= form.file_field :picture%><br>
+  <%= image_tag @vendedor.perfil.thumb.url, class: "figure-img img-fluid rounded"%>
   
   <div>
-    <%= form.submit %>
+    <%= form.submit "enviar", :class => "btn btn-primary" %>
   </div>
   
 

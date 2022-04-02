@@ -57,9 +57,13 @@ class VendedorsController < ApplicationController
     end
   end
 
-  def upload
-    @vendedor.pictire.attach(params[:picture])
+  def image_params
+    params.require(:image).permit :perfil
   end
+
+  
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_vendedor

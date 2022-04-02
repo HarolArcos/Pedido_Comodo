@@ -2,14 +2,12 @@
 
 <%= render @vendedor %>
 
+
 <div>
   <%= link_to "Edit this vendedor", edit_vendedor_path(@vendedor) %> |
   <%= link_to "Back to vendedors", vendedors_path %>
 
-  <%= form_tag({:action => :upload}, :multipart => true) do %>
-    <%= file_field_tag 'picture' %>
-  <% end %>
-    
+  <%= image_tag @vendedor.perfil.thumb.url, class: "figure-img img-fluid rounded"%>
 
   <%= button_to "Destroy this vendedor", @vendedor, method: :delete %>
 </div>
