@@ -35,7 +35,9 @@
     <%= form.label :Mail, style: "display: block" %>
     <%= form.text_field :Mail %>
   </div>
-
+  <%= form_tag({:action => :upload}, :multipart => true) do %>
+    <%= file_field_tag 'picture' %>
+  <% end %>
   <div>
     <%= form.label :Direccion, style: "display: block" %>
     <%= form.text_field :Direccion %>
