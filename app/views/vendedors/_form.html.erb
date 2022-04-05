@@ -1,11 +1,11 @@
 <%= form_with(model: vendedor) do |form| %>
   <% if vendedor.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(vendedor.errors.count, "error") %> prohibited this vendedor from being saved:</h2>
+      <h2><%= pluralize(vendedor.errors.count, "error(es)") %> que evito el guardado que esta en:</h2>
 
       <ul>
-        <% vendedor.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+        <% @vendedor.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
         <% end %>
       </ul>
     </div>
@@ -13,7 +13,8 @@
 
   <div>
     <%= form.label :Nombre, style: "display: block" %>
-    <%= form.text_field :Nombre %>
+    <%= form.text_field :Nombre%>
+    
   </div>
 
   <div>
@@ -28,24 +29,33 @@
 
   <div>
     <%= form.label :Telefono, style: "display: block" %>
-    <%= form.number_field :Telefono %>
+    <%= form.phone_field :Telefono%>
+   
+    <div>
+    
+    
+
+
+
+
+
+
+
   </div>
 
   <div>
     <%= form.label :Mail, style: "display: block" %>
-    <%= form.text_field :Mail %>
+    <%= form.email_field :Mail %>
   </div>
   
   </div>
     <%= form.label :Direccion, style: "display: block" %>
-    <%= form.text_field :Direccion %>
+    <%= form.url_field :Direccion %>
+    
     
   </div>
   </div>
-  <%= form.label :foto, style: "display: block"%><br>
-  </div>
-  <%= form.file_field :picture%><br>
-  <%= image_tag @vendedor.perfil.thumb.url, class: "figure-img img-fluid rounded"%>
+  
   
   <div>
     <%= form.submit "enviar", :class => "btn btn-primary" %>

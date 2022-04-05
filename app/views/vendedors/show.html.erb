@@ -7,7 +7,5 @@
   <%= link_to "Edit this vendedor", edit_vendedor_path(@vendedor) %> |
   <%= link_to "Back to vendedors", vendedors_path %>
 
-  <%= image_tag @vendedor.perfil.thumb.url, class: "figure-img img-fluid rounded"%>
-
-  <%= button_to "Destroy this vendedor", @vendedor, method: :delete %>
+  <%= button_to "Borrar Vendedor", @vendedor, method: :delete, data: { confirm: "Are you sure?" } %>
 </div>
