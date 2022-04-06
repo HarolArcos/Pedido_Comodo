@@ -80,6 +80,6 @@ class VendedorsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def vendedor_params
-      params.require(:vendedor).permit(:Nombre, :Apellido_Paterno, :Apellido_Materno, :Telefono, :Mail, :Direccion, :perfil)
+      params.require(:vendedor).permit(:Nombre, :Apellido_Paterno, :Apellido_Materno, :Telefono, :Mail, :Direccion, :perfil, :imagen)
     end
 end
