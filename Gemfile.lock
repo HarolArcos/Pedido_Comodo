@@ -232,6 +232,9 @@ GEM
       concurrent-ruby (~> 1.0)
     tzinfo-data (1.2022.1)
       tzinfo (>= 1.0.0)
+    validate_url (1.0.13)
+      activemodel (>= 3.0.0)
+      public_suffix
     validates_email_format_of (1.6.3)
       i18n
     web-console (4.2.0)
@@ -277,6 +280,7 @@ DEPENDENCIES
   stimulus-rails
   turbo-rails
   tzinfo-data
+  validate_url
   validates_email_format_of
   web-console
   webdrivers
