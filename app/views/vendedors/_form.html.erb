@@ -12,59 +12,61 @@
   <% end %>
 
   <div>
-    <%= form.label :Nombre, style: "display: block" %>
+  <label for="validationCustom01" class="form-label">Nombre</label>
+  <br>
     <%= form.text_field :Nombre%>
     
   </div>
 
   <div>
-    <%= form.label :Apellido_Paterno, style: "display: block" %>
+  <label for="validationCustom02" class="form-label" style: "display: block" >Apellido Paterno</label>
+  <br>
     <%= form.text_field :Apellido_Paterno %>
   </div>
 
   <div>
-    <%= form.label :Apellido_Materno, style: "display: block" %>
+
+  <label for="validationCustom02" class="form-label" >Apellido Materno</label>
+  <br>
     <%= form.text_field :Apellido_Materno %>
   </div>
 
   <div>
-    <%= form.label :Telefono, style: "display: block" %>
+  <label for="validationCustom03" class="form-label" >Telefono</label>
+
+  <br>
     <%= form.phone_field :Telefono%>
    
     <div>
-    
-    
-
-
-
-
-
-
-
-  </div>
 
   <div>
-    <%= form.label :Mail, style: "display: block" %>
+  <label for="validationCustom02" class="form-label" >Mail</label>
+  <br>
     <%= form.text_field :Mail %>
   </div>
   
   </div>
-    <%= form.label :Direccion, style: "display: block" %>
-    <%= form.url_field :Direccion %>
-    
-    
+  <label for="validationCustom05" class="form-label" style: "display: block">Dirección</label>
+  <br>
+  <%= form.text_field :Direccion %>
   </div>
-
+  
   <div>
-    <%= form.label:imagen %>
+  <label for="validationCustom05" class="form-label" style: "display: block">imagen</label>
     <br>
-    <%= form.file_field:imagen %>    
+
+    <%= form.file_field:perfil %>    
   </div>
   <br>
   
   <div>
-    <%= form.submit "enviar", :class => "btn btn-primary" %>
-  </div>
+    <button class="btn btn-primary" type="submit" style="background-color: #F79206">Agregar Vendedor</button>
+    <a href="javascript:history.back()" class="btn" style="background-color: #F79206">Cancelar</a>
+    <div>
   
 
-<% end %>
+</div>
+   </div>
+   <% end %>
+
+

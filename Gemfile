@@ -5,6 +5,7 @@ ruby "3.1.1"
 gem  "carrierwave"
 gem "mini_magick"
 gem "tzinfo-data"
+gem 'validates_email_format_of'
 #gemas para usar el bootstrap
 gem "bootstrap"
 gem "jquery-rails"

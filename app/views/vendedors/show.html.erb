@@ -4,7 +4,10 @@
 
 
 <div>
+<% if false %>
+
   <%= link_to "Edit this vendedor", edit_vendedor_path(@vendedor) %> |
+  <% end %>
   <%= link_to "Back to vendedors", vendedors_path %>
 
   <%= button_to "Borrar Vendedor", @vendedor, method: :delete, data: { confirm: "Are you sure?" } %>

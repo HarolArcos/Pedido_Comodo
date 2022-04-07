@@ -11,60 +11,10 @@
       </div>
     </nav>
   </div>
+  
   <!--Fin de la barra de navegacion-->
   <!--Formulario de registro-->
-  <%= form_with(model: @vendedor, local: true) do |form| %>
-  <!--<form class="row g-3 needs-validation" method="post" action="/vendedors">-->
-      <div class="col-md-4">
-        <label for="validationCustom01" class="form-label">Nombre</label>
-        <input type="text" class="form-control" id="validationCustom01" name="vendedor[Nombre]" required>
-        <div class="valid-feedback">
-            Looks good!
-        </div>
-      </div>
-      <div class="col-md-4">
-        <label for="validationCustom02" class="form-label" >Apellido Paterno</label>
-        <input type="text" class="form-control" id="validationCustom02" name= "vendedor[Apellido_Paterno]" required>
-        <div class="valid-feedback">
-            Looks good!
-        </div>
-      </div>
-      <div class="col-md-4">
-        <label for="validationCustom02" class="form-label" >Apellido Materno</label>
-        <input type="text" class="form-control" id="validationCustom02" name="vendedor[Apellido_Materno]" required>
-        <div class="valid-feedback">
-            Looks good!
-        </div>
-      </div>
-
-
-  <div class="col-md-6">
-    <label for="validationCustom03" class="form-label" >Telefono</label>
-    <input type="text" class="form-control" id="validationCustom03" name="vendedor[Telefono]" required>
-    <div class="invalid-feedback">
-      Please provide a valid city.
-    </div>
-  </div>
-  <div class="col-md-4">
-        <label for="validationCustom02" class="form-label" >Email</label>
-        <input type="text" class="form-control" id="validationCustom02" name="vendedor[Mail]"required>
-        <div class="valid-feedback">
-            Looks good!
-        </div>
-      </div>
-  <div class="col-md-3">
-    <label for="validationCustom05" class="form-label" >Direccion</label>
-    <input type="text" class="form-control" id="validationCustom05" name="vendedor[Direccion]" required>
-    <div class="invalid-feedback">
-      Please provide a valid zip.
-    </div>
-  </div>
-  <div class="col-12">
-    <button class="btn btn-primary" type="submit" style="background-color: #F79206">Agregar Vendedor</button>
-    <!--
-        <button class="btn btn-primary" type="submit" style="background-color: #F79206">Cancelar</button>
-        <button class="btn btn-primary" type="submit" style="background-color: #F79206">Seleccionar Imagen</button>
-    -->
+  
+    <%= render "form", vendedor: @vendedor %>
     
   </div>
-<% end %>
