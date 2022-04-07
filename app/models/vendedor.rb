@@ -1,4 +1,5 @@
 class Vendedor < ApplicationRecord
+    has_one_attached:imagen
     mount_uploader :perfil, PerfilUploader
     validates :Nombre, :Apellido_Paterno, :Apellido_Materno, :Telefono, :Mail, :Direccion, presence: {message:"debe estar llenado"}
     validates :Nombre, length: { in: 2..50 , message: "tiene que tener minimo 2 letras"}

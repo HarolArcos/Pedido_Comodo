@@ -1,5 +1,9 @@
 <div id="<%= dom_id vendedor %>">
-  <p>
+  <% if vendedor.imagen.attached? %>
+    <%= link_to image_tag(vendedor.imagen.variant(resize:"200x200")),vendedor.imagen %>
+  <%end %>
+
+    <p>
     <strong>Nombre:</strong>
     <%= vendedor.Nombre %>
   </p>

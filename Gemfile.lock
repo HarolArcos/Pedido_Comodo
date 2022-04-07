@@ -262,6 +262,7 @@ DEPENDENCIES
   capybara
   carrierwave
   debug
+  image_processing (~> 1.2)
   importmap-rails
   jbuilder
   jquery-rails
