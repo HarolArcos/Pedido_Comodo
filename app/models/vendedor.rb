@@ -7,7 +7,9 @@ class Vendedor < ApplicationRecord
     validates :Apellido_Paterno, length: { in: 2..20 , message: "Tiene que tener minimo 2 letras y maximo 20"}
     validates :Telefono, length: {is: 8 , message: "Tiene que tener 8 numeros"}
     validates :Telefono, numericality: {in: 60000000..79999999 , message: "Tiene que empezar con 6 o 7"}
+    validates :Mail, email_format: { message: 'tiene que ser como el siguiente ejemplo, juan@example.com' }
     
+     
 
-    
+     
 end

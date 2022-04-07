@@ -6,6 +6,7 @@ gem  "carrierwave"
 gem "mini_magick"
 gem "tzinfo-data"
 gem "bootstrap", "~> 4.0.0alpha6"
+gem 'validates_email_format_of'
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.2", ">= 7.0.2.3"
 
