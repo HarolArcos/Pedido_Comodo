@@ -5,8 +5,11 @@ ruby "3.1.1"
 gem  "carrierwave"
 gem "mini_magick"
 gem "tzinfo-data"
-gem "bootstrap", "~> 4.0.0alpha6"
-gem 'validates_email_format_of'
+#gemas para usar el bootstrap
+gem "bootstrap"
+gem "jquery-rails"
+gem "webpacker"
+
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.2", ">= 7.0.2.3"
 
