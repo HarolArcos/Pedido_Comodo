@@ -2,7 +2,8 @@ class Vendedor < ApplicationRecord
     has_one_attached:imagen
     mount_uploader :perfil, PerfilUploader
     validates :Nombre, :Apellido_Paterno, :Apellido_Materno, :Telefono, :Mail, :Direccion, presence: {message:"debe estar llenado"}
-    validates :Nombre, :Apellido_Paterno, :Apellido_Materno, format: { with: /\A[a-zA-Z]+(?:[\s-]*\w+)?\z/, message: "solo acepta letras y maximo 2 palabras" }
+    validates :Nombre, format: { with: /\A[a-zA-Z]+(?:[\s-]*\w+)?+(?:[\s-]*\w+)?\z/, message: "solo acepta letras y maximo 3 palabras" }
+    validates :Apellido_Paterno, :Apellido_Materno, format: { with: /\A[a-zA-Z]+(?:[\s-]*\w+)?\z/, message: "solo acepta letras y maximo 2 palabras" }
     validates :Nombre, length: { in: 2..21 , message: "tiene que tener minimo 2 letras y maximo 21"}
     validates :Apellido_Materno, length: { in: 2..21 , message: "Tiene que tener minimo 2 letras y maximo 21"}
     validates :Apellido_Paterno, length: { in: 2..21 , message: "Tiene que tener minimo 2 letras y maximo 21"}
