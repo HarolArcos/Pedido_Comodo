@@ -11,7 +11,7 @@
 
 
 
-<h1><b>REGISTRAR VENDEDOR</b></h1>
+<h1 align="center"><b>REGISTRAR VENDEDOR</b></h1>
 <%= form_with(model: vendedor) do |form| %>
   <% if vendedor.errors.any? %>
     <div style="color: red">
@@ -69,7 +69,8 @@
   <label for="validationCustom05" class="form-label" style: "display: block">Imagen</label>
     <br>
 
-    <%= form.file_field:perfil,:style=> "background-color: #F79206" %>    
+    <%= form.file_field:perfil,:style=> "background-color: #F79206" %>   
+     
   </div>
   <br>
   
