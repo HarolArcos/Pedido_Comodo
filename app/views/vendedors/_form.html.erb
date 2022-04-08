@@ -12,19 +12,21 @@
 
 
 <h1 align="center"><b>REGISTRAR VENDEDOR</b></h1>
+  <div class="conteiner" align="center">
 <%= form_with(model: vendedor) do |form| %>
   <% if vendedor.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(vendedor.errors.count, "error(es)") %> que evito el guardado que esta en:</h2>
+      
 
       <ul>
         <% @vendedor.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
+          <p><%= msg %></p>
         <% end %>
       </ul>
     </div>
   <% end %>
-
+</div>
+<div class="conteiner" align="center">
   <div>
   <label for="validationCustom01" class="form-label">Nombre</label>
   <br>
@@ -70,8 +72,8 @@
     <br>
 
     <%= form.file_field:perfil,:style=> "background-color: #F79206" %>   
-     
-  </div>
+
+     </div>
   <br>
   
   <div>
@@ -83,6 +85,6 @@
 </div>
    </div>
    <% end %>
-   
+   </div>
    </body>
 
