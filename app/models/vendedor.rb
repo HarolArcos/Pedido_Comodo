@@ -12,6 +12,6 @@ class Vendedor < ApplicationRecord
     validates :Mail, email_format: { message: 'tiene que ser como el siguiente ejemplo, juan@example.com' }
     validates :Direccion, url: { allow_nil: true, message: "tiene que ingresar una url" }
     validates :Telefono, :Mail, uniqueness: {message:"ya existe usuario"}
-    
-     
+    validates :imagen, content_type: [:png, :jpg, :jpeg]
+
 end
