@@ -13,6 +13,7 @@ class Vendedor < ApplicationRecord
     validates :Direccion, length: { in: 10..40 , message: "tiene que tener minimo 10 letras y maximo 40"}
     #validates :Direccion, url: { allow_nil: true, message: "tiene que ingresar una url" }
     validates :Telefono, :Mail, uniqueness: {message:"ya existe usuario"}
+    
     #validates :Direccion , format: {with: /maps/ , message: "el link tiene que tener el siguiete formato: https://goo.gl/maps" }
     validates :imagen, content_type: [:png, :jpg, :jpeg]
 
