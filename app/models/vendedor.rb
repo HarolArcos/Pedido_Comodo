@@ -13,6 +13,7 @@ class Vendedor < ApplicationRecord
     validates :Mail, email_format: { message: 'tiene que ser como el siguiente ejemplo, juan@example.com' }
     validates :Direccion, length: { in: 10..40 , message: "tiene que tener minimo 10 letras y maximo 40"}
     #validates :Direccion, url: { allow_nil: true, message: "tiene que ingresar una url" }
+    #validates :Direccion, format: { with: /https:\/\/goo.gl\/maps/, message: "tiene que ser un link de google maps" }
     validates :Telefono, :Mail, uniqueness: {message:"ya existe usuario"}
     
     #validates :Direccion , format: {with: /maps/ , message: "el link tiene que tener el siguiete formato: https://goo.gl/maps" }

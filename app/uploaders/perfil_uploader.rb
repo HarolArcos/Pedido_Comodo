@@ -30,10 +30,10 @@ class PerfilUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
    version :thumb do
-    process resize_to_fill: [50, 50]
+    process resize_to_fill: [250,250]
    end
    version :medium do
-    process resize_to_fill: [850, 850]
+    process resize_to_fill: [550, 550]
    end
 
   # Add an allowlist of extensions which are allowed to be uploaded.
