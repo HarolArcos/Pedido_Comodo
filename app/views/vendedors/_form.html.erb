@@ -1,3 +1,17 @@
+<head>
+  <link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet'>
+<style>
+  body {
+    font-family: 'Comfortaa';font-size: 22px;
+  }
+</style>
+
+</head>
+<body>
+
+
+
+<h1><b>REGISTRAR VENDEDOR</b></h1>
 <%= form_with(model: vendedor) do |form| %>
   <% if vendedor.errors.any? %>
     <div style="color: red">
@@ -26,7 +40,7 @@
 
   <div>
 
-  <label for="validationCustom02" class="form-label" >Apellido Materno</label>
+  <label for="validationCustom02" class="font-italic" >Apellido Materno</label>
   <br>
     <%= form.text_field :Apellido_Materno %>
   </div>
@@ -61,12 +75,13 @@
   
   <div>
     <button class="btn btn-primary" type="submit" style="background-color: #F79206">Agregar Vendedor</button>
-    <a href="javascript:history.back()" class="btn" style="background-color: #F79206">Cancelar</a>
+    <a href="/vendedors" class="btn btn-primary" style="background-color: #F79206">Cancelar</a>
     <div>
   
 
 </div>
    </div>
    <% end %>
-
+   
+   </body>
 
