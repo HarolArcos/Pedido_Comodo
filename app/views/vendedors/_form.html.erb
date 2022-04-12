@@ -12,6 +12,7 @@
 
 
 <h1 align="center"><b>REGISTRAR VENDEDOR</b></h1>
+<br><br>
   <div class="conteiner" align="center">
 <%= form_with(model: vendedor) do |form| %>
   <% if vendedor.errors.any? %>
@@ -26,55 +27,77 @@
     </div>
   <% end %>
 </div>
-<div class="conteiner" align="center">
-  <div>
-  <label for="validationCustom01" class="form-label">Nombre</label>
-  <br>
-    <%= form.text_field :Nombre%>
+
+<br><br>
+
+
+
+
+<div class="container">
+
+    <div class="row">
+      <div class="col-lg-4"  ><br>
+          
+  
+           <label for="validationCustom01" class="form-label">Nombre</label>
+           <br>
+           <%= form.text_field :Nombre%>
+           
+      </div>
+  
+      <div class="col-lg-4"  ><br>
+          <label for="validationCustom02" class="form-label" style: "display: block" >Apellido Paterno</label>
+          <br>
+          <%= form.text_field :Apellido_Paterno %>
+      </div>
     
-  </div>
+        <div class="col-lg-4"  ><br>
 
-  <div>
-  <label for="validationCustom02" class="form-label" style: "display: block" >Apellido Paterno</label>
-  <br>
-    <%= form.text_field :Apellido_Paterno %>
-  </div>
+          <label for="validationCustom02" class="font-label" >Apellido Materno</label>
+          <br>
+          <%= form.text_field :Apellido_Materno %>
+        </div>
+    
+        <div class="col-lg-4"  ><br>
 
-  <div>
-
-  <label for="validationCustom02" class="font-italic" >Apellido Materno</label>
-  <br>
-    <%= form.text_field :Apellido_Materno %>
-  </div>
-
-  <div>
-  <label for="validationCustom03" class="form-label" >Telefono</label>
-
-  <br>
-    <%= form.phone_field :Telefono%>
+  
+          <label for="validationCustom03" class="form-label" >Telefono</label>
+          <br>
+  
+          <%= form.phone_field :Telefono%>
+        </div>
    
-    <div>
+        <div class="col-lg-4"  ><br>
 
-  <div>
-  <label for="validationCustom02" class="form-label" >Mail</label>
-  <br>
-    <%= form.text_field :Mail %>
-  </div>
   
-  </div>
-  <label for="validationCustom05" class="form-label" style: "display: block">Dirección</label>
-  <br>
-  <%= form.text_field :Direccion %>
-  </div>
+          <label for="validationCustom02" class="form-label" >Mail</label>
+          <br>
+          <%= form.text_field :Mail %>
+        </div>
   
-  <div>
+        <div class="col-lg-4"  ><br>
+  
+          <label for="validationCustom05" class="form-label" style: "display: block">Dirección</label>
+          <br>
+          <%= form.text_field :Direccion %>
+        </div>
+    </div>
+</div>
+<br><br><br><br>
+
+
+
+
+<div class="conteiner" align="center">
+  
+ 
   <label for="validationCustom05" class="form-label" style: "display: block">Imagen</label>
-    <br>
+    
 
     <%= form.file_field:perfil,:style=> "background-color: #F79206" %>   
 
-     </div>
-  <br>
+     
+  
   
   <div>
     <button class="btn btn-primary" type="submit" style="background-color: #F79206">Agregar Vendedor</button>
@@ -86,5 +109,18 @@
    </div>
    <% end %>
    </div>
+
+
+
+
+
+
+
+
+
+
+   
+
+  </div> 
    </body>
 
