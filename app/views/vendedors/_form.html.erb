@@ -61,7 +61,7 @@
         <div class="col-lg-4"  ><br>
 
   
-          <label for="validationCustom03" class="form-label" >Telefono</label>
+          <label for="validationCustom03" class="form-label" >Teléfono</label>
           <br>
   
           <%= form.phone_field :Telefono%>
@@ -90,13 +90,12 @@
 
 <div class="conteiner" align="center">
   
- 
-  <label for="validationCustom05" class="form-label" style: "display: block">Imagen</label>
-    
-
-    <%= form.file_field:perfil,:style=> "background-color: #F79206" %>   
-
-     
+    <label class="btn btn-primary" type="submit" style="background-color: #F79206">
+    Seleccionar Imagen
+    <span style="display:none;">
+      <%= form.file_field :imagen, id: "fileUploader"%>
+    </span>
+    </label>
   
   
   <div>
@@ -105,7 +104,7 @@
     <div>
   
 
-</div>
+    </div>
    </div>
    <% end %>
    </div>
@@ -121,6 +120,6 @@
 
    
 
-  </div> 
-   </body>
+</div> 
+</body>
 
