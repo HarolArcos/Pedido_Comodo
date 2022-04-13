@@ -27,7 +27,7 @@ class VendedorsController < ApplicationController
       respond_to do |format|
       
         if @vendedor.save
-          format.html { redirect_to vendedor_url(@vendedor), notice: "Vendedor was successfully created." }
+          format.html { redirect_to vendedors_path, notice: "El vendedor fue creado" }
           format.json { render :show, status: :created, location: @vendedor }
        else
           format.html { render :new, status: :unprocessable_entity }
@@ -42,8 +42,8 @@ class VendedorsController < ApplicationController
     
      respond_to do |format|
        if @vendedor.update(vendedor_params)
-         format.html { redirect_to vendedor_url(@vendedor), notice: "Vendedor was successfully updated." }
-          format.json { render :show, status: :ok, location: @vendedor }
+         format.html { redirect_to vendedors_path, notice: "El vendedor fue actualizado" }
+          format.json { head :no_content}
         else
           format.html { render :edit, status: :unprocessable_entity }
          format.json { render json: @vendedor.errors, status: :unprocessable_entity }
