@@ -2,8 +2,8 @@ class Vendedor < ApplicationRecord
     has_one_attached:imagen
     mount_uploader :perfil, PerfilUploader
     validates :Nombre, :Apellido_Paterno, :Apellido_Materno, :Telefono, :Mail, :Direccion, presence: {message:"debe estar llenado"}
-    validates :Nombre, format: { with: /\A[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,}(?:[\s-]*[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,})?(?:[\s-]*[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,})?\z/, message: "solo acepta letras y máximo 3 palabras, cada palabra debe tener mínimo 2 letras" }
-    validates :Apellido_Paterno, :Apellido_Materno, format: { with: /\A[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,}(?:[\s-]*[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,})?\z/, message: "solo acepta letras y máximo 2 palabras, cada palabra debe tener mínimo 2 letras" }
+    validates :Nombre, format: { with: /\A[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,}(?:[\s-]*[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,})?(?:[\s-]*[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,})?(?:[\s-])?\z/, message: "solo acepta letras y máximo 3 palabras, cada palabra debe tener mínimo 2 letras" }
+    validates :Apellido_Paterno, :Apellido_Materno, format: { with: /\A[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,}(?:[\s-]*[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,})?(?:[\s-])?\z/, message: "solo acepta letras y máximo 2 palabras, cada palabra debe tener mínimo 2 letras" }
     validates :Nombre, length: { in: 2..21 , message: "tiene que tener mínimo 2 letras y máximo 21"}
     validates :Apellido_Materno, length: { in: 2..21 , message: "tiene que tener mínimo 2 letras y máximo 21"}
     validates :Apellido_Paterno, length: { in: 2..21 , message: "tiene que tener mínimo 2 letras y máximo 21"}
