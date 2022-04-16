@@ -32,30 +32,30 @@
 
 
 
+<div class="container d-flex justify-content-center " align="center" >
 
-<div class="container ">
+  <div class="row d-flex align-self-center justify-content-center ">
+    
 
-<div class="row ">
-    
-    
+
       <div class="col-lg-4"  ><br>
           
   
-           <label for="validationCustom01" class="form-label " >Nombre</label>
+           <label for="validationCustom01" class="form-label  " style="position:relative;left:-88px" >Nombre</label>
            <br>
            <%= form.text_field :Nombre ,:style=>"background-color: #C4C4C4 ; border:0" %>
            
       </div>
   
-      <div class="col-lg-4" style:"padding: 0px 50px" ><br>
-          <label for="validationCustom02" class="form-label"  >Apellido Paterno</label>
+      <div class="col-lg-4"  ><br>
+          <label for="validationCustom02" class="form-label" style="position:relative;left:-38px"  >Apellido Paterno</label>
           <br>
-          <%= form.text_field :Apellido_Paterno  ,:style=>"background-color: #C4C4C4 ; border:0" %>
+          <%= form.text_field :Apellido_Paterno ,:style=>"background-color: #C4C4C4 ; border:0" %>
       </div>
     
         <div class="col-lg-4"  ><br>
 
-          <label for="validationCustom03" class="font-label" style="margin: 0px 0px 8px" >Apellido Materno</label>
+          <label for="validationCustom03" class="font-label" style="position:relative;left:-33px" style="margin: 0px 0px 8px" >Apellido Materno</label>
           
           <br>
           <%= form.text_field :Apellido_Materno ,:style=>"background-color: #C4C4C4 ; border:0" %>
@@ -63,31 +63,32 @@
     
         
 
-        <div class="col-lg-4" style:"padding: 0px 50px" ><br>
+        <div class="col-lg-4"  ><br>
 
   
-          <label for="validationCustom03" class="form-label" style: "display: block">Teléfono</label>
+          <label for="validationCustom03" class="form-label" style="position:relative;left:-84px" style: "display: block">Teléfono</label>
           <br>
   
           <%= form.phone_field :Telefono ,:style=>"background-color: #C4C4C4 ; border:0" %>
         </div>
    
-        <div class="col-lg-4" style:"padding: 0px 50px" ><br>
+        <div class="col-lg-4"  ><br>
 
   
-          <label for="validationCustom02" class="form-label" style: "display: block" >Mail</label>
+          <label for="validationCustom02" class="form-label" style="position:relative;left:-110px" style: "display: block" >Mail</label>
           <br>
           <%= form.text_field :Mail  ,:style=>"background-color: #C4C4C4 ; border:0" %>
         </div>
   
-        <div class="col-lg-4" style:"padding: 0px 50px" ><br>
+        <div class="col-lg-4"  ><br>
   
-          <label for="validationCustom05" class="form-label" style: "display: block">Dirección</label>
+          <label for="validationCustom05" class="form-label" style="position:relative;left:-81px" style: "display: block">Dirección</label>
           <br>
           <%= form.text_field :Direccion  ,:style=>"background-color: #C4C4C4 ; border:0" %>
         </div>
     </div>
 </div>
+
 <br><br><br><br>
 
 
@@ -95,9 +96,9 @@
 
 <div class="conteiner" align="center">
   
-    <label class="btn btn-primary" type="submit" style="background-color: #F79206; border:0;">
+    <label class="btn btn-primary" type="submit" style="background-color: #F79206; border:0;font-size: 22px;">
     Seleccionar Imagen
-    <span style="display:none;">
+    <span style="display:none; ">
       <%= form.file_field :imagen, id: "fileUploader"%>
     </span>
     </label>
