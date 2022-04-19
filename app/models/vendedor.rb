@@ -42,7 +42,7 @@ class Validar_Nombre < ActiveModel::Validator
     #validaciones telefono
     if record.Telefono==nil || record.Telefono==""
         record.errors.add(:Teléfono, "debe estar llenado")
-    <--else
+    else
         if record.Telefono =~ /\A\d+\z/
             if ((record.Telefono)/(10^(record.Telefono.length()-1)))>=6 && ((record.Telefono)/(10*(record.Telefono.length()-1)))<=7
              record.errors.add(:Teléfono,"pendejo")
@@ -50,7 +50,7 @@ class Validar_Nombre < ActiveModel::Validator
             end
         else
          record.errors.add(:Teléfono,"otro pendejo")
-         end-->
+         end
     end
 
 
