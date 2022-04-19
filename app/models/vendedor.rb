@@ -1,19 +1,69 @@
+class Validar_Nombre < ActiveModel::Validator
+ def validate (record)
+    #validaciones de Nombre
+    if record.Nombre==nil || record.Nombre==""
+        record.errors.add(:Nombre, "debe estar llenado")
+    else
+        if record.Nombre =~ /\A[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,}(?:[\s-]*[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,})?(?:[\s-]*[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,})?(?:[\s-])?\z/
+            if record.Nombre.length()>21 
+                record.errors.add(:Nombre, "tiene que tener maximo 21 caracteres")
+            end
+        else 
+            record.errors.add(:Nombre, "solo acepta letras y máximo 3 palabras, cada palabra debe tener mínimo 2 letras")
+        end
+    end
+
+    #validaciones de apellido p
+    if record.Apellido_Paterno==nil || record.Apellido_Paterno==""
+        record.errors.add(:"Apellido", "Paterno debe estar llenado")
+    else
+        if record.Apellido_Paterno =~ /\A[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,}(?:[\s-]*[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,})?(?:[\s-])?\z/
+            if record.Apellido_Paterno.length()>21 
+                record.errors.add(:"Apellido", "Paterno tiene que tener maximo 21 caracteres")
+            end
+        else 
+            record.errors.add(:"Apellido", "Paterno solo acepta letras y máximo 2 palabras, cada palabra debe tener mínimo 2 letras")
+        end
+    end
+
+    #validaciones apellido m
+    if record.Apellido_Materno==nil || record.Apellido_Materno==""
+        record.errors.add(:"Apellido", " Materno debe estar llenado")
+    else
+        if record.Apellido_Materno =~ /\A[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,}(?:[\s-]*[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,})?(?:[\s-])?\z/
+            if record.Apellido_Materno.length()>21 
+                record.errors.add(:"Apellido", "Materno tiene que tener maximo 21 caracteres")
+            end
+        else 
+            record.errors.add(:"Apellido", "Materno solo acepta letras y máximo 2 palabras, cada palabra debe tener mínimo 2 letras")
+        end
+    end
+
+    #validaciones telefono
+    if record.Telefono==nil || record.Telefono==""
+        record.errors.add(:Teléfono, "debe estar llenado")
+    <--else
+        if record.Telefono =~ /\A\d+\z/
+            if ((record.Telefono)/(10^(record.Telefono.length()-1)))>=6 && ((record.Telefono)/(10*(record.Telefono.length()-1)))<=7
+             record.errors.add(:Teléfono,"pendejo")
+
+            end
+        else
+         record.errors.add(:Teléfono,"otro pendejo")
+         end-->
+    end
+
+
+end
+end
+
+
 class Vendedor < ApplicationRecord
+include ActiveModel::Validations
     has_one_attached:imagen
     mount_uploader :perfil, PerfilUploader
-    validates :Nombre, :Apellido_Paterno, :Apellido_Materno, :Telefono, :Mail, :Direccion, presence: {message:"debe estar llenado"}
-    validates :Nombre, format: { with: /\A[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,}(?:[\s-]*[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,})?(?:[\s-]*[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,})?(?:[\s-])?\z/, message: "solo acepta letras y máximo 3 palabras, cada palabra debe tener mínimo 2 letras" }
-    validates :Apellido_Paterno, :Apellido_Materno, format: { with: /\A[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,}(?:[\s-]*[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,})?(?:[\s-])?\z/, message: "solo acepta letras y máximo 2 palabras, cada palabra debe tener mínimo 2 letras" }
-    validates :Nombre, length: { in: 2..21 , message: "tiene que tener mínimo 2 letras y máximo 21"}
-    validates :Apellido_Materno, length: { in: 2..21 , message: "tiene que tener mínimo 2 letras y máximo 21"}
-    validates :Apellido_Paterno, length: { in: 2..21 , message: "tiene que tener mínimo 2 letras y máximo 21"}
-    validates :Telefono, numericality: { only_integer: true , message:"solo acepta números"}
-    validates :Telefono, length: {is: 8 , message: "tiene que tener 8 números"}
-    validates :Telefono, numericality: {in: 60000000..79999999 , message: "tiene que empezar con 6 o 7"}
-    validates :Mail, email_format: {with: /\A\w+(\.*)\w*+([@\s]*)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, message: 'tiene que ser como el siguiente ejemplo: juan@example.com' }
-    validates :Direccion, length: { in: 10..40 , message: "tiene que tener mínimo 10 letras y máximo 40"}
-    validates :Direccion, format: { with: /https:\/\/goo.gl\/maps/, message: "tiene que ser un link de google maps" }
-    validates :Telefono, :Mail, uniqueness: {message:"ya existe usuario"}
+    validates_with Validar_Nombre 
+    
     
     validate :formato_correcto
 
@@ -23,4 +73,5 @@ class Vendedor < ApplicationRecord
             errors.add(:imagen,' debe ser un jpg o png')
         end
     end
+    
 end

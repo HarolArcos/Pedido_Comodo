@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :supervisors
   resources :vendedors
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   post "vendedors/upload", to: "vendedors#upload"
