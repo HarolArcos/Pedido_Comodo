@@ -70,7 +70,7 @@ include ActiveModel::Validations
     private 
     def formato_correcto
         if imagen.attached? && !imagen.content_type.in?(%w(image/png image/jpg image/jpeg))
-            errors.add(:imagen,' debe ser un jpg o png')
+            errors.add(:imagen,' debe ser un jpg,jpeg o png')
         end
     end
     
