@@ -44,6 +44,11 @@
            <label for="validationCustom01" class="form-label  " style="position:relative;left:-88px" >Nombre</label>
            <br>
            <%= form.text_field :Nombre ,:style=>"background-color: #C4C4C4 ; border:0" %>
+          <% @vendedor.errors[:Nombre].each do | msg| %>
+            <p><%= msg %></p>
+          <% end %>
+
+           
            
       </div>
   
@@ -51,6 +56,9 @@
           <label for="validationCustom02" class="form-label" style="position:relative;left:-38px"  >Apellido Paterno</label>
           <br>
           <%= form.text_field :Apellido_Paterno ,:style=>"background-color: #C4C4C4 ; border:0" %>
+          <% @vendedor.errors[:Apellido_Paterno].each do | msg| %>
+            <p><%= msg %></p>
+            <% end %>
       </div>
     
         <div class="col-lg-4"  ><br>
@@ -59,6 +67,9 @@
           
           <br>
           <%= form.text_field :Apellido_Materno ,:style=>"background-color: #C4C4C4 ; border:0" %>
+          <% @vendedor.errors[:Apellido_Materno].each do | msg| %>
+            <p><%= msg %></p>
+            <% end %>
         </div>
     
         
@@ -70,6 +81,9 @@
           <br>
   
           <%= form.phone_field :Telefono ,:style=>"background-color: #C4C4C4 ; border:0" %>
+          <% @vendedor.errors[:Teléfono].each do | msg| %>
+            <p><%= msg %></p>
+            <% end %>
         </div>
    
         <div class="col-lg-4"  ><br>
@@ -78,6 +92,9 @@
           <label for="validationCustom02" class="form-label" style="position:relative;left:-110px" style: "display: block" >Mail</label>
           <br>
           <%= form.text_field :Mail  ,:style=>"background-color: #C4C4C4 ; border:0" %>
+          <% @vendedor.errors[:Mail].each do | msg| %>
+            <p><%= msg %></p>
+            <% end %>
         </div>
   
         <div class="col-lg-4"  ><br>
@@ -85,6 +102,9 @@
           <label for="validationCustom05" class="form-label" style="position:relative;left:-81px" style: "display: block">Dirección</label>
           <br>
           <%= form.text_field :Direccion  ,:style=>"background-color: #C4C4C4 ; border:0" %>
+          <% @vendedor.errors[:Dirección].each do | msg| %>
+            <p><%= msg %></p>
+            <% end %>
         </div>
     </div>
 </div>
@@ -100,9 +120,14 @@
     Seleccionar Imagen
     <span style="display:none; ">
       <%= form.file_field :imagen, id: "fileUploader"%>
+          <% @vendedor.errors[:imagen].each do | msg| %>
+            <p><%= msg %></p>
+            <% end %>
     </span>
     </label>
-  
+    <% @vendedor.errors[:imagen].each do | msg| %>
+      <p><%= msg %></p>
+      <% end %>
 
     
   
