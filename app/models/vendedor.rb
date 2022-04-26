@@ -1,7 +1,7 @@
 class Validar_Nombre < ActiveModel::Validator
  def validate (record)
     #validaciones de Nombre
-    if record.Nombre==nil || record.Nombre==""
+    if record.Nombre==nil || record.Nombre==""    
         record.errors.add(:Nombre, "debe estar llenado")
     else
         if record.Nombre =~ /\A[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,}(?:[\s-]*[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,})?(?:[\s-]*[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,})?(?:[\s-])?\z/
