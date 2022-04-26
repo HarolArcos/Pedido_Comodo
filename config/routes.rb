@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :rventa
   resources :empresas
   resources :supervisors
   resources :vendedors

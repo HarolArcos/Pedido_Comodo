@@ -1,0 +1,129 @@
+<head>
+  <link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet'>
+  <style>
+    body {
+      font-family: 'Comfortaa';font-size: 22px;
+    }
+  </style>
+
+</head>
+
+<body>
+<h1 align="center" style="margin-top: 78px"><b>Registro Punto de Venta</b></h1>
+<br><br>
+  <div class="conteiner" align="center">
+
+    <%= form_with(model: rventum) do |form| %>
+      <% if rventum.errors.any? %>
+        <div style="color: red">
+          <h2><%= pluralize(rventum.errors.count, "error") %> prohibited this ventum from being saved:</h2>
+
+          <ul>
+            <% rventum.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+  </div>
+
+  <br> <br>
+
+<div class="container d-flex justify-content-center " align="center" >
+
+  <div class="row d-flex align-self-center justify-content-center ">
+  <div class="col-lg-4"  ><br>
+          
+  
+           <label for="validationCustom01" class="form-label  " style="position:relative;left:-88px" >Nombre</label>
+           <br>
+           <%= form.text_field :Nombre ,:style=>"background-color: #C4C4C4 ; border:0" %>
+          <% @rventum.errors[:Nombre].each do | msg| %>
+            <p><%= msg %></p>
+          <% end %>
+
+           
+           
+      </div>
+
+  <div class="col-lg-4"  ><br>
+          <label for="validationCustom02" class="form-label" style="position:relative;left:-61px"  >Responsable</label>
+          <br>
+          <%= form.text_field :Responsable ,:style=>"background-color: #C4C4C4 ; border:0" %>
+          <% @rventum.errors[:Responsable].each do | msg| %>
+            <p><%= msg %></p>
+            <% end %>
+      </div>
+
+  <div class="col-lg-4"  ><br>
+
+  
+          <label for="validationCustom03" class="form-label" style="position:relative;left:-84px" style: "display: block">Teléfono</label>
+          <br>
+  
+          <%= form.phone_field :Telefono ,:style=>"background-color: #C4C4C4 ; border:0" %>
+          <% @rventum.errors[:Telefono].each do | msg| %>
+            <p><%= msg %></p>
+            <% end %>
+        </div>
+ 
+
+  <div class="col-lg-4"  ><br>
+
+  
+          <label for="validationCustom02" class="form-label" style="position:relative;left:-110px" style: "display: block">Mail</label>
+          <br>
+  
+          <%= form.phone_field :Mail ,:style=>"background-color: #C4C4C4 ; border:0" %>
+          <% @rventum.errors[:Mail].each do | msg| %>
+            <p><%= msg %></p>
+            <% end %>
+        </div>
+
+  <div class="col-lg-4"  ><br>
+  
+          <label for="validationCustom05" class="form-label" style="position:relative;left:-81px" style: "display: block">Dirección</label>
+          <br>
+          <%= form.text_field :Direccion  ,:style=>"background-color: #C4C4C4 ; border:0" %>
+          <% @rventum.errors[:Direccion].each do | msg| %>
+            <p><%= msg %></p>
+            <% end %>
+  </div>
+</div>
+</div>
+
+<br><br><br><br>
+
+  <div class="conteiner" align="center">
+  
+    <label class="btn btn-primary" type="submit" style="background-color: #F79206; border:0;font-size: 22px;">
+    Seleccionar Imagen
+    <span style="display:none; ">
+      <%= form.file_field :imagen, id: "fileUploader"%>
+          <% @rventum.errors[:imagen].each do | msg| %>
+            <p><%= msg %></p>
+            <% end %>
+    </span>
+    </label>
+    <% @rventum.errors[:imagen].each do | msg| %>
+      <p><%= msg %></p>
+      <% end %>
+
+    
+  
+  <div><br>
+    <a href="/vendedors" class="btn btn-primary" style="background-color: #F79206; font-size: 22px; border: 0;">Cancelar</a>
+    <button class="btn btn-primary" type="submit" style="background-color: #F79206; font-size: 22px; border: 0;">Agregar Punto de Venta</button>
+    
+    <div>
+  
+
+    </div>
+   </div>
+   <% end %>
+   </div>
+
+
+</div> 
+
+</body>
