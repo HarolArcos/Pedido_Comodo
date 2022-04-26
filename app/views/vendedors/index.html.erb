@@ -68,12 +68,16 @@
 	  </div>
   
       <div class="col-lg-4"  ><br>
-	  <%= link_to "Agregar Supervisor", new_supervisor_path,:class => "btn btn-primary" ,:style=> "background-color: #F79206; border: 0;"   %>
+	  <%= link_to "Agregar Supervisor", new_supervisor_path,:class => "btn btn-primary" ,:style=> "background-color: #F79206; border: 0;"  %> 
+	  <br><br><br>
+	  <%= link_to "Agregar Empresa", new_empresa_path,:class => "btn btn-primary" ,:style=> "background-color: #F79206; border: 0;"   %>
 	  </div>
   
       <div class="col-lg-4"  ><br>
 			<!--	<button type="button" class="btn btn-primary" style="background-color: #F79206;">Registrar Supervisores</button>-->
       <%= link_to "Agregar Vendedor", new_vendedor_path,:class => "btn btn-primary" ,:style=> "background-color: #F79206; border: 0;"   %>
+	  <br><br><br>
+	  <%= link_to "Agregar Punto de Venta", @vendedor,:class => "btn btn-primary" ,:style=> "background-color: #F79206; border: 0;"   %>
 	  
 	  </div>
     		

@@ -81,6 +81,9 @@
           <% @vendedor.errors[:Telefono].each do | msg| %>
             <p><%= msg %></p>
             <% end %>
+            <% @vendedor.errors[:Teléfono].each do | msg| %>
+              <p><%= msg %></p>
+              <% end %>
             </div>
         </div>
    
