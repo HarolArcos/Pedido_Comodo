@@ -43,14 +43,25 @@ body {
            <label for="validationCustom01" class="form-label  " style="position:relative;left:-88px" >Nombre</label>
            <br>
            <%= form.text_field :nombre ,:style=>"background-color: #C4C4C4 ; border:0" %>
-           
+           <div style="color: red">
+          
+            <% @empresa.errors[:Nombre].each do | msg| %>
+              <p><%= msg %></p>
+              <% end %>
+            </div>
       </div>
   
       <div class="col-lg-4"  ><br>
           <label for="validationCustom02" class="form-label" style="position:relative;left:-38px"  >Código</label>
           <br>
           <%= form.text_field :codigo ,:style=>"background-color: #C4C4C4 ; border:0" %>
-      </div>
+          <div style="color: red">
+          
+          <% @empresa.errors[:codigo].each do | msg| %>
+            <p><%= msg %></p>
+            <% end %>
+          </div>
+          </div>
     
         <div class="col-lg-4"  ><br>
 
@@ -58,7 +69,13 @@ body {
           
           <br>
           <%= form.phone_field :telefono ,:style=>"background-color: #C4C4C4 ; border:0" %>
-        </div>
+          <div style="color: red">
+          
+          <% @empresa.errors[:telefono].each do | msg| %>
+            <p><%= msg %></p>
+            <% end %>
+          </div>
+          </div>
     
         
 
@@ -69,7 +86,13 @@ body {
           <br>
   
           <%= form.text_field :direccion ,:style=>"background-color: #C4C4C4 ; border:0" %>
-        </div>
+          <div style="color: red">
+          
+          <% @empresa.errors[:Dirección].each do | msg| %>
+            <p><%= msg %></p>
+            <% end %>
+          </div>
+          </div>
     </div>
 </div>
 

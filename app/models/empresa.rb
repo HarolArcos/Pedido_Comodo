@@ -15,6 +15,29 @@ class Validar_Nombre < ActiveModel::Validator
 
        #validaciones codigo
 
+       #validaciondes de telefono
+       if record.telefono==nil || record.telefono==""
+        record.errors.add(:telefono, "debe estar llenado")
+    else
+        if record.telefono > 0
+        
+            if record.telefono.digits.count()==8
+                if record.telefono > 59999999 && record.telefono < 80000000 || record.telefono > 43999999 && record.telefono < 45000000
+                    
+                    
+                else
+                       record.errors.add(:telefono,"tiene que empezar con el digito 44, 6 o 7")
+    
+                  
+                end
+            else
+                record.errors.add(:telefono,"tiene que tener 8 digitos")
+            end
+        else
+            record.errors.add(:telefono,"solo acepta digitos numericos")
+        end
+    end
+
        #validaciones direccion
        if record.direccion==nil || record.direccion==""
             record.errors.add(:Dirección, "debe estar llenado")
@@ -35,8 +58,6 @@ class Validar_Nombre < ActiveModel::Validator
    class Empresa < ApplicationRecord
     include ActiveModel::Validations
         mount_uploader :perfil, PerfilUploader 
-        validates :telefono, numericality: { only_integer: true , message:"solo acepta números"}  
-        validates :telefono, length: {is: 8 , message: "tiene que tener 8 números"}
-        validates :telefono, numericality: {in: 60000000..79999999 , message: "tiene que empezar con 6 o 7"}
-        validates_with Validar_Nombre    
+        validates_with Validar_Nombre   
+        validates :telefono,  uniqueness: {message:"ya existe usuario"} 
     end

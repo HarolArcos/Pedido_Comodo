@@ -40,6 +40,7 @@ class Validar_Nombre < ActiveModel::Validator
     end
 
     #validaciones telefono
+  
     
 if record.Telefono==nil || record.Telefono==""
     record.errors.add(:Teléfono, "debe estar llenado")

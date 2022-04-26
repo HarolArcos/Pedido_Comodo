@@ -1,27 +1,110 @@
-class Supervisor < ApplicationRecord
-
-    has_one_attached:imagen
-    mount_uploader :perfil, PerfilUploader
-    validates :Nombre, :Apellido_Paterno, :Apellido_Materno, :Teléfono, :Mail, :Dirección, presence: {message:"debe estar llenado"}
-    validates :Nombre, format: { with: /\A[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,}(?:[\s-]*[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,})?(?:[\s-]*[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,})?(?:[\s-])?\z/, message: "solo acepta letras y máximo 3 palabras, cada palabra debe tener mínimo 2 letras" }
-    validates :Apellido_Paterno, :Apellido_Materno, format: { with: /\A[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,}(?:[\s-]*[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,})?(?:[\s-])?\z/, message: "solo acepta letras y máximo 2 palabras, cada palabra debe tener mínimo 2 letras" }
-    validates :Nombre, length: { in: 2..21 , message: "tiene que tener mínimo 2 letras y máximo 21"}
-    validates :Apellido_Materno, length: { in: 2..21 , message: "tiene que tener mínimo 2 letras y máximo 21"}
-    validates :Apellido_Paterno, length: { in: 2..21 , message: "tiene que tener mínimo 2 letras y máximo 21"}
-    validates :Teléfono, numericality: { only_integer: true , message:"solo acepta números"}
-    validates :Teléfono, length: {is: 8 , message: "tiene que tener 8 números"}
-    validates :Teléfono, numericality: {in: 60000000..79999999 , message: "tiene que empezar con 6 o 7"}
-    validates :Mail, email_format: {with: /\A\w+(\.*)\w*+([@\s]*)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, message: 'tiene que ser como el siguiente ejemplo: juan@example.com' }
-    validates :Dirección, length: { in: 10..40 , message: "tiene que tener mínimo 10 letras y máximo 40"}
-    validates :Dirección, format: { with: /https:\/\/goo.gl\/maps/, message: "tiene que ser un link de google maps" }
-    validates :Teléfono, :Mail, uniqueness: {message:"ya existe usuario"}
-    
-    validate :formato_correcto
-
-    private 
-    def formato_correcto
-        if imagen.attached? && !imagen.content_type.in?(%w(image/png image/jpg image/jpeg))
-            errors.add(:imagen,' debe ser un jpg o png')
-        end
-    end
-end
+class Validar_Nombre < ActiveModel::Validator
+    def validate (record)
+       #validaciones de Nombre
+       if record.Nombre==nil || record.Nombre==""    
+           record.errors.add(:Nombre, "debe estar llenado")
+       else
+           if record.Nombre =~ /\A[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,}(?:[\s-]*[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,})?(?:[\s-]*[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,})?(?:[\s-])?\z/
+               if record.Nombre.length()>21 
+                   record.errors.add(:Nombre, "tiene que tener maximo 21 caracteres")
+               end
+           else 
+               record.errors.add(:Nombre, "solo acepta letras y máximo 3 palabras, cada palabra debe tener mínimo 2 letras")
+           end
+       end
+   
+       #validaciones de apellido p
+       if record.Apellido_Paterno==nil || record.Apellido_Paterno==""
+           record.errors.add(:"Apellido_Paterno", " debe estar llenado")
+       else
+           if record.Apellido_Paterno =~ /\A[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,}(?:[\s-]*[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,})?(?:[\s-])?\z/
+               if record.Apellido_Paterno.length()>21 
+                   record.errors.add(:"Apellido_Paterno", " tiene que tener maximo 21 caracteres")
+               end
+           else 
+               record.errors.add(:"Apellido_Paterno", " solo acepta letras y máximo 2 palabras, cada palabra debe tener mínimo 2 letras")
+           end
+       end
+   
+       #validaciones apellido m
+       if record.Apellido_Materno==nil || record.Apellido_Materno==""
+           record.errors.add(:"Apellido_Materno", "  debe estar llenado")
+       else
+           if record.Apellido_Materno =~ /\A[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,}(?:[\s-]*[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,})?(?:[\s-])?\z/
+               if record.Apellido_Materno.length()>21 
+                   record.errors.add(:"Apellido_Materno", " tiene que tener maximo 21 caracteres")
+               end
+           else 
+               record.errors.add(:"Apellido_Materno", " solo acepta letras y máximo 2 palabras, cada palabra debe tener mínimo 2 letras")
+           end
+       end
+   
+       #validaciones telefono
+       
+       
+   if record.Teléfono==nil || record.Teléfono==""
+       record.errors.add(:Teléfono, "debe estar llenado")
+   else
+       if record.Teléfono > 0
+       
+           if record.Teléfono.digits.count()==8
+               if record.Teléfono > 59999999 && record.Teléfono < 80000000 
+                   
+                   
+               else
+                      record.errors.add(:Teléfono,"tiene que empezar con el digito 6 o 7")
+   
+                 
+               end
+           else
+               record.errors.add(:Teléfono,"tiene que tener 8 digitos")
+           end
+       else
+           record.errors.add(:Teléfono,"solo acepta digitos numericos")
+       end
+   end
+   #validaciones de Mail
+   if record.Mail==nil || record.Mail==""
+       record.errors.add(:"Mail", "debe estar llenado")
+   else
+       if record.Mail =~ /\A\w+(\.*)\w*+([@\s]*)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
+           
+       else 
+           record.errors.add(:"Mail", "tiene que ser como el siguiente ejemplo: juan@example.com")
+       end
+   end
+   #validaciones de direccion
+   if record.Dirección==nil || record.Dirección==""
+       record.errors.add(:"Dirección", "debe estar llenado")
+   else
+       if record.Mail =~ /https:\/\/goo.gl\/maps/
+           
+       else 
+           record.errors.add(:"Dirección", "tiene que ser un link de google maps")
+       end
+   end
+   
+   
+   
+   end
+   end
+   
+   
+   class Supervisor < ApplicationRecord
+   include ActiveModel::Validations
+       has_one_attached:imagen
+       mount_uploader :perfil, PerfilUploader
+       
+       validates_with Validar_Nombre 
+       validates :Teléfono, :Mail, uniqueness: {message:"ya existe usuario"}
+       
+       validate :formato_correcto
+   
+       private 
+       def formato_correcto
+           if imagen.attached? && !imagen.content_type.in?(%w(image/png image/jpg image/jpeg))
+               errors.add(:imagen,' debe ser un jpg,jpeg o png')
+           end
+       end
+       
+   end
