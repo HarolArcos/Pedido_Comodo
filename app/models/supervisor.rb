@@ -1,4 +1,4 @@
-class Validar_Nombre < ActiveModel::Validator
+class Validar_Nombre2 < ActiveModel::Validator
     def validate (record)
        #validaciones de Nombre
        if record.Nombre==nil || record.Nombre==""    
@@ -95,7 +95,7 @@ class Validar_Nombre < ActiveModel::Validator
        has_one_attached:imagen
        mount_uploader :perfil, PerfilUploader
        
-       validates_with Validar_Nombre 
+       validates_with Validar_Nombre2
        validates :Teléfono, :Mail, uniqueness: {message:"ya existe usuario"}
        
        validate :formato_correcto
