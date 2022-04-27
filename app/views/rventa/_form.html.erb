@@ -14,17 +14,7 @@
   <div class="conteiner" align="center">
 
     <%= form_with(model: rventum) do |form| %>
-      <% if rventum.errors.any? %>
-        <div style="color: red">
-          <h2><%= pluralize(rventum.errors.count, "error") %> prohibited this ventum from being saved:</h2>
-
-          <ul>
-            <% rventum.errors.each do |error| %>
-              <li><%= error.full_message %></li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
+      
   </div>
 
   <br> <br>
@@ -38,9 +28,11 @@
            <label for="validationCustom01" class="form-label  " style="position:relative;left:-88px" >Nombre</label>
            <br>
            <%= form.text_field :Nombre ,:style=>"background-color: #C4C4C4 ; border:0" %>
+          <div style="color: red">
           <% @rventum.errors[:Nombre].each do | msg| %>
             <p><%= msg %></p>
           <% end %>
+          </div>
 
            
            
@@ -50,9 +42,11 @@
           <label for="validationCustom02" class="form-label" style="position:relative;left:-61px"  >Responsable</label>
           <br>
           <%= form.text_field :Responsable ,:style=>"background-color: #C4C4C4 ; border:0" %>
+          <div style="color: red">
           <% @rventum.errors[:Responsable].each do | msg| %>
             <p><%= msg %></p>
             <% end %>
+            </div>
       </div>
 
   <div class="col-lg-4"  ><br>
@@ -62,9 +56,11 @@
           <br>
   
           <%= form.phone_field :Telefono ,:style=>"background-color: #C4C4C4 ; border:0" %>
+          <div style="color: red">
           <% @rventum.errors[:Telefono].each do | msg| %>
             <p><%= msg %></p>
             <% end %>
+            </div>
         </div>
  
 
@@ -75,9 +71,11 @@
           <br>
   
           <%= form.phone_field :Mail ,:style=>"background-color: #C4C4C4 ; border:0" %>
+          <div style="color: red">
           <% @rventum.errors[:Mail].each do | msg| %>
             <p><%= msg %></p>
             <% end %>
+            </div>
         </div>
 
   <div class="col-lg-4"  ><br>
@@ -85,9 +83,11 @@
           <label for="validationCustom05" class="form-label" style="position:relative;left:-81px" style: "display: block">Dirección</label>
           <br>
           <%= form.text_field :Direccion  ,:style=>"background-color: #C4C4C4 ; border:0" %>
+          <div style="color: red">
           <% @rventum.errors[:Direccion].each do | msg| %>
             <p><%= msg %></p>
             <% end %>
+            </div>
   </div>
 </div>
 </div>

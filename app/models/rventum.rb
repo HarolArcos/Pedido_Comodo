@@ -13,7 +13,7 @@ class Validar_Nombre < ActiveModel::Validator
            end
        end
    
-       #validaciones de apellido p
+       #validaciones de responsable
        if record.Responsable==nil || record.Responsable==""
            record.errors.add(:"Responsable", " debe estar llenado")
        else
@@ -30,7 +30,7 @@ class Validar_Nombre < ActiveModel::Validator
        #validaciones telefono
        
    if record.Telefono==nil || record.Telefono==""
-       record.errors.add(:Teléfono, "debe estar llenado")
+       record.errors.add(:Telefono, "debe estar llenado")
    else
        if record.Telefono > 0
        
@@ -39,15 +39,15 @@ class Validar_Nombre < ActiveModel::Validator
                    
                    
                else
-                      record.errors.add(:Teléfono,"tiene que empezar con el digito 6 o 7")
+                      record.errors.add(:Telefono,"tiene que empezar con el digito 6 o 7")
    
                  
                end
            else
-               record.errors.add(:Teléfono,"tiene que tener 8 digitos")
+               record.errors.add(:Telefono,"tiene que tener 8 digitos")
            end
        else
-           record.errors.add(:Teléfono,"solo acepta digitos numericos")
+           record.errors.add(:Telefono,"solo acepta digitos numericos")
        end
    end
    #validaciones de Mail
@@ -62,12 +62,12 @@ class Validar_Nombre < ActiveModel::Validator
    end
    #validaciones de direccion
    if record.Direccion==nil || record.Direccion==""
-       record.errors.add(:"Dirección", "debe estar llenado")
+       record.errors.add(:"Direccion", "debe estar llenado")
    else
        if record.Mail =~ /https:\/\/goo.gl\/maps/
            
        else 
-           record.errors.add(:"Dirección", "tiene que ser un link de google maps")
+           record.errors.add(:"Direccion", "tiene que ser un link de google maps")
        end
    end
    
