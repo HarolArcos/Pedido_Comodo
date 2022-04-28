@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @rventum %>
+
+<div>
+  <%= link_to "Edit this rventum", edit_rventum_path(@rventum) %> |
+  <%= link_to "Back to rventa", rventa_path %>
+
+  <%= button_to "Destroy this rventum", @rventum, method: :delete %>
+</div>

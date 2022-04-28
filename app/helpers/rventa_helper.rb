@@ -1,0 +1,2 @@
+module RventaHelper
+end
