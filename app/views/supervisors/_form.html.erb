@@ -106,7 +106,7 @@
   
           <label for="validationCustom05" class="form-label" style="position:relative;left:-81px" style: "display: block">Dirección</label>
           <br>
-          <%= form.text_field :Dirección  ,:style=>"background-color: #C4C4C4 ; border:0" %>
+          <%= form.text_field :Dirección  ,:style=>"background-color: #C4C4C4 ; border:0",:placeholder => "https://goo.gl/maps/..." %>
           <div style="color: red">
           <% @supervisor.errors[:Dirección].each do | msg| %>
             <p><%= msg %></p>
