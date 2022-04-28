@@ -1,24 +1,3 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>Supervisors</h1>
-
-<div id="supervisors">
-  <% @supervisors.each do |supervisor| %>
-    <%= render supervisor %>
-    <p>
-      <%= link_to "Show this supervisor", supervisor %>
-    </p>
-  <% end %>
-</div>
-
-<%= link_to "New supervisor", new_supervisor_path %>
-
-
-
-
-
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -89,8 +68,23 @@
       <div class="col-lg-4"  ><br>
     <%= link_to "Agregar Vendedor", new_supervisor_path,:class => "btn btn-primary" ,:style=> "background-color: #F79206; border: 0;"  %> 
     <br><br><br>
-    <%= link_to "Registrar Punto de Venta", new_empresa_path,:class => "btn btn-primary" ,:style=> "background-color: #F79206; border: 0;"   %>
+    <%= link_to "Wea1", new_empresa_path,:class => "btn btn-primary" ,:style=> "background-color: #F79206; border: 0;"   %>
     </div>
+
+
+
+<!--BORRAR O VER QUE HACER CON ESTA WEA-->
+      <div class="col-lg-4"  ><br>
+      <!--  <button type="button" class="btn btn-primary" style="background-color: #F79206;">Registrar Supervisores</button>-->
+      <%= link_to "Registrar Punto de Venta", new_vendedor_path,:class => "btn btn-primary" ,:style=> "background-color: #F79206; border: 0;"   %>
+    <br><br><br>
+    <%= link_to "wea2", new_rventum_path,:class => "btn btn-primary" ,:style=> "background-color: #F79206; border: 0;"   %>
+    </div>
+<!--FIN DE LA WEA-->
+
+
+
+
 
       </div>
   </div>
