@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_19_185943) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_29_144407) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -49,6 +49,27 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_19_185943) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "empresas", force: :cascade do |t|
+    t.string "codigo"
+    t.string "nombre"
+    t.integer "telefono"
+    t.string "direccion"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "mail"
+    t.integer "nit"
+  end
+
+  create_table "rventa", force: :cascade do |t|
+    t.string "Nombre"
+    t.string "Responsable"
+    t.integer "Telefono"
+    t.string "Mail"
+    t.string "Direccion"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "supervisors", force: :cascade do |t|
     t.string "Nombre"
     t.string "Apellido_Paterno"
@@ -59,6 +80,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_19_185943) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "perfil"
+  end
+
+  create_table "usuarios", force: :cascade do |t|
+    t.string "Mail"
+    t.string "Codigo"
+    t.string "tipo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "vendedors", force: :cascade do |t|

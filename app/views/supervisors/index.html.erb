@@ -1,14 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Menu de Supervisor</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet'>
+</head>
+<style>
+  body {
+    font-family: 'Comfortaa';font-size: 22px;
+  }
+</style>
+<body>
+<!--Inicio de la barra de navegacion-->
+  <div>
+    <div>
+  <nav  class="navbar" style="background-color: #1D3153; height: 120px;">
+  <div class="container-fluid">
+      <a class="navbar-brand" href="/vendedors">
+      <img src="/assets/a-d9abbccf6ec068c782702faf5587c416d15fba6911666a57be0c9ccd3e2128c6.png" alt="" width="200" height="100" style="object-fit: cover;">
+      </a>
+          <div class="container" align="right">
+              <a class="navbar-brand text-white">CERRAR SESIÓN</a>
+          </div>
+  </div>
+  </nav>
+  </div>
+<!--Fin de la barra de navegacion-->
 <p style="color: green"><%= notice %></p>
 
-<h1>Supervisors</h1>
+<!--Inicio del Body -->
+<h1 align="center"><b>MENU DE SUPERVISOR</b></h1>
+<br>
+<br>
 
-<div id="supervisors">
-  <% @supervisors.each do |supervisor| %>
-    <%= render supervisor %>
-    <p>
-      <%= link_to "Show this supervisor", supervisor %>
-    </p>
-  <% end %>
-</div>
+  <div class="container">
+    <div class="row">
+      <!--
+        <div class="col">
+            <div class="card" style="width: 18rem;background-color: #1D3153;" >
+            <img class="card-img-top" src="./Recursos/Imagenes/b.png" alt="Card image cap">
+            
+          <div class="card-body">
+              <h5 class="text-white" align="Center">Administrador</h5>
+              <p class="text-white">Nombre:</p>
+              <p class="text-white">Apellidos:</p>
+              <p class="text-white">Correo:</p>
+              <a class="btn btn-primary" style="background-color: #F79206">Editar Datos</a>
+            </div>
+            
+        </div>
+        -->
+        </div>
+        
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+        
+        
+        <div class="container">
 
-<%= link_to "New supervisor", new_supervisor_path %>
+    <div class="row">
+      <div class="col-lg-4"  ><br>
+    </div>
+  
+      <div class="col-lg-4"  ><br>
+    <%= link_to "Agregar Vendedor", new_supervisor_path,:class => "btn btn-primary" ,:style=> "background-color: #F79206; border: 0;"  %> 
+    <br><br><br>
+    <%= link_to "Wea1", new_empresa_path,:class => "btn btn-primary" ,:style=> "background-color: #F79206; border: 0;"   %>
+    </div>
+
+
+
+<!--BORRAR O VER QUE HACER CON ESTA WEA-->
+      <div class="col-lg-4"  ><br>
+      <!--  <button type="button" class="btn btn-primary" style="background-color: #F79206;">Registrar Supervisores</button>-->
+      <%= link_to "Registrar Punto de Venta", new_vendedor_path,:class => "btn btn-primary" ,:style=> "background-color: #F79206; border: 0;"   %>
+    <br><br><br>
+    <%= link_to "wea2", new_rventum_path,:class => "btn btn-primary" ,:style=> "background-color: #F79206; border: 0;"   %>
+    </div>
+<!--FIN DE LA WEA-->
+
+
+
+
+
+      </div>
+  </div>
+
+  
+</body>
+</html>

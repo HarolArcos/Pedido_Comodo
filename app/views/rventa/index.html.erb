@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Rventa</h1>
+
+<div id="rventa">
+  <% @rventa.each do |rventum| %>
+    <%= render rventum %>
+    <p>
+      <%= link_to "Show this rventum", rventum %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New rventum", new_rventum_path %>

@@ -1,9 +1,28 @@
 class VendedorsController < ApplicationController
   before_action :set_vendedor, only: %i[ show edit update destroy upload]
 
+
   # GET /vendedors or /vendedors.json
   def index
-    @vendedors = Vendedor.all
+    if session[:userlog]!=nil
+      usuario=Supervisor.find(session[:userlog])
+      if usuario.exists? 
+        if usuario.supervisor? #|| usuario.supervisor?
+          @vendedors = Vendedor.all
+        else
+          if session[:userlog]==-1
+            @vendedors = Vendedor.all
+          else
+          render template: "login/formulario_login"
+          end
+        end
+      else
+        render template: "login/formulario_login"
+      end
+else
+  render template: "login/formulario_login"
+end
+    
   end
 
   # GET /vendedors/1 or /vendedors/1.json
@@ -12,7 +31,24 @@ class VendedorsController < ApplicationController
 
   # GET /vendedors/new
   def new
-    @vendedor = Vendedor.new
+    if session[:userlog]!=nil
+          usuario=Supervisor.find(session[:userlog])
+          if usuario.exists? 
+            if usuario.supervisor? #|| usuario.supervisor?
+              @vendedor = Vendedor.new
+            else
+              if session[:userlog]==-1
+                @vendedor = Vendedor.new
+              else
+              render template: "login/formulario_login"
+              end
+            end
+          else
+            render template: "login/formulario_login"
+          end
+    else
+      render template: "login/formulario_login"
+    end
   end
 
   # GET /vendedors/1/edit
@@ -21,10 +57,12 @@ class VendedorsController < ApplicationController
 
   # POST /vendedors or /vendedors.json
   def create
+    if session[:userlog]==-1
     
       @vendedor = Vendedor.new(vendedor_params)
 
       respond_to do |format|
+
       
         if @vendedor.save
           format.html { redirect_to vendedors_path, notice: "El vendedor fue creado" }
@@ -34,6 +72,21 @@ class VendedorsController < ApplicationController
           format.json { render json: @vendedor.errors, status: :unprocessable_entity }
        end
       end
+    else
+      @vendedor = Vendedor.new(vendedor_params)
+
+      respond_to do |format|
+
+      
+        if @vendedor.save
+          format.html { redirect_to supervisors_path, notice: "El vendedor fue creado" }
+          format.json { render :show, status: :created, location: @vendedor }
+       else
+          format.html { render :new, status: :unprocessable_entity }
+          format.json { render json: @vendedor.errors, status: :unprocessable_entity }
+       end
+      end
+    end
    
   end
 

@@ -1,0 +1,119 @@
+
+<head>
+<link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet'>
+<style>
+body {
+  font-family: 'Comfortaa';font-size: 22px;
+}
+</style>
+
+</head>
+<body>
+
+<h1 align="center" style="margin-top: 78px"><b>Registrar Empresa</b></h1>
+<br><br>
+  <div class="conteiner" align="center">
+<%= form_with(model: empresa) do |form| %>
+  <% if empresa.errors.any? %>
+    <div style="color: red">
+      
+
+      <ul>
+        
+      </ul>
+    </div>
+  <% end %>
+</div>
+
+<br><br>
+
+
+
+<div class="container d-flex justify-content-center " align="center" >
+
+  <div class="row d-flex align-self-center justify-content-center ">
+    
+
+
+      <div class="col-lg-4"  ><br>
+          
+  
+           <label for="validationCustom01" class="form-label  " style="position:relative;left:-88px" >Nombre</label>
+           <br>
+           <%= form.text_field :nombre ,:style=>"background-color: #C4C4C4 ; border:0" %>
+           <div style="color: red">
+          
+            <% @empresa.errors[:Nombre].each do | msg| %>
+              <p><%= msg %></p>
+              <% end %>
+            </div>
+      </div>
+  
+      <div class="col-lg-4"  ><br>
+      <label for="validationCustom02" class="form-label" style="position:relative;left:-112px"  >NIT</label>
+          <br>
+          <%= form.text_field :codigo ,:style=>"background-color: #C4C4C4 ; border:0" %>
+          <div style="color: red">
+          
+          <% @empresa.errors[:codigo].each do | msg| %>
+            <p><%= msg %></p>
+            <% end %>
+          </div>
+          </div>
+    
+        <div class="col-lg-4"  ><br>
+
+        <label for="validationCustom03" class="font-label" style="position:relative;left:-83px;margin: 0px 0px 8px">Teléfono</label>
+          
+          <br>
+          <%= form.phone_field :telefono ,:style=>"background-color: #C4C4C4 ; border:0" %>
+          <div style="color: red">
+          
+          <% @empresa.errors[:telefono].each do | msg| %>
+            <p><%= msg %></p>
+            <% end %>
+          </div>
+          </div>
+    
+        
+
+        <div class="col-lg-4"  ><br>
+
+  
+        <label for="validationCustom03" class="form-label" style="position:relative;left:-80px" style: "display: block">Dirección</label>
+          <br>
+  
+          <%= form.text_field :direccion ,:style=>"background-color: #C4C4C4 ; border:0",:placeholder => "https://goo.gl/maps/..." %>
+          <div style="color: red">
+          
+          <% @empresa.errors[:Dirección].each do | msg| %>
+            <p><%= msg %></p>
+            <% end %>
+          </div>
+          </div>
+    </div>
+</div>
+
+<br><br><br><br>
+
+
+
+
+<div class="conteiner" align="center">
+  
+  <div><br>
+    <a href="/vendedors" class="btn btn-primary" style="background-color: #F79206; font-size: 22px; border: 0;">Cancelar</a>
+    <button class="btn btn-primary" type="submit" style="background-color: #F79206; font-size: 22px; border: 0;">Agregar Empresa</button>
+    
+    <div>
+  
+
+    </div>
+   </div>
+   <% end %>
+   </div>
+
+</div> 
+<br>
+</body>
+

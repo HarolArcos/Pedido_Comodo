@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  root "login#formulario_login"
+  get "login", to: "login#formulario_login"
+  post "login", to: "login#login"
+  get "main", to: "usuario#menuprincipal"
+  resources :usuarios
+  resources :rventa
+  resources :empresas
   resources :supervisors
   resources :vendedors
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
