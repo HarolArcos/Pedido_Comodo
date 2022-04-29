@@ -89,4 +89,6 @@ class Validar_Nombre1 < ActiveModel::Validator
         validates_with Validar_Nombre1   
         validates :telefono,  uniqueness: {message:"ya existe usuario"}
         validates :nit,  uniqueness: {message:"ya existe usuario"} 
+        validates :mail,  uniqueness: {message:"ya existe usuario"} 
+        validates :nombre,  uniqueness: {message:"ya existe usuario"} 
     end
