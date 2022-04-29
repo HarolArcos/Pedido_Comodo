@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root "usuarios#new"
+  resources :usuarios
   resources :rventa
   resources :empresas
   resources :supervisors
