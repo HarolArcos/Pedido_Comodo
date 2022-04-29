@@ -50,18 +50,18 @@ body {
       </div>
   
       <div class="col-lg-4"  ><br>
-      <label for="validationCustom02" class="form-label" style="position:relative;left:-112px"  >NIT</label>
+        <label for="validationCustom02" class="form-label" style="position:relative;left:-112px"  >NIT</label>
           <br>
-          <%= form.text_field :codigo ,:style=>"background-color: #C4C4C4 ; border:0" %>
+          <%= form.phone_field :nit ,:style=>"background-color: #C4C4C4 ; border:0" %>
           <div style="color: red">
           
-          <% @empresa.errors[:codigo].each do | msg| %>
+          <% @empresa.errors[:nit].each do | msg| %>
             <p><%= msg %></p>
             <% end %>
           </div>
-          </div>
+      </div>
     
-        <div class="col-lg-4"  ><br>
+      <div class="col-lg-4"  ><br>
 
         <label for="validationCustom03" class="font-label" style="position:relative;left:-83px;margin: 0px 0px 8px">Teléfono</label>
           
@@ -73,13 +73,24 @@ body {
             <p><%= msg %></p>
             <% end %>
           </div>
+      </div>
+
+      <div class="col-lg-4"  ><br>
+
+        <label for="validationCustom03" class="font-label" style="position:relative;left:-83px;margin: 0px 0px 8px">Mail</label>
+          
+          <br>
+          <%= form.text_field :mail ,:style=>"background-color: #C4C4C4 ; border:0" %>
+          <div style="color: red">
+          
+          <% @empresa.errors[:mail].each do | msg| %>
+            <p><%= msg %></p>
+            <% end %>
           </div>
-    
-        
+      </div>
 
-        <div class="col-lg-4"  ><br>
 
-  
+      <div class="col-lg-4"  ><br>
         <label for="validationCustom03" class="form-label" style="position:relative;left:-80px" style: "display: block">Dirección</label>
           <br>
   

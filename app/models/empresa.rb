@@ -13,8 +13,36 @@ class Validar_Nombre1 < ActiveModel::Validator
            end
        end
 
-       #validaciones codigo
+       #validaciones nit
+       if record.nit==nil || record.nit==""
+        record.errors.add(:nit, "debe estar llenado")
+    else
+        if record.nit > 0
+        
+            if record.nit.digits.count()<=21
+                if record.nit.digits.count()>6
 
+                else
+                    record.errors.add(:nit,"mínimo 6 digitos digitos")
+                end
+            else
+                record.errors.add(:nit,"máximo 21 digitos digitos")
+            end
+        else
+            record.errors.add(:nit,"solo acepta digitos numericos")
+        end
+    end
+
+    #validaciones de Mail
+    if record.mail==nil || record.mail==""
+        record.errors.add(:"mail", "debe estar llenado")
+    else
+        if record.mail =~ /\A\w+(\.*)\w*+([@\s]*)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
+        
+        else 
+            record.errors.add(:"mail", "tiene que ser como el siguiente ejemplo: juan@example.com")
+        end
+    end
        #validaciondes de telefono
        if record.telefono==nil || record.telefono==""
         record.errors.add(:telefono, "debe estar llenado")
@@ -59,5 +87,6 @@ class Validar_Nombre1 < ActiveModel::Validator
     include ActiveModel::Validations
         mount_uploader :perfil, PerfilUploader 
         validates_with Validar_Nombre1   
-        validates :telefono,  uniqueness: {message:"ya existe usuario"} 
+        validates :telefono,  uniqueness: {message:"ya existe usuario"}
+        validates :nit,  uniqueness: {message:"ya existe usuario"} 
     end
