@@ -15,26 +15,22 @@ class RventaController < ApplicationController
     if session[:userlog]!=nil && session[:userlog]!=-1
           
           
-      #|| usuario.supervisor?
-      @rventum = Rventum.new
-     
-       
-       
-       
-    
-   
-else
-if session[:userlog]==-1
-  @rventum = Rventum.new
-else
-render template: "login/formulario_login"
-end
-end
-      
+             #|| usuario.supervisor?
+             @rventum = Rventum.new
+            
+              
+              
+              
+           
+          
+    else
+      if session[:userlog]==-1
+        @rventum = Rventum.new
+      else
+      render template: "login/formulario_login"
+    end
+    end
   end
-
-
- 
 
   # GET /rventa/1/edit
   def edit
@@ -48,27 +44,29 @@ end
 
     respond_to do |format|
       if @rventum.save
-        format.html { redirect_to vendedors_path, notice: "Rventum was successfully created." }
-        format.json { render :show, status: :created, location: @rventum }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @rventum.errors, status: :unprocessable_entity }
+          format.html { redirect_to vendedors_path, notice: "El vendedor fue creado" }
+          format.json { render :show, status: :created, location: @vendedor }
+       else
+          format.html { render :new, status: :unprocessable_entity }
+          format.json { render json: @vendedor.errors, status: :unprocessable_entity }
+       end
       end
-    end
     else
       @rventum = Rventum.new(rventum_params)
 
-      respond_to do |format|
-        if @rventum.save
-          format.html { redirect_to supervisors_path, notice: "Rventum was successfully created." }
-          format.json { render :show, status: :created, location: @rventum }
-        else
+    respond_to do |format|
+      if @rventum.save
+          format.html { redirect_to supervisors_path, notice: "El vendedor fue creado" }
+          format.json { render :show, status: :created, location: @vendedor }
+       else
           format.html { render :new, status: :unprocessable_entity }
-          format.json { render json: @rventum.errors, status: :unprocessable_entity }
-        end
+          format.json { render json: @vendedor.errors, status: :unprocessable_entity }
+       end
+      end
     end
-    
+   
   end
+  
 
   # PATCH/PUT /rventa/1 or /rventa/1.json
   def update
@@ -101,7 +99,6 @@ end
 
     # Only allow a list of trusted parameters through.
     def rventum_params
-      params.require(:rventum).permit(:Nombre, :Responsable, :Telefono, :Mail, :Direccion, :perfil, :imagen)
+      params.require(:rventum).permit(:Nombre, :Responsable, :Telefono, :Mail, :Direccion)
     end
-  end
 end
