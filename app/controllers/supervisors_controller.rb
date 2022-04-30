@@ -4,7 +4,25 @@ class SupervisorsController < ApplicationController
 
   # GET /supervisors or /supervisors.json
   def index
-    @supervisors = Supervisor.all
+    if session[:userlog]!=nil
+      usuario=Supervisor.find(session[:userlog])
+      if usuario.exists? 
+        if usuario.supervisor? #|| usuario.supervisor?
+          @supervisors = Supervisor.all
+        else
+          if session[:userlog]==-1
+            @supervisors = Supervisor.all
+          else
+          render template: "login/formulario_login"
+          end
+        end
+      else
+        render template: "login/formulario_login"
+      end
+else
+  render template: "login/formulario_login"
+end
+    
   end
 
   # GET /supervisors/1 or /supervisors/1.json
