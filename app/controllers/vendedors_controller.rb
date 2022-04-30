@@ -4,26 +4,26 @@ class VendedorsController < ApplicationController
 
   # GET /vendedors or /vendedors.json
   def index
-    if session[:userlog]!=nil
-      usuario=Supervisor.find(session[:userlog])
-      if usuario.exists? 
-        if usuario.supervisor? #|| usuario.supervisor?
+    #if session[:userlog]!=nil
+     # usuario=Supervisor.find(session[:userlog])
+      #if usuario.exists? 
+       # if usuario.supervisor? #|| usuario.supervisor?
           @vendedors = Vendedor.all
-        else
-          if session[:userlog]==-1
-            @vendedors = Vendedor.all
-          else
-          render template: "login/formulario_login"
-          end
-        end
-      else
-        render template: "login/formulario_login"
-      end
-else
-  render template: "login/formulario_login"
-end
+        #else
+         # if session[:userlog]==-1
+          #  @vendedors = Vendedor.all
+          #else
+          #render template: "login/formulario_login"
+          #end
+#        end
+ #     else
+  #      render template: "login/formulario_login"
+   #   end
+#else
+ # render template: "login/formulario_login"
+#end
     
-  end
+end
 
   # GET /vendedors/1 or /vendedors/1.json
   def show

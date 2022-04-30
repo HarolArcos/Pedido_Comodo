@@ -11,9 +11,28 @@ class EmpresasController < ApplicationController
   end
 
   # GET /empresas/new
-  def new
-    @empresa = Empresa.new
-  end
+
+    def new
+      if session[:userlog]!=nil
+            usuario=Supervisor.find(session[:userlog])
+            if usuario.exists? 
+              if usuario.supervisor? #|| usuario.supervisor?
+                @empresa = Empresa.new
+              else
+                if session[:userlog]==-1
+                  @empresa = Empresa.new
+                else
+                render template: "login/formulario_login"
+                end
+              end
+            else
+              render template: "login/formulario_login"
+            end
+      else
+        render template: "login/formulario_login"
+      end
+    end
+    
 
   # GET /empresas/1/edit
   def edit
@@ -21,17 +40,38 @@ class EmpresasController < ApplicationController
 
   # POST /empresas or /empresas.json
   def create
-    @empresa = Empresa.new(empresa_params)
+    if session[:userlog]==-1
+    
+      @empresa = Empresa.new(empresa_params)
 
     respond_to do |format|
       if @empresa.save
-        format.html { redirect_to empresa_url(@empresa), notice: "Empresa was successfully created." }
+        format.html { redirect_to vendedors_path, notice: "Empresa was successfully created." }
         format.json { render :show, status: :created, location: @empresa }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @empresa.errors, status: :unprocessable_entity }
       end
     end
+    else
+      @empresa = Empresa.new(empresa_params)
+
+    respond_to do |format|
+      if @empresa.save
+        format.html { redirect_to supervisors_path, notice: "Empresa was successfully created." }
+        format.json { render :show, status: :created, location: @empresa }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @empresa.errors, status: :unprocessable_entity }
+      end
+    end
+    end
+
+
+
+
+
+    
   end
 
   # PATCH/PUT /empresas/1 or /empresas/1.json

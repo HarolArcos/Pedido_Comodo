@@ -147,7 +147,7 @@ class Validar_Nombre2 < ActiveModel::Validator
 
     end
     def administrador?
-        return Mail == "juantopo@gmail.com"
+        return Mail == "juantopo@gmail.com" 
         
     end
        

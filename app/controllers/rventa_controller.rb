@@ -44,7 +44,7 @@ class RventaController < ApplicationController
 
     respond_to do |format|
       if @rventum.save
-        format.html { redirect_to rventum_url(@rventum), notice: "Rventum was successfully created." }
+        format.html { redirect_to vendedors_path, notice: "Rventum was successfully created." }
         format.json { render :show, status: :created, location: @rventum }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -56,7 +56,7 @@ class RventaController < ApplicationController
 
       respond_to do |format|
         if @rventum.save
-          format.html { redirect_to rventum_url(@rventum), notice: "Rventum was successfully created." }
+          format.html { redirect_to supervisors_path, notice: "Rventum was successfully created." }
           format.json { render :show, status: :created, location: @rventum }
         else
           format.html { render :new, status: :unprocessable_entity }
