@@ -57,7 +57,7 @@ class Validar_Nombre1 < ActiveModel::Validator
 
    class Empresa < ApplicationRecord
     include ActiveModel::Validations
-        mount_uploader :perfil, PerfilUploader 
+        #mount_uploader :perfil, PerfilUploader 
         validates_with Validar_Nombre1   
         validates :telefono,  uniqueness: {message:"ya existe usuario"} 
     end
