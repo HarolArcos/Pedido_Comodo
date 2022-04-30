@@ -18,7 +18,7 @@ class EmpresasController < ApplicationController
       else
       render template: "login/formulario_login"
     end
-    end
+    
   end
     
   
@@ -48,7 +48,7 @@ class EmpresasController < ApplicationController
 
 
     
-  end
+  
 
   # PATCH/PUT /empresas/1 or /empresas/1.json
   def update
