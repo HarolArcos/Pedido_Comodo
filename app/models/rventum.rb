@@ -64,7 +64,7 @@ class Validar_Nombree < ActiveModel::Validator
    if record.Direccion==nil || record.Direccion==""
        record.errors.add(:"Direccion", "debe estar llenado")
    else
-       if record.Mail =~ /https:\/\/goo.gl\/maps/
+       if record.Direccion =~ /https:\/\/goo.gl\/maps/
            
        else 
            record.errors.add(:"Direccion", "tiene que ser un link de google maps")
