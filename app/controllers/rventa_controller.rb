@@ -99,4 +99,5 @@ class RventaController < ApplicationController
     def rventum_params
       params.require(:rventum).permit(:Nombre, :Responsable, :Telefono, :Mail, :Direccion, :perfil, :imagen)
     end
+  end
 end
