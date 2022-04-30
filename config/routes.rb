@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  root "login#formulario_login"
+  get "login", to: "login#formulario_login"
+  post "login", to: "login#login"
+  get "main", to: "usuario#menuprincipal"
+  get "fil", to: "usuario#f"
+  resources :usuarios
   resources :rventa
   resources :empresas
   resources :supervisors

@@ -1,9 +1,18 @@
 class SupervisorsController < ApplicationController
   before_action :set_supervisor, only: %i[ show edit update destroy ]
+  
 
   # GET /supervisors or /supervisors.json
   def index
-    @supervisors = Supervisor.all
+    if session[:userlog]!=nil
+      
+          @supervisors = Supervisor.all
+        
+      
+else
+  render template: "login/formulario_login"
+end
+    
   end
 
   # GET /supervisors/1 or /supervisors/1.json
@@ -12,7 +21,12 @@ class SupervisorsController < ApplicationController
 
   # GET /supervisors/new
   def new
-    @supervisor = Supervisor.new
+    if session[:userlog]==-1
+      @supervisor = Supervisor.new
+    else
+    render template: "login/formulario_login"
+  end
+    
   end
 
   # GET /supervisors/1/edit

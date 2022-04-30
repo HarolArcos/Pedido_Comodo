@@ -1,0 +1,47 @@
+<h1>New usuario</h1>
+
+<%= render "form", usuario: @usuario %>
+
+<br>
+
+<div>
+  <%= link_to "Back to usuarios", usuarios_path %>
+</div>
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Pedido Comodo</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body style="background-color: #1D3153;">
+<!--Inicio del login-->
+  <div class="m-0 vh-100 row justify-content-center align-items-center">
+    <div class="col-auto  p-5">
+      <div class="card" style="width: 20rem;" >
+          <img src="./Recursos/Imagenes/c.png" class="card-img-top" alt="...">
+          <div class="card-body">
+            <form>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Usuario</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+                <input type="password" class="form-control" id="exampleInputPassword1">
+              </div>
+              <div class="container" align="Center">
+                <button type="button" class="btn btn-primary" style="background-color: #F79206;">Acceder</button> 
+              </div>
+          </form>
+          </div>
+      </div>  
+    </div>
+  </div>
+<!--Fin de Login-->
+</body>
+</html>

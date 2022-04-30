@@ -1,0 +1,32 @@
+<body style="background-color: #1D3153;">
+<!--Inicio del login-->
+  <div class="m-0 vh-100 row justify-content-center align-items-center">
+    <div class="col-auto  p-5">
+      <div class="card" style="width: 20rem; border-radius: 20px;" >
+          <img src="/assets/a-d9abbccf6ec068c782702faf5587c416d15fba6911666a57be0c9ccd3e2128c6.png" class="card-img-top" alt="...">
+          <div class="card-body">
+          <%= form_with url: "/login", method: :post do |form| %>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Usuario</label>
+                <input type="text" name="ail" id="ail" class="form-control"  >
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+                <input type="password" name="password" id="password" class="form-control" >
+              </div>
+              <div class="container" align="Center">
+              
+
+              
+              
+              <button class="btn btn-primary" type="submit" style="background-color: #F79206; font-size: 22px; border: 0;">Acceder</button>
+              
+
+              </div>
+              <% end %>
+          </div>
+      </div>  
+    </div>
+  </div>
+<!--Fin de Login-->
+</body>

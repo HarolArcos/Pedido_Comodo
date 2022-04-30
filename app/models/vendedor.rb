@@ -77,7 +77,8 @@ end
 if record.Direccion==nil || record.Direccion==""
     record.errors.add(:"Dirección", "debe estar llenado")
 else
-    if record.Mail =~ /https:\/\/goo.gl\/maps/
+
+    if record.Direccion =~ /https:\/\/goo.gl\/maps/
         
     else 
         record.errors.add(:"Dirección", "tiene que ser un link de google maps")

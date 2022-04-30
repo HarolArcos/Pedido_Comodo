@@ -12,8 +12,16 @@ class EmpresasController < ApplicationController
 
   # GET /empresas/new
   def new
-    @empresa = Empresa.new
+    
+      if session[:userlog]==-1
+        @empresa = Empresa.new
+      else
+      render template: "login/formulario_login"
+    end
+    
   end
+    
+  
 
   # GET /empresas/1/edit
   def edit
@@ -25,14 +33,16 @@ class EmpresasController < ApplicationController
 
     respond_to do |format|
       if @empresa.save
-        format.html { redirect_to empresa_url(@empresa), notice: "Empresa was successfully created." }
+
+        format.html { redirect_to vendedors_path, notice: "Empresa was successfully created." }
         format.json { render :show, status: :created, location: @empresa }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @empresa.errors, status: :unprocessable_entity }
       end
     end
-  end
+
+    end
 
   # PATCH/PUT /empresas/1 or /empresas/1.json
   def update

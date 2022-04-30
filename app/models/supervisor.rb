@@ -77,7 +77,7 @@ class Validar_Nombre2 < ActiveModel::Validator
    if record.Dirección==nil || record.Dirección==""
        record.errors.add(:"Dirección", "debe estar llenado")
    else
-       if record.Mail =~ /https:\/\/goo.gl\/maps/
+       if record.Dirección =~ /https:\/\/goo.gl\/maps/
            
        else 
            record.errors.add(:"Dirección", "tiene que ser un link de google maps")
@@ -106,5 +106,37 @@ class Validar_Nombre2 < ActiveModel::Validator
                errors.add(:imagen,' debe ser un jpg,jpeg o png')
            end
        end
+
+
+
+
+   
+       
+       def supervisor?
+        Supervisor.all.each do |supervisor|
+            if Mail == supervisor.Mail && Teléfono == supervisor.Teléfono.to_s
+            
+            return true 
+            else
+                return false
+            end
+         end
+
+    end
+    def vendedor?
+        Vendedor.all.each do |vendedor|
+            if Mail == vendedor.Mail && Teléfono == vendedor.Telefono.to_s
+            
+            return true 
+            else
+                return false
+            end
+         end
+
+    end
+    def administrador?
+        return Mail == "juantopo@gmail.com" 
+        
+    end
        
    end
