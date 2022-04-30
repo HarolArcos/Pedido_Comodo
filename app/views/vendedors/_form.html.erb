@@ -130,7 +130,11 @@
     </label>
 
   <div><br>
-    <a href="/main" class="btn btn-primary" style="background-color: #F79206; font-size: 22px; border: 0;">Cancelar</a>
+  <% if session[:userlog]==-1 %>
+    <a href="/vendedors" class="btn btn-primary" style="background-color: #F79206; font-size: 22px; border: 0;">Cancelar</a>
+    <% else %>
+    <a href="/supervisors" class="btn btn-primary" style="background-color: #F79206; font-size: 22px; border: 0;">Cancelar</a>
+    <% end %>
     <button class="btn btn-primary" type="submit" style="background-color: #F79206; font-size: 22px; border: 0;">Agregar Vendedor</button>
     
     

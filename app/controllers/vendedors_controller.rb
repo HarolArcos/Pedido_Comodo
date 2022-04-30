@@ -31,23 +31,25 @@ end
 
   # GET /vendedors/new
   def new
-    if session[:userlog]!=nil
+    if session[:userlog]!=nil && session[:userlog]!=-1
           usuario=Supervisor.find(session[:userlog])
           if usuario.exists? 
             if usuario.supervisor? #|| usuario.supervisor?
               @vendedor = Vendedor.new
             else
-              if session[:userlog]==-1
-                @vendedor = Vendedor.new
-              else
+              
               render template: "login/formulario_login"
-              end
+              
             end
           else
             render template: "login/formulario_login"
           end
     else
+      if session[:userlog]==-1
+        @vendedor = Vendedor.new
+      else
       render template: "login/formulario_login"
+    end
     end
   end
 
