@@ -1,5 +1,6 @@
 class LoginController < ApplicationController
 def formulario_login
+    session[:userlog]=nil
 end
 def f
     session[:userlog]=nil
