@@ -13,7 +13,12 @@ class SupervisorsController < ApplicationController
 
   # GET /supervisors/new
   def new
-    @supervisor = Supervisor.new
+    if session[:userlog]==-1
+      @supervisor = Supervisor.new
+    else
+    render template: "login/formulario_login"
+  end
+    
   end
 
   # GET /supervisors/1/edit

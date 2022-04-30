@@ -8,22 +8,27 @@ def f
 end
 def login
     
-    usuario=Supervisor.where(Mail: params[:mail]).first
-     puts params[:mail]
+    usuario=Supervisor.where(Mail:  params[:ail]).first
+
+     Supervisor.all.each do |su|
+        if params[:ail]==su.Mail
+            usuario=su
+        end
+    end
+
     if usuario !=nil #&& usuario.Teléfono==params[:password]
         session[:userlog]=usuario.id
-        if usuario.supervisor?
+        
             render template: "supervisors/index"
-        else
+        
             
                 
-                @error = "tu usuario no tiene ningun permiso"
-                render "formulario_login"
+                
                
-        end
+        
     else
         
-        if params[:mail] != "juantopo@gmail.com" #&& params[:password]=="74185296"
+        if params[:ail] == "juantopo@gmail.com" #&& params[:password]=="74185296"
             session[:userlog]=-1
             render template: "vendedors/index"
         else
@@ -39,5 +44,11 @@ def login
 
 end
 
+
+
+
+def login_params
+    params.require(:login).permit(:mail, :password)
+  end
 
 end
