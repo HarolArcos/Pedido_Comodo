@@ -12,7 +12,24 @@ class RventaController < ApplicationController
 
   # GET /rventa/new
   def new
-    @rventum = Rventum.new
+    if session[:userlog]!=nil
+          usuario=Supervisor.find(session[:userlog])
+          if usuario.exists? 
+            if usuario.supervisor? #|| usuario.supervisor?
+              @rventum = Rventum.new
+            else
+              if session[:userlog]==-1
+                @rventum = Rventum.new
+              else
+              render template: "login/formulario_login"
+              end
+            end
+          else
+            render template: "login/formulario_login"
+          end
+    else
+      render template: "login/formulario_login"
+    end
   end
 
   # GET /rventa/1/edit
@@ -21,7 +38,9 @@ class RventaController < ApplicationController
 
   # POST /rventa or /rventa.json
   def create
-    @rventum = Rventum.new(rventum_params)
+    if session[:userlog]==-1
+    
+      @rventum = Rventum.new(rventum_params)
 
     respond_to do |format|
       if @rventum.save
@@ -32,6 +51,19 @@ class RventaController < ApplicationController
         format.json { render json: @rventum.errors, status: :unprocessable_entity }
       end
     end
+    else
+      @rventum = Rventum.new(rventum_params)
+
+      respond_to do |format|
+        if @rventum.save
+          format.html { redirect_to rventum_url(@rventum), notice: "Rventum was successfully created." }
+          format.json { render :show, status: :created, location: @rventum }
+        else
+          format.html { render :new, status: :unprocessable_entity }
+          format.json { render json: @rventum.errors, status: :unprocessable_entity }
+        end
+    end
+    
   end
 
   # PATCH/PUT /rventa/1 or /rventa/1.json
