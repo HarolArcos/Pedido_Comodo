@@ -12,25 +12,30 @@ class RventaController < ApplicationController
 
   # GET /rventa/new
   def new
-    if session[:userlog]!=nil
+    if session[:userlog]!=nil && session[:userlog]!=-1
           usuario=Supervisor.find(session[:userlog])
           if usuario.exists? 
             if usuario.supervisor? #|| usuario.supervisor?
               @rventum = Rventum.new
             else
-              if session[:userlog]==-1
-                @rventum = Rventum.new
-              else
+              
               render template: "login/formulario_login"
-              end
+              
             end
           else
             render template: "login/formulario_login"
           end
     else
+      if session[:userlog]==-1
+        @rventum = Rventum.new
+      else
       render template: "login/formulario_login"
     end
+    end
   end
+
+
+ 
 
   # GET /rventa/1/edit
   def edit

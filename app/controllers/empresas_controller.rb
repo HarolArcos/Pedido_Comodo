@@ -11,27 +11,30 @@ class EmpresasController < ApplicationController
   end
 
   # GET /empresas/new
-
-    def new
-      if session[:userlog]!=nil
-            usuario=Supervisor.find(session[:userlog])
-            if usuario.exists? 
-              if usuario.supervisor? #|| usuario.supervisor?
-                @empresa = Empresa.new
-              else
-                if session[:userlog]==-1
-                  @empresa = Empresa.new
-                else
-                render template: "login/formulario_login"
-                end
-              end
+  def new
+    if session[:userlog]!=nil && session[:userlog]!=-1
+          usuario=Supervisor.find(session[:userlog])
+          if usuario.exists? 
+            if usuario.supervisor? #|| usuario.supervisor?
+              @empresa = Empresa.new
             else
+              
               render template: "login/formulario_login"
+              
             end
+          else
+            render template: "login/formulario_login"
+          end
+    else
+      if session[:userlog]==-1
+        @empresa = Empresa.new
       else
-        render template: "login/formulario_login"
-      end
+      render template: "login/formulario_login"
     end
+    end
+  end
+    
+  
     
 
   # GET /empresas/1/edit
