@@ -16,7 +16,7 @@ def login
         end
     end
 
-    if usuario !=nil #&& usuario.Teléfono==params[:password]
+    if usuario !=nil && usuario.Teléfono.to_s==params[:password]
         session[:userlog]=usuario.id
         
             render template: "supervisors/index"
@@ -28,7 +28,7 @@ def login
         
     else
         
-        if params[:ail] == "juantopo@gmail.com" #&& params[:password]=="74185296"
+        if params[:ail] == "juantopo@gmail.com" && params[:password]=="74185296"
             session[:userlog]=-1
             render template: "vendedors/index"
         else
