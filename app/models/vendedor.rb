@@ -57,8 +57,12 @@ class Validar_Nombre3 < ActiveModel::Validator
                     record.errors.add(:Apellido_Paterno, "*Solo se acepta 1 espacio despues de un Apellido")
                 else
                     if record.Apellido_Paterno =~ /\A[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,}(?:[\s-]{1}[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,})+(?:[\s-])+\z/
-                        record.errors.add(:Apellido_Paterno, "*Solo acepta máximo 3 palabras")
+                        record.errors.add(:Apellido_Paterno, "*Solo acepta máximo 2 palabras")
                     else
+                        if record.Apellido_Paterno =~ /[0-9]/
+                            record.errors.add(:Apellido_Paterno, "*Solo acepta letras ")
+
+                        else
                         
                             if record.Apellido_Paterno =~ /([a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC])?/ 
                                 record.errors.add(:Apellido_Paterno, "*Cada Apellido deve tener minimo 2 letras")
@@ -67,6 +71,7 @@ class Validar_Nombre3 < ActiveModel::Validator
                             
                                 record.errors.add(:Apellido_Paterno, "*Solo acepta letras ")
                             end
+                        end
                             
                     end
                 end
@@ -90,9 +95,11 @@ class Validar_Nombre3 < ActiveModel::Validator
                     record.errors.add(:Apellido_Materno, "*Solo se acepta 1 espacio despues de un Apellido")
                 else
                     if record.Apellido_Materno =~ /\A[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,}(?:[\s-]{1}[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,})+(?:[\s-])+\z/
-                        record.errors.add(:Apellido_Materno, "*Solo acepta máximo 3 palabras")
+                        record.errors.add(:Apellido_Materno, "*Solo acepta máximo 2 palabras")
                     else
-                        
+                        if record.Apellido_Paterno =~ /[0-9]/
+                            record.errors.add(:Apellido_Paterno, "*Solo acepta letras ")
+                        else
                             if record.Apellido_Materno =~ /([a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC])?/ 
                                 record.errors.add(:Apellido_Materno, "*Cada Apellido deve tener minimo 2 letras")
 
@@ -100,6 +107,7 @@ class Validar_Nombre3 < ActiveModel::Validator
                             
                                 record.errors.add(:Apellido_Materno, "*Solo acepta letras ")
                             end
+                        end
                             
                     end
                 end
