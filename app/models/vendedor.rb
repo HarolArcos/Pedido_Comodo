@@ -20,14 +20,19 @@ class Validar_Nombre3 < ActiveModel::Validator
                             if record.Nombre =~ /\A[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,}(?:[\s-]{1}[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,})?(?:[\s-]{1}[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,})+(?:[\s-])+\z/
                                 record.errors.add(:Nombre, "*Solo acepta máximo 3 palabras")
                             else
+                                if record.Nombre =~ /[0-9]/
+                                    record.errors.add(:Nombre, "*Solo acepta letras ")
+
+                                else
                                 
-                                    if record.Nombre =~ /([a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC])?/ 
+                                    if record.Nombre =~ /[a-zA-Z]/ 
                                         record.errors.add(:Nombre, "*Cada nombre deve tener minimo 2 letras")
 
                                     else
                                     
                                         record.errors.add(:Nombre, "*Solo acepta letras ")
                                     end
+                                end
                                     
                             end
                      end
