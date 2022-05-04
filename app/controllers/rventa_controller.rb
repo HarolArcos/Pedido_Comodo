@@ -44,7 +44,7 @@ class RventaController < ApplicationController
 
     respond_to do |format|
       if @rventum.save
-          format.html { redirect_to vendedors_path, notice: "El vendedor fue creado" }
+          format.html { redirect_to vendedors_path, notice: "El Punto de venta fue registrado" }
           format.json { render :show, status: :created, location: @vendedor }
        else
           format.html { render :new, status: :unprocessable_entity }
@@ -56,7 +56,7 @@ class RventaController < ApplicationController
 
     respond_to do |format|
       if @rventum.save
-          format.html { redirect_to supervisors_path, notice: "El vendedor fue creado" }
+          format.html { redirect_to supervisors_path, notice: "El Punto de venta fue registrado" }
           format.json { render :show, status: :created, location: @vendedor }
        else
           format.html { render :new, status: :unprocessable_entity }

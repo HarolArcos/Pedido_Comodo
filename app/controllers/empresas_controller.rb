@@ -34,7 +34,7 @@ class EmpresasController < ApplicationController
 
     respond_to do |format|
       if @empresa.save
-        format.html { redirect_to vendedors_path, notice: "Empresa was successfully created." }
+        format.html { redirect_to vendedors_path, notice: "La Empresa fue registrada" }
         format.json { render :show, status: :created, location: @empresa }
       else
         format.html { render :new, status: :unprocessable_entity }
