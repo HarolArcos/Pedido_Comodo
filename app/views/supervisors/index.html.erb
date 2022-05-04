@@ -43,7 +43,13 @@
             <div class="card" style="width: 18rem;background-color: #1D3153;" >
             <% Supervisor.all.each do |uno| %>
               <% if session[:userlog]==uno.id %>
-              <img class="card-img-top" src="/assets/a-d9abbccf6ec068c782702faf5587c416d15fba6911666a57be0c9ccd3e2128c6.png" alt="Card image cap">
+              <% if uno.imagen.attached? %>
+                  <%= image_tag uno.imagen.variant(resize:"150x150") , class: "figure-img img-fluid rounded" %>
+              <% else %>
+              
+                  <%= image_tag uno.perfil.thumb.url, class: "figure-img img-fluid rounded"%>
+              <%end %>
+              
                     <div class="card-body" style="color: white">
                       <h5 class="text-white" align="Center">Supervisor</h5>
                       <p>
@@ -93,6 +99,16 @@
         <!--Fin de los botones del lado derecho-->
     </div>
   </div>      
+
+
+
+
+
+
+
+
+
+
           
 
   
