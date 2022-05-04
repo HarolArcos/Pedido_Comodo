@@ -36,7 +36,7 @@ def login
             #render template: "vendedors/index"
            #else
            
-                    @error = "usuario o contraseña invalidos"
+                    @error = "Usuario o contraseña invalidos"
                     render "formulario_login"#"formulario_login"
             #end
         end
