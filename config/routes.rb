@@ -7,7 +7,6 @@ Rails.application.routes.draw do
   get "fil", to: "usuario#f"
   resources :usuarios
   resources :rventa
-  resources :empresas
   resources :supervisors
   resources :vendedors
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
