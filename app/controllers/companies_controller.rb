@@ -12,7 +12,12 @@ class CompaniesController < ApplicationController
 
   # GET /companies/new
   def new
-    @company = Company.new
+    if session[:userlog]==-1
+      @company = Company.new
+    else
+    render template: "login/formulario_login"
+  end
+    
   end
 
   # GET /companies/1/edit
