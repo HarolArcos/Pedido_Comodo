@@ -12,7 +12,7 @@
   <div class="m-0 vh-100 row justify-content-center align-items-center">
     <div class="col-auto  p-5">
       <div class="card" style="width: 20rem; border-radius: 25px;" >
-          <%= image_tag 'c.png', class => 'card-img-top' %>
+          <%= image_tag image_url('c.png'), class:"card-img-top" %>
           <div class="card-body">
           <%= form_with url: "/login", method: :post do |form| %>
               <div class="mb-3">
