@@ -59,15 +59,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_04_002952) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "empresas", force: :cascade do |t|
-    t.string "codigo"
-    t.string "nombre"
-    t.integer "telefono"
-    t.string "direccion"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "rventa", force: :cascade do |t|
     t.string "Nombre"
     t.string "Responsable"
