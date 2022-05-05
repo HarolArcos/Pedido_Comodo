@@ -39,7 +39,7 @@ end
 
     respond_to do |format|
       if @supervisor.save
-        format.html { redirect_to vendedors_path, notice: "El vendedor fue creado" }
+        format.html { redirect_to vendedors_path, notice: "El supervisor fue creado" }
         format.json { render :show, status: :created, location: @supervisor }
       else
         format.html { render :new, status: :unprocessable_entity }

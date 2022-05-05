@@ -1,4 +1,10 @@
 <div id="<%= dom_id supervisor %>">
+
+<% if supervisor.imagen.attached? %>
+    <%= link_to image_tag(supervisor.imagen.variant(resize:"200x200")),supervisor.imagen %>
+    <% else %>
+  <%= image_tag supervisor.perfil.thumb.url, class: "figure-img img-fluid rounded"%>
+  <%end %>
   <p>
     <strong>Nombre:</strong>
     <%= supervisor.Nombre %>

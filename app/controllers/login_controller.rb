@@ -35,9 +35,21 @@ def login
            #if usuario.vendedor?
             #render template: "vendedors/index"
            #else
+           if params[:ail] == "" || params[:password] == ""
+                @error = "Todos los compos son obligatorios"
+                render "formulario_login"#"formulario_login"
+           else
+            if params[:ail].length() >21
+                @errora = "Maximo 21 caracteres"
+            end
+            if params[:password].length() <6
+                @errorb = "Minimo 6 caracteres"
+            end
            
-                    @error = "usuario o contraseña invalidos"
+                    @error = "Usuario o contraseña invalidos"
                     render "formulario_login"#"formulario_login"
+            
+           end
             #end
         end
     end
