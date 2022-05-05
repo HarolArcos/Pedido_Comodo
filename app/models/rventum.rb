@@ -169,10 +169,14 @@ class Validar_Nombree < ActiveModel::Validator
    
        private 
        def formato_correcto
-           if imagen.attached? && !imagen.content_type.in?(%w(image/png image/jpg image/jpeg))
-               errors.add(:imagen,' debe ser un jpg,jpeg o png')
-           end
-       end
+        if imagen.attached?
+             if !imagen.content_type.in?(%w(image/png image/jpg image/jpeg))
+                 errors.add(:imagen,'*Debe ser un jpg,jpeg o png')
+             end
+        else 
+             errors.add(:imagen, '*Debe tener imagen')
+        end
+    end
        
    end
    
