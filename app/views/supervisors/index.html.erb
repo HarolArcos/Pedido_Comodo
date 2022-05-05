@@ -13,23 +13,19 @@
 <body>
 
 <!--Inicio de la barra de navegacion-->
-  <div>
-    <nav class="navbar" style="background-color: #1D3153; height: 120px;">
+    <nav class="navbar" style="background-color: #1D3153;">
       <div class="container-fluid">
-      <% if session[:userlog]==-1 %>
-			<a class="navbar-brand" href="/vendedors">
-			<% else %>
-			<a class="navbar-brand" href="/supervisors">
-			<% end %>
+        <% if session[:userlog]==-1 %>
+        <a class="navbar-brand" href="/vendedors">
         <img src="/assets/a-d9abbccf6ec068c782702faf5587c416d15fba6911666a57be0c9ccd3e2128c6.png" alt="" width="200" height="100" style="object-fit: cover;">
+        <% else %>
+        <a class="navbar-brand" href="/supervisors">
+          <img src="/assets/a-d9abbccf6ec068c782702faf5587c416d15fba6911666a57be0c9ccd3e2128c6.png" alt="" width="200" height="100" style="object-fit: cover;">
+            <% end %>
         </a>
-        <div class="container" align="right">
-          <a class="navbar-brand text-white" href="/login">CERRAR SESIÓN</a>
-        </div>
-          
+        <a class="navbar-brand text-white" href="/login" align="right">CERRAR SESIÓN</a>
       </div>
     </nav>
-  </div>
 <!--Fin de la barra de navegacion-->
 <p style="color: green"><%= notice %></p>
 
@@ -41,6 +37,7 @@
         <!--Inicio de la ventana hija de puta-->
         <div class="col">
             <div class="card" style="width: 18rem;background-color: #1D3153;" >
+              
             <% Supervisor.all.each do |uno| %>
               <% if session[:userlog]==uno.id %>
               <% if uno.imagen.attached? %>
