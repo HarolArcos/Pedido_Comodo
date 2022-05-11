@@ -5,7 +5,7 @@ class Validar_Nombre3 < ActiveModel::Validator
         record.errors.add(:Nombre, "*Campo Obligatorio")
     else
         
-            if record.Nombre =~ /\A[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,}(?:[\s-]{1}[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,})?(?:[\s-]{1}[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,})?(?:[\s-])?\z/
+            if record.Nombre =~ /\A[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC\u00DC]{2,}(?:[\s-]{1}[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC\u00DC]{2,})?(?:[\s-]{1}[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC\u00DC]{2,})?(?:[\s-])?\z/
                 if record.Nombre.length()>21 
                     record.errors.add(:Nombre, "*Tiene que tener máximo 21 caracteres")
                 end
@@ -17,20 +17,24 @@ class Validar_Nombre3 < ActiveModel::Validator
                         record.errors.add(:Nombre, "*Solo se acepta 1 espacio despues de un Nombre ")
                     else
 
-                            if record.Nombre =~ /\A[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,}(?:[\s-]{1}[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,})?(?:[\s-]{1}[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,})+(?:[\s-])?\z/
+                            if record.Nombre =~ /\A[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC\u00DC]{2,}(?:[\s-]{1}[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC\u00DC]{2,})?(?:[\s-]{1}[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC\u00DC]{2,})+(?:[\s-])?\z/
                                 record.errors.add(:Nombre, "*Solo acepta máximo 3 palabras")
                             else
-                                if record.Nombre =~ /[0-9]/
+                                if record.Nombre =~ /\d/
                                     record.errors.add(:Nombre, "*Solo acepta letras ")
 
                                 else
-                                
-                                    if record.Nombre =~ /[a-zA-Z]/ 
-                                        record.errors.add(:Nombre, "*Cada nombre deve tener minimo 2 letras")
-
-                                    else
-                                    
+                                    if record.Nombre =~ /[^a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC\u00DC]\d/
                                         record.errors.add(:Nombre, "*Solo acepta letras ")
+                                    else
+                                
+                                        if record.Nombre =~ /[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC\u00DC]/ 
+                                            record.errors.add(:Nombre, "*Cada nombre deve tener minimo 2 letras")
+
+                                        else
+                                        
+                                            record.errors.add(:Nombre, "*Solo acepta letras ")
+                                        end
                                     end
                                 end
                                     
@@ -45,7 +49,7 @@ class Validar_Nombre3 < ActiveModel::Validator
     if record.Apellido_Paterno==nil || record.Apellido_Paterno==""
         record.errors.add(:"Apellido_Paterno", "*Campo Obligatorio")
     else
-        if record.Apellido_Paterno =~ /\A[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,}(?:[\s-]{1}[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,})?(?:[\s-])?\z/
+        if record.Apellido_Paterno =~ /\A[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC\u00DC]{2,}(?:[\s-]{1}[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC\u00DC]{2,})?(?:[\s-])?\z/
             if record.Apellido_Paterno.length()>21 
                 record.errors.add(:"Apellido_Paterno", "*Tiene que tener máximo 21 caracteres")
             end
@@ -56,7 +60,7 @@ class Validar_Nombre3 < ActiveModel::Validator
                 if record.Apellido_Paterno =~ /\s\s+/
                     record.errors.add(:Apellido_Paterno, "*Solo se acepta 1 espacio despues de un Apellido")
                 else
-                    if record.Apellido_Paterno =~ /\A[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,}(?:[\s-]{1}[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,})+(?:[\s-])?\z/
+                    if record.Apellido_Paterno =~ /\A[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC\u00DC]{2,}(?:[\s-]{1}[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC\u00DC]{2,})+(?:[\s-])?\z/
                         record.errors.add(:Apellido_Paterno, "*Solo acepta máximo 2 palabras")
                     else
                         if record.Apellido_Paterno =~ /[0-9]/
@@ -64,12 +68,17 @@ class Validar_Nombre3 < ActiveModel::Validator
 
                         else
                         
-                            if record.Apellido_Paterno =~ /([a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC])?/ 
-                                record.errors.add(:Apellido_Paterno, "*Cada Apellido deve tener minimo 2 letras")
-
-                            else
-                            
+                            if record.Apellido_Paterno =~ /[^a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]\W/
                                 record.errors.add(:Apellido_Paterno, "*Solo acepta letras ")
+                            else
+                        
+                                if record.Apellido_Paterno =~ /[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC\u00DC]/ 
+                                    record.errors.add(:Apellido_Paterno, "*Cada Apellido deve tener minimo 2 letras")
+
+                                else
+                                
+                                    record.errors.add(:Apellido_Paterno, "*Solo acepta letras ")
+                                end
                             end
                         end
                             
@@ -83,7 +92,7 @@ class Validar_Nombre3 < ActiveModel::Validator
     if record.Apellido_Materno==nil || record.Apellido_Materno==""
         record.errors.add(:"Apellido_Materno", " *Campo Obligatorio")
     else
-        if record.Apellido_Materno =~ /\A[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,}(?:[\s-]{1}[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,})?(?:[\s-])?\z/
+        if record.Apellido_Materno =~ /\A[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC\u00DC]{2,}(?:[\s-]{1}[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC\u00DC]{2,})?(?:[\s-])?\z/
             if record.Apellido_Materno.length()>21 
                 record.errors.add(:"Apellido_Materno", "*Tiene que tener máximo 21 caracteres")
             end
@@ -94,18 +103,23 @@ class Validar_Nombre3 < ActiveModel::Validator
                 if record.Apellido_Materno =~ /\s\s+/
                     record.errors.add(:Apellido_Materno, "*Solo se acepta 1 espacio despues de un Apellido")
                 else
-                    if record.Apellido_Materno =~ /\A[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,}(?:[\s-]{1}[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,})+(?:[\s-])?\z/
+                    if record.Apellido_Materno =~ /\A[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC\u00DC]{2,}(?:[\s-]{1}[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC\u00DC]{2,})+(?:[\s-])?\z/
                         record.errors.add(:Apellido_Materno, "*Solo acepta máximo 2 palabras")
                     else
                         if record.Apellido_Paterno =~ /[0-9]/
-                            record.errors.add(:Apellido_Paterno, "*Solo acepta letras ")
+                            record.errors.add(:Apellido_Materno, "*Solo acepta letras ")
                         else
-                            if record.Apellido_Materno =~ /([a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC])?/ 
-                                record.errors.add(:Apellido_Materno, "*Cada Apellido deve tener minimo 2 letras")
-
-                            else
-                            
+                            if record.Apellido_Materno =~ /[^a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]\W/
                                 record.errors.add(:Apellido_Materno, "*Solo acepta letras ")
+                            else
+                        
+                                if record.Apellido_Materno =~ /[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC\u00DC]/ 
+                                    record.errors.add(:Apellido_Materno, "*Cada Apellido deve tener minimo 2 letras")
+
+                                else
+                                
+                                    record.errors.add(:Apellido_Materno, "*Solo acepta letras ")
+                                end
                             end
                         end
                             

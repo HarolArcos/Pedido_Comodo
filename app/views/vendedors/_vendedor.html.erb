@@ -1,10 +1,11 @@
 
 <div id="<%= dom_id vendedor %>">
   <% if vendedor.imagen.attached? %>
-    <%= link_to image_tag(vendedor.imagen.variant(resize:"200x200")),vendedor.imagen %>
+    <%= image_tag vendedor.imagen.variant(resize:"200x200") %>
     <% else %>
   <%= image_tag vendedor.perfil.thumb.url, class: "figure-img img-fluid rounded"%>
   <%end %>
+ 
 
     <p>
     <strong>Nombre:</strong>
