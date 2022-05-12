@@ -99,14 +99,14 @@
     Seleccionar Imagen
     <span style="display:none; ">
       <%= form.file_field :imagen, id: "fileUploader"%>
-          <% @rventum.errors[:imagen].each do | msg| %>
-            <p><%= msg %></p>
-            <% end %>
+          
     </span>
     </label>
+    <div style="color: red">
     <% @rventum.errors[:imagen].each do | msg| %>
       <p><%= msg %></p>
       <% end %>
+      </div>
 
     
   
@@ -116,7 +116,7 @@
   <% else %>
   <a href="/supervisors" class="btn btn-primary" style="background-color: #F79206; font-size: 22px; border: 0;">Cancelar</a>
   <% end %>
-    <button class="btn btn-primary" type="submit" style="background-color: #F79206; font-size: 22px; border: 0;">Agregar Punto de Venta</button>
+    <button class="btn btn-primary" type="submit" style="background-color: #F79206; font-size: 22px; border: 0;">Agregar punto de venta</button>
     
     <div>
   

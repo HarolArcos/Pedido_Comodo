@@ -2,7 +2,7 @@ class Validar_Nombre2 < ActiveModel::Validator
     def validate (record)
        #validaciones de Nombre
        if record.Nombre==nil || record.Nombre=="" 
-        record.errors.add(:Nombre, "*Campo Obligatorio")
+        record.errors.add(:Nombre, "*Campo obligatorio")
     else
         
             if record.Nombre =~ /\A[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC\u00DC]{2,}(?:[\s-]{1}[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC\u00DC]{2,})?(?:[\s-]{1}[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC\u00DC]{2,})?(?:[\s-])?\z/
@@ -20,17 +20,16 @@ class Validar_Nombre2 < ActiveModel::Validator
                             if record.Nombre =~ /\A[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC\u00DC]{2,}(?:[\s-]{1}[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC\u00DC]{2,})?(?:[\s-]{1}[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC\u00DC]{2,})+(?:[\s-])?\z/
                                 record.errors.add(:Nombre, "*Solo acepta máximo 3 palabras")
                             else
-                                if record.Nombre =~ /[0-9]/
+                                if record.Nombre =~ /\d/
                                     record.errors.add(:Nombre, "*Solo acepta letras ")
 
                                 else
-                                
-                                    if record.Nombre =~ /[^a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]\W/
+                                    if record.Nombre =~ /[^a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC\u00DC\s]/
                                         record.errors.add(:Nombre, "*Solo acepta letras ")
                                     else
                                 
                                         if record.Nombre =~ /[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC\u00DC]/ 
-                                            record.errors.add(:Nombre, "*Cada nombre deve tener minimo 2 letras")
+                                            record.errors.add(:Nombre, "*Cada nombre debe tener mínimo 2 letras")
 
                                         else
                                         
@@ -45,10 +44,10 @@ class Validar_Nombre2 < ActiveModel::Validator
             end
         
     end
-   
-       #validaciones de apellido p
+
+    #validaciones de apellido p
     if record.Apellido_Paterno==nil || record.Apellido_Paterno==""
-        record.errors.add(:"Apellido_Paterno", "*Campo Obligatorio")
+        record.errors.add(:"Apellido_Paterno", "*Campo obligatorio")
     else
         if record.Apellido_Paterno =~ /\A[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC\u00DC]{2,}(?:[\s-]{1}[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC\u00DC]{2,})?(?:[\s-])?\z/
             if record.Apellido_Paterno.length()>21 
@@ -69,12 +68,12 @@ class Validar_Nombre2 < ActiveModel::Validator
 
                         else
                         
-                            if record.Apellido_Paterno =~ /[^a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]\W/
+                            if record.Apellido_Paterno =~ /[^a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC\u00DC\s]/
                                 record.errors.add(:Apellido_Paterno, "*Solo acepta letras ")
                             else
                         
                                 if record.Apellido_Paterno =~ /[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC\u00DC]/ 
-                                    record.errors.add(:Apellido_Paterno, "*Cada Apellido deve tener minimo 2 letras")
+                                    record.errors.add(:Apellido_Paterno, "*Cada Apellido debe tener mínimo 2 letras")
 
                                 else
                                 
@@ -88,10 +87,10 @@ class Validar_Nombre2 < ActiveModel::Validator
             end
         end
     end
-   
-       #validaciones apellido m
-       if record.Apellido_Materno==nil || record.Apellido_Materno==""
-        record.errors.add(:"Apellido_Materno", " *Campo Obligatorio")
+
+    #validaciones apellido m
+    if record.Apellido_Materno==nil || record.Apellido_Materno==""
+        record.errors.add(:"Apellido_Materno", " *Campo obligatorio")
     else
         if record.Apellido_Materno =~ /\A[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC\u00DC]{2,}(?:[\s-]{1}[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC\u00DC]{2,})?(?:[\s-])?\z/
             if record.Apellido_Materno.length()>21 
@@ -108,14 +107,14 @@ class Validar_Nombre2 < ActiveModel::Validator
                         record.errors.add(:Apellido_Materno, "*Solo acepta máximo 2 palabras")
                     else
                         if record.Apellido_Paterno =~ /[0-9]/
-                            record.errors.add(:Apellido_Paterno, "*Solo acepta letras ")
+                            record.errors.add(:Apellido_Materno, "*Solo acepta letras ")
                         else
-                            if record.Apellido_Materno =~ /[^a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]\W/
+                            if record.Apellido_Materno =~ /[^a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC\u00DC\s]/
                                 record.errors.add(:Apellido_Materno, "*Solo acepta letras ")
                             else
                         
                                 if record.Apellido_Materno =~ /[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC\u00DC]/ 
-                                    record.errors.add(:Apellido_Materno, "*Cada Apellido deve tener minimo 2 letras")
+                                    record.errors.add(:Apellido_Materno, "*Cada Apellido debe tener mínimo 2 letras")
 
                                 else
                                 
@@ -134,7 +133,7 @@ class Validar_Nombre2 < ActiveModel::Validator
        
        
     if record.Teléfono==nil || record.Teléfono==""
-        record.errors.add(:Teléfono, "*Campo Obligatorio")
+        record.errors.add(:Teléfono, "*Campo obligatorio")
     else
         if record.Teléfono > 0
         
@@ -143,7 +142,7 @@ class Validar_Nombre2 < ActiveModel::Validator
                     
                     
                 else
-                       record.errors.add(:Teléfono,"*Tiene que empezar con el digito 6 o 7")
+                       record.errors.add(:Teléfono,"*Tiene que empezar con el dígito 6 o 7")
     
                   
                 end
@@ -156,7 +155,7 @@ class Validar_Nombre2 < ActiveModel::Validator
     end
    #validaciones de Mail
    if record.Mail==nil || record.Mail==""
-    record.errors.add(:"Mail", "*Campo Obligatorio")
+    record.errors.add(:"Mail", "*Campo obligatorio")
     else
             if record.Mail =~ /\A\w+(\.*)\w*+([@\s]*)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
                 
@@ -172,7 +171,7 @@ class Validar_Nombre2 < ActiveModel::Validator
     end
    #validaciones de direccion
    if record.Dirección==nil || record.Dirección==""
-        record.errors.add(:"Dirección", "*Campo Obligatorio")
+        record.errors.add(:"Dirección", "*Campo obligatorio")
     else
         if record.Dirección =~ /https:\/\/goo.gl\/maps/ || record.Dirección =~ /https:\/\/maps.app.goo.gl/
             
