@@ -3,7 +3,7 @@ class CreateRventa < ActiveRecord::Migration[7.0]
     create_table :rventa do |t|
       t.string :Nombre
       t.string :Responsable
-      t.string :Telefono
+      t.integer :Telefono
       t.string :Mail
       t.string :Direccion
 

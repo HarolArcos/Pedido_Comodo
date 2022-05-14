@@ -69,7 +69,7 @@
           <label for="validationCustom02" class="form-label" style="position:relative;left:-110px" style: "display: block">Mail</label>
           <br>
   
-          <%= form.number_field :Mail ,:style=>"background-color: #C4C4C4 ; border:0" %>
+          <%= form.phone_field :Mail ,:style=>"background-color: #C4C4C4 ; border:0" %>
           <div style="color: red">
           <% @rventum.errors[:Mail].each do | msg| %>
             <p><%= msg %></p>
