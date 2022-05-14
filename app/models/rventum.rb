@@ -17,12 +17,10 @@ class Validar_Nombree < ActiveModel::Validator
                         record.errors.add(:Nombre, "*Solo se acepta 1 espacio despues de una palabra")
                     else
 
-                            if record.Nombre =~ /\A[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC\u00DC]{2,}(?:[\s-]{1}[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC\u00DC]{2,})?(?:[\s-]{1}[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC\u00DC]{2,})?(?:[\s-]{1}[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC\u00DC]{2,})?(?:[\s-]{1}[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC\u00DC]{2,})+(?:[\s-])?\z/
+                            if record.Nombre =~ /\A[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC\u00DC]{2,}(?:[\s-]{1}[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC\u00DC]{1,}){3,}(?:[\s-])?\z/
                                 #/\A[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,}(?:[\s-]{1}[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,})?(?:[\s-]{1}[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,})+(?:[\s-])+\z/
                                 record.errors.add(:Nombre, "*Solo acepta máximo 3 palabras")
-                                if record.Nombre.length()>21 
-                                    record.errors.add(:Nombre, "*Tiene que tener máximo 21 caracteres")
-                                end
+                                
                             else
                                 
                                 if record.Nombre =~ /\d/
@@ -68,12 +66,10 @@ class Validar_Nombree < ActiveModel::Validator
                         record.errors.add(:Responsable, "*Solo se acepta 1 espacio despues de una palabra")
                     else
 
-                            if record.Responsable =~ /\A[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,}(?:[\s-]{1}[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,})?(?:[\s-]{1}[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,})?(?:[\s-]{1}[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,})?(?:[\s-]{1}[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,})+(?:[\s-])?\z/
+                            if record.Responsable =~ /\A[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC\u00DC]{2,}(?:[\s-]{1}[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC\u00DC]{1,}){3,}(?:[\s-])?\z/
                                 #/\A[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,}(?:[\s-]{1}[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,})?(?:[\s-]{1}[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,})+(?:[\s-])+\z/
                                 record.errors.add(:Responsable, "*Solo acepta máximo 3 palabras")
-                                if record.Responsable.length()>21 
-                                    record.errors.add(:Responsable, "*Tiene que tener máximo 21 caracteres")
-                                end
+                                
                             else
                                 
                                 if record.Responsable =~ /[0-9]/

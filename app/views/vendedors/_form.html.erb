@@ -128,6 +128,11 @@
           
     </span>
     </label>
+    <div style="color: red">
+    <% @vendedor.errors[:imagen].each do | msg| %>
+      <p><%= msg %></p>
+      <% end %>
+    </div>
 
   <div><br>
   <% if session[:userlog]==-1 %>

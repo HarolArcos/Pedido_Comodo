@@ -17,7 +17,7 @@ class Validar_Nombre3 < ActiveModel::Validator
                         record.errors.add(:Nombre, "*Solo se acepta 1 espacio despues de un Nombre ")
                     else
 
-                            if record.Nombre =~ /\A[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC\u00DC]{2,}(?:[\s-]{1}[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC\u00DC]{2,})?(?:[\s-]{1}[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC\u00DC]{2,})+(?:[\s-])?\z/
+                            if record.Nombre =~ /\A[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC\u00DC]{2,}(?:[\s-]{1}[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC\u00DC]{1,}){3,}(?:[\s-])?\z/
                                 record.errors.add(:Nombre, "*Solo acepta máximo 3 palabras")
                             else
                                 if record.Nombre =~ /\d/
@@ -60,7 +60,7 @@ class Validar_Nombre3 < ActiveModel::Validator
                 if record.Apellido_Paterno =~ /\s\s+/
                     record.errors.add(:Apellido_Paterno, "*Solo se acepta 1 espacio despues de un Apellido")
                 else
-                    if record.Apellido_Paterno =~ /\A[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC\u00DC]{2,}(?:[\s-]{1}[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC\u00DC]{2,})+(?:[\s-])?\z/
+                    if record.Apellido_Paterno =~ /\A[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC\u00DC]{2,}(?:[\s-]{1}[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC\u00DC]{1,}){2,}(?:[\s-])?\z/
                         record.errors.add(:Apellido_Paterno, "*Solo acepta máximo 2 palabras")
                     else
                         if record.Apellido_Paterno =~ /[0-9]/
@@ -103,7 +103,7 @@ class Validar_Nombre3 < ActiveModel::Validator
                 if record.Apellido_Materno =~ /\s\s+/
                     record.errors.add(:Apellido_Materno, "*Solo se acepta 1 espacio despues de un Apellido")
                 else
-                    if record.Apellido_Materno =~ /\A[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC\u00DC]{2,}(?:[\s-]{1}[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC\u00DC]{2,})+(?:[\s-])?\z/
+                    if record.Apellido_Materno =~ /\A[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC\u00DC]{2,}(?:[\s-]{1}[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC\u00DC]{1,}){2,}(?:[\s-])?\z/
                         record.errors.add(:Apellido_Materno, "*Solo acepta máximo 2 palabras")
                     else
                         if record.Apellido_Paterno =~ /[0-9]/
