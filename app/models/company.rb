@@ -14,7 +14,7 @@ class Validar_Nombre5 < ActiveModel::Validator
                     record.errors.add(:nombre, "*No debe iniciar con un espacio")
                 else
                     if record.nombre =~ /\s\s+/
-                        record.errors.add(:nombre, "*Solo se acepta 1 espacio despues de un Nombre ")
+                        record.errors.add(:nombre, "*Solo se acepta 1 espacio después de un Nombre ")
                     else
 
                             if record.nombre =~ /\A[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC\u00DC]{2,}(?:[\s-]{1}[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC\u00DC]{2,})?(?:[\s-]{1}[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC\u00DC]{2,})+(?:[\s-])?\z/
@@ -96,7 +96,11 @@ class Validar_Nombre5 < ActiveModel::Validator
                 if record.mail.start_with?(" ")
                     record.errors.add(:mail, "*No debe iniciar con un espacio")
                 else
-                    record.errors.add(:"mail", "*Tiene que ser como el siguiente ejemplo: juan@example.com")
+                    if record.Mail =~ /\W/
+                        record.errors.add(:"Mail", "*Se esta ingresando caracteres especiales no validos")
+                    else
+                        record.errors.add(:"Mail", "*Tiene que ser como el siguiente ejemplo: juan@example.com")
+                    end
                     
                 end
                 

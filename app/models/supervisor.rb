@@ -14,7 +14,7 @@ class Validar_Nombre2 < ActiveModel::Validator
                     record.errors.add(:Nombre, "*No debe iniciar con un espacio")
                 else
                     if record.Nombre =~ /\s\s+/
-                        record.errors.add(:Nombre, "*Solo se acepta 1 espacio despues de un Nombre ")
+                        record.errors.add(:Nombre, "*Solo se acepta 1 espacio después de un Nombre ")
                     else
 
                             if record.Nombre =~ /\A[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC\u00DC]{2,}(?:[\s-]{1}[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC\u00DC]{1,}){3,}(?:[\s-])?\z/
@@ -58,7 +58,7 @@ class Validar_Nombre2 < ActiveModel::Validator
                 record.errors.add(:Apellido_Paterno, "*No debe iniciar con un espacio")
             else
                 if record.Apellido_Paterno =~ /\s\s+/
-                    record.errors.add(:Apellido_Paterno, "*Solo se acepta 1 espacio despues de un Apellido")
+                    record.errors.add(:Apellido_Paterno, "*Solo se acepta 1 espacio después de un Apellido")
                 else
                     if record.Apellido_Paterno =~ /\A[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC\u00DC]{2,}(?:[\s-]{1}[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC\u00DC]{1,}){2,}(?:[\s-])?\z/
                         record.errors.add(:Apellido_Paterno, "*Solo acepta máximo 2 palabras")
@@ -101,7 +101,7 @@ class Validar_Nombre2 < ActiveModel::Validator
                 record.errors.add(:Apellido_Materno, "*No debe iniciar con un espacio")
             else
                 if record.Apellido_Materno =~ /\s\s+/
-                    record.errors.add(:Apellido_Materno, "*Solo se acepta 1 espacio despues de un Apellido")
+                    record.errors.add(:Apellido_Materno, "*Solo se acepta 1 espacio después de un Apellido")
                 else
                     if record.Apellido_Materno =~ /\A[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC\u00DC]{2,}(?:[\s-]{1}[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC\u00DC]{1,}){2,}(?:[\s-])?\z/
                         record.errors.add(:Apellido_Materno, "*Solo acepta máximo 2 palabras")
@@ -163,7 +163,11 @@ class Validar_Nombre2 < ActiveModel::Validator
                 if record.Mail.start_with?(" ")
                     record.errors.add(:Mail, "*No debe iniciar con un espacio")
                 else
-                    record.errors.add(:"Mail", "*Tiene que ser como el siguiente ejemplo: juan@example.com")
+                    if record.Mail =~ /\W/
+                        record.errors.add(:"Mail", "*Se esta ingresando caracteres especiales no validos")
+                    else
+                        record.errors.add(:"Mail", "*Tiene que ser como el siguiente ejemplo: juan@example.com")
+                    end
                     
                 end
                 
