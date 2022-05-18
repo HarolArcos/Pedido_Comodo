@@ -140,7 +140,13 @@ class Validar_Catalogo < ActiveModel::Validator
         end
     end     
      #Validaciones descripcion
- 
+     if record.descripcion==nil || record.descripcion==""
+        record.errors.add(:"descripcion", "*Campo obligatorio")
+    else
+            if record.descripcion.length()>100 
+                record.errors.add(:"descripcion", "*Tiene que tener máximo 100 caracteres")
+            end
+        end
     
     
     
