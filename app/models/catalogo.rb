@@ -46,7 +46,31 @@ class Validar_Catalogo < ActiveModel::Validator
      end
 
      #Validaciones código
-
+     if record.codigo==nil || record.codigo==""
+        record.errors.add(:codigo, "*Campo obligatorio")
+    else
+        if record.codigo > 0
+        
+            if record.codigo.digits.count() < 6
+                if record.codigo > 99 && record.codigo < 100000 
+                    
+                    
+                else
+                       record.errors.add(:codigo,"*El código debe tener como mínimo 3 dígitos")
+    
+                  
+                end
+            else
+                record.errors.add(:codigo,"*El código debe tener como máximo 5 dígitos")
+            end
+        else
+            if record.codigo <= 2
+            record.errors.add(:codigo,"*El código debe tener al menos 3 dígitos")
+            else
+                record.errors.add(:codigo,"*Solo acepta dígitos numéricos")
+                end
+        end
+    end
      #Validaciones empresa
      if record.empresa==nil || record.empresa==""
         record.errors.add(:"empresa", "*Campo obligatorio")
