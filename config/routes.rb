@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :catalogos
   resources :companies
   root "login#formulario_login"
   get "login", to: "login#formulario_login"
