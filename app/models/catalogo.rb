@@ -90,6 +90,31 @@ class Validar_Catalogo < ActiveModel::Validator
         end
     end
      #Validaciones precio
+     if record.precio==nil || record.precio==""
+        record.errors.add(:precio, "*Campo obligatorio")
+    else
+        if record.precio > 0
+        
+            if record.precio.digits.count() < 5
+                if record.precio > 0 && record.precio < 1000 
+                    
+                    
+                else
+                       record.errors.add(:precio,"*El máximo valor de un producto es 999 Bs.")
+    
+                  
+                end
+            else
+                record.errors.add(:precio,"*El máximo valor de un producto es 999 Bs.")
+            end
+        else
+            if record.precio <= 0
+            record.errors.add(:precio,"*El valor mínimo de un producto es de 1 Bs.")
+            else
+                record.errors.add(:precio,"*Solo acepta dígitos numéricos")
+                end
+        end
+    end     
      #Validaciones descripcion
  
     
