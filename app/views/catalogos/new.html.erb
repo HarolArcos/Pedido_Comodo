@@ -1,9 +1,21 @@
-<h1>New catalogo</h1>
-
-<%= render "form", catalogo: @catalogo %>
-
+<!--Inicio de la barra de navegacion-->
+    <nav class="navbar" style="background-color: #1D3153;">
+      <div class="container-fluid">
+        <% if session[:userlog]==-1 %>
+        <a class="navbar-brand" href="/vendedors">
+        <img src="/assets/a-d9abbccf6ec068c782702faf5587c416d15fba6911666a57be0c9ccd3e2128c6.png" alt="" width="200" height="100" style="object-fit: cover;">
+        <% else %>
+        <a class="navbar-brand" href="/supervisors">
+          <img src="/assets/a-d9abbccf6ec068c782702faf5587c416d15fba6911666a57be0c9ccd3e2128c6.png" alt="" width="200" height="100" style="object-fit: cover;">
+            <% end %>
+        </a>
+        <a class="navbar-brand text-white" href="/login" align="right" style="font-size: 22px">CERRAR SESIÓN</a>
+      </div>
+    </nav>
+  <!--Fin de la barra de navegacion-->
+  <!--Formulario de registro productos para catálogo por empresa-->
+  
+    <%= render "form", catalogo: @catalogo %>
+    
+  </div>
 <br>
-
-<div>
-  <%= link_to "Back to catalogos", catalogos_path %>
-</div>
