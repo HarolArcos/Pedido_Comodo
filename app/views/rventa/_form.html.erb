@@ -54,7 +54,7 @@
           <label for="validationCustom03" class="form-label" style="position:relative;left:-84px" style: "display: block">Teléfono</label>
           <br>
   
-          <%= form.phone_field :Telefono ,:style=>"background-color: #C4C4C4 ; border:0" %>
+          <%= form.number_field :Telefono ,:style=>"background-color: #C4C4C4 ; border:0" %>
           <div style="color: red">
           <% @rventum.errors[:Telefono].each do | msg| %>
             <p><%= msg %></p>
