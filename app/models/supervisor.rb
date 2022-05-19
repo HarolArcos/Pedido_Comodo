@@ -135,9 +135,23 @@ class Validar_Nombre2 < ActiveModel::Validator
     if record.Teléfono==nil || record.Teléfono==""
         record.errors.add(:Teléfono, "*Campo obligatorio")
     else
-        if record.Teléfono > 0
+        if record.Teléfono > -1
         
             if record.Teléfono.digits.count()==8
+                Vendedor.all.each do |ss|
+                    if record.Teléfono==ss.Telefono
+                        record.errors.add(:"Teléfono", "*Ya existe este número")
+                    end
+                end
+                
+                Company.all.each do |ss|
+                    if record.Teléfono==ss.telefono
+                        record.errors.add(:"Teléfono", "*Ya existe este número")
+                    end
+                end
+                if record.Teléfono=="74185296"
+                    record.errors.add(:"Teléfono", "*Ya existe este número")
+                end
                 if record.Teléfono > 59999999 && record.Teléfono < 80000000 
                     
                     
@@ -150,7 +164,7 @@ class Validar_Nombre2 < ActiveModel::Validator
                 record.errors.add(:Teléfono,"*Tiene que tener 8 dígitos")
             end
         else
-            record.errors.add(:Teléfono,"*Solo acepta dígitos numéricos")
+            record.errors.add(:Teléfono,"*Solo acepta dígitos positivos")
         end
     end
    #validaciones de Mail
@@ -158,6 +172,20 @@ class Validar_Nombre2 < ActiveModel::Validator
     record.errors.add(:"Mail", "*Campo obligatorio")
     else
             if record.Mail =~ /\A\w+(\.*)\w*+([@\s]*)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
+                Vendedor.all.each do |ss|
+                    if record.Mail==ss.Mail
+                        record.errors.add(:"Mail", "*Ya existe este Mail")
+                    end
+                end
+                
+                Company.all.each do |ss|
+                    if record.Mail==ss.mail
+                        record.errors.add(:"Mail", "*Ya existe este Mail")
+                    end
+                end
+                if record.Mail=="juantopo@gmail.com"
+                    record.errors.add(:"Mail", "*Ya existe este Mail")
+                end
                 
             else 
                 if record.Mail.start_with?(" ")

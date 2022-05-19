@@ -135,9 +135,23 @@ class Validar_Nombre3 < ActiveModel::Validator
 if record.Telefono==nil || record.Telefono==""
     record.errors.add(:Teléfono, "*Campo obligatorio")
 else
-    if record.Telefono > 0
+    if record.Telefono > -1
     
         if record.Telefono.digits.count()==8
+            Supervisor.all.each do |ss|
+                if record.Telefono==ss.Teléfono
+                    record.errors.add(:"Telefono", "*Ya existe este número")
+                end
+            end
+            
+            Company.all.each do |ss|
+                if record.Telefono==ss.telefono
+                    record.errors.add(:"Telefono", "*Ya existe este número")
+                end
+            end
+            if record.Telefono=="74185296"
+                record.errors.add(:"Telefono", "*Ya existe este número")
+            end
             if record.Telefono > 59999999 && record.Telefono < 80000000 
                 
                 
@@ -150,24 +164,50 @@ else
             record.errors.add(:Teléfono,"*Tiene que tener 8 dígitos")
         end
     else
-        record.errors.add(:Teléfono,"*Solo acepta dígitos numéricos")
+        record.errors.add(:Teléfono,"*Solo acepta dígitos positivos")
     end
 end
 #validaciones de Mail
 if record.Mail==nil || record.Mail==""
     record.errors.add(:"Mail", "*Campo obligatorio")
 else
+    
+
+    
     if record.Mail =~ /\A\w+(\.*)\w*+([@\s]*)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
+        Supervisor.all.each do |ss|
+            if record.Mail==ss.Mail
+                record.errors.add(:"Mail", "*Ya existe este Mail")
+            end
+        end
+        
+        Company.all.each do |ss|
+            if record.Mail==ss.mail
+                record.errors.add(:"Mail", "*Ya existe este Mail")
+            end
+        end
+        if record.Mail=="juantopo@gmail.com"
+            record.errors.add(:"Mail", "*Ya existe este Mail")
+        end
         
     else 
         if record.Mail.start_with?(" ")
             record.errors.add(:Mail, "*No debe iniciar con un espacio")
         else
-            if record.Mail =~ /\W/
-                record.errors.add(:"Mail", "*Se esta ingresando caracteres especiales no validos")
-            else
-                record.errors.add(:"Mail", "*Tiene que ser como el siguiente ejemplo: juan@example.com")
-            end
+            
+                if record.Mail =~ /\W/
+                    record.errors.add(:"Mail", "*Se esta ingresando caracteres especiales no validos")
+                else
+                    
+
+                    
+
+                    
+                        
+                    
+                        record.errors.add(:"Mail", "*Tiene que ser como el siguiente ejemplo: juan@example.com")
+                    
+                end
             
         end
         
@@ -198,11 +238,11 @@ end
 
 class Vendedor < ApplicationRecord
 include ActiveModel::Validations
-    has_one_attached:imagen
+    has_one_attached :imagen
     mount_uploader :perfil, PerfilUploader
     
     validates_with Validar_Nombre3 
-    validates :Telefono, :Mail, uniqueness: {message:"*Ya existe usuario"}
+    validates :Telefono, :Mail, uniqueness: {message:"*Ya existe este Mail"}
     
     validate :formato_correcto
 

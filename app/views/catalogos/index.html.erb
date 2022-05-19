@@ -1,14 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MENU DE SUPERVISOR</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet'>
+</head>
+<style>
+  body {
+    font-family: 'Comfortaa';font-size: 22px;
+  }
+</style>
+<body>
+
+<!--Inicio de la barra de navegacion-->
+    <nav class="navbar" style="background-color: #1D3153;">
+      <div class="container-fluid">
+        <% if session[:userlog]==-1 %>
+        <a class="navbar-brand" href="/vendedors">
+        <img src="/assets/a-d9abbccf6ec068c782702faf5587c416d15fba6911666a57be0c9ccd3e2128c6.png" alt="" width="200" height="100" style="object-fit: cover;">
+        <% else %>
+        <a class="navbar-brand" href="/supervisors">
+          <img src="/assets/a-d9abbccf6ec068c782702faf5587c416d15fba6911666a57be0c9ccd3e2128c6.png" alt="" width="200" height="100" style="object-fit: cover;">
+            <% end %>
+        </a>
+        <a class="navbar-brand text-white" href="/login" align="right" style="font-size: 22px">CERRAR SESIÓN</a>
+      </div>
+    </nav>
+<!--Fin de la barra de navegacion-->
 <p style="color: green"><%= notice %></p>
 
-<h1>Catalogos</h1>
+<!--Inicio del Body -->
+<h1 align="center"><b>MENÚ DE SUPERVISOR</b></h1>
+<br><br>
+  <div class="container">
+    <div class="row">
+        <!--Inicio de la ventana hija de puta-->
+        <div class="col">
+            <div class="card" style="width: 18rem;background-color: #1D3153;" >
+              
+            <% Vendedor.all.each do |uno| %>
+              <% if session[:vendedo]==uno.id %>
+              <% if uno.imagen.attached? %>
+                  <%= image_tag uno.imagen.variant(resize:"150x150") , class: "figure-img img-fluid rounded" %>
+              <% else %>
+              
+                  <%= image_tag uno.perfil.thumb.url, class: "figure-img img-fluid rounded"%>
+              <%end %>
+              
+                    <div class="card-body" style="color: white">
+                      <h5 class="text-white" align="Center">Vendedor</h5>
+                      <p>
+                      <label>Nombre:</label>
+                      
+                      <%= uno.Nombre %>
+                      </p>
+                      <p>
+                      <label>Apellido:</label>
+                      
+                      <%= uno.Apellido_Materno %>
+                      <%= uno.Apellido_Paterno %>
+                      </p>
+                      <p>
+                      <label>Correo:</label>
+                      <%= uno.Mail %>
+                      </p>
 
-<div id="catalogos">
-  <% @catalogos.each do |catalogo| %>
-    <%= render catalogo %>
-    <p>
-      <%= link_to "Show this catalogo", catalogo %>
-    </p>
-  <% end %>
-</div>
+                      <!--<a class="btn btn-primary" style="background-color: #F79206">Editar Datos</a>-->
+                  </div>
+               
+               <% end %>
+              
+            
+                  
+                  
+                <% end %>
+            </div>
+        </div>
+        <!--Fin de la ventana hija de puta-->
+        <!--Inicio de los botones de lado derecho-->
+        <div class="col">
+            <div class="row">
+              <div class="col-lg-4"  >
+                
+                <br><br><br>
+              </div>
+  
+              <div class="col-lg-4"  >
+                <!--  <button type="button" class="btn btn-primary" style="background-color: #F79206;">Registrar Supervisores</button>-->
+                <%= link_to "Registrar Pedido", catalogos_path,:class => "btn btn-primary" ,:style=> "background-color: #F79206; font-size: 22px; border: 0;"   %>
+                <br><br><br>
 
-<%= link_to "New catalogo", new_catalogo_path %>
+              </div>
+            </div>
+        </div>
+        <!--Fin de los botones del lado derecho-->
+    </div>
+  </div>      
+
+
+
+
+
+
+
+
+
+
+          
+
+  
+</body>
+</html>
