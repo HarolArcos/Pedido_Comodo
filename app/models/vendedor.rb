@@ -159,6 +159,7 @@ end
 if record.Direccion==nil || record.Direccion==""
     record.errors.add(:"Dirección", "*Campo Obligatorio")
 else
+
     if record.Direccion =~ /https:\/\/goo.gl\/maps/ || record.Direccion =~ /https:\/\/maps.app.goo.gl/
         
     else 

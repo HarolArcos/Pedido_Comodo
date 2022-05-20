@@ -12,6 +12,7 @@ class RventaController < ApplicationController
 
   # GET /rventa/new
   def new
+
     if session[:userlog]!=nil && session[:userlog]!=-1
           
           
@@ -38,6 +39,7 @@ class RventaController < ApplicationController
 
   # POST /rventa or /rventa.json
   def create
+
     if session[:userlog]==-1
     
       @rventum = Rventum.new(rventum_params)
@@ -101,4 +103,5 @@ class RventaController < ApplicationController
     def rventum_params
       params.require(:rventum).permit(:Nombre, :Responsable, :Telefono, :Mail, :Direccion)
     end
+
 end

@@ -199,19 +199,7 @@ class Validar_Nombre2 < ActiveModel::Validator
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-       
+   
        
        def supervisor?
         Supervisor.all.each do |supervisor|
