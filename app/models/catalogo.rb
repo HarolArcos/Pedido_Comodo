@@ -21,11 +21,11 @@ class Validar_Catalogo < ActiveModel::Validator
                                  record.errors.add(:nombre, "*Solo acepta máximo 3 palabras")
                              else
                                  if record.nombre =~ /\d/
-                                     record.errors.add(:nombre, "*Solo acepta letras ")
+                                     #record.errors.add(:nombre, "*Solo acepta letras ")
  
                                  else
-                                     if record.nombre =~ /[^a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC\u00DC\s]/
-                                         record.errors.add(:nombre, "*Solo acepta letras ")
+                                     if record.nombre != /[^a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC\u00DC\s]/ 
+                                         record.errors.add(:nombre, "*No se permiten caracteres especiales")
                                      else
                                  
                                          if record.nombre =~ /[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC\u00DC]/ 
@@ -33,7 +33,7 @@ class Validar_Catalogo < ActiveModel::Validator
  
                                          else
                                          
-                                             record.errors.add(:nombre, "*Solo acepta letras ")
+                                             #record.errors.add(:nombre, "*Solo acepta letras ")
                                          end
                                      end
                                  end
