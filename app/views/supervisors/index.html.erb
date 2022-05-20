@@ -31,17 +31,17 @@
 
 <!--Inicio del Body -->
 <h1 align="center"><b>MENÚ DE SUPERVISOR</b></h1>
-<br><br>
+<br>
   <div class="container">
     <div class="row">
         <!--Inicio de la ventana hija de puta-->
         <div class="col">
-            <div class="card" style="width: 18rem;background-color: #1D3153;" >
+            <div class="card" style="width: 22rem;background-color: #1D3153;" >
               
             <% Supervisor.all.each do |uno| %>
               <% if session[:userlog]==uno.id %>
               <% if uno.imagen.attached? %>
-                  <%= image_tag uno.imagen.variant(resize:"150x150") , class: "figure-img img-fluid rounded" %>
+                  <%= image_tag uno.imagen , class: "figure-img img-fluid rounded" %>
               <% else %>
               
                   <%= image_tag uno.perfil.thumb.url, class: "figure-img img-fluid rounded"%>
@@ -81,12 +81,14 @@
         <div class="col">
             <div class="row">
               <div class="col-lg-4"  >
+              <br><br><br>
                 <%= link_to "Agregar vendedor", new_vendedor_path,:class => "btn btn-primary" ,:style=> "background-color: #F79206; font-size: 22px; border: 0;"  %> 
                 <br><br><br>
 	  						<%= link_to "Agregar productos", new_catalogo_path,:class => "btn btn-primary" ,:style=> "background-color: #F79206 ; font-size: 22px; border: 0;"   %>
               </div>
   
               <div class="col-lg-4"  >
+              <br><br><br>
                 <!--  <button type="button" class="btn btn-primary" style="background-color: #F79206;">Registrar Supervisores</button>-->
                 <%= link_to "Registrar punto de venta", new_rventum_path,:class => "btn btn-primary" ,:style=> "background-color: #F79206; font-size: 22px; border: 0;"   %>
                 <br><br><br>
