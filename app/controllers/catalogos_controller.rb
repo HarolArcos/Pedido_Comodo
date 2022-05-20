@@ -56,6 +56,7 @@ class CatalogosController < ApplicationController
           format.json { render json: @catalogo.errors, status: :unprocessable_entity }
         end
       end
+    end
   end
 
   # DELETE /catalogos/1 or /catalogos/1.json

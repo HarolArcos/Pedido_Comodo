@@ -78,7 +78,20 @@ class Validar_Catalogo < ActiveModel::Validator
         if record.empresa =~ /\A[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC\u00DC]{2,}(?:[\s-]{1}[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC\u00DC]{2,})?(?:[\s-])?\z/
             if record.empresa.length()>21 
                 record.errors.add(:"empresa", "*Tiene que tener máximo 21 caracteres")
+            else
+                empr=nil
+                Company.all.each do |ss|
+                    
+                    if record.empresa==ss.nombre
+                        empr=ss
+                    end
+                end
+                if empr!=nil
+                else
+                    record.errors.add(:"empresa", "*La empresa no existe en la base de datos")
+                end
             end
+
         else 
             if record.empresa.start_with?(" ")
                 record.errors.add(:empresa, "*No debe iniciar con un espacio")
