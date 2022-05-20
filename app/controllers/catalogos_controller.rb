@@ -3,7 +3,11 @@ class CatalogosController < ApplicationController
 
   # GET /catalogos or /catalogos.json
   def index
+    if session[:vendedo] != nil
     @catalogos = Catalogo.all
+  else
+    render template: "login/formulario_login"
+  end
   end
 
   # GET /catalogos/1 or /catalogos/1.json
@@ -12,7 +16,11 @@ class CatalogosController < ApplicationController
 
   # GET /catalogos/new
   def new
+    if session[:userlog]!=nil
     @catalogo = Catalogo.new
+  else
+    render template: "login/formulario_login"
+  end
   end
 
   # GET /catalogos/1/edit

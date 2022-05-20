@@ -10,13 +10,61 @@
       </ul>
     </div>
   <% end %>
-  <div id="catalogos">
-  <% @catalogo.each do |cataloo| %>
-    <%= render cataloo %>
-  <% end %>
+  <br>
+  <div class="container-fluid" style="width: 90%;">
+      <div class="row row-cols-4">
+            <div style="padding: 10px; text-align: center; border: 1px #212529 solid;">
+            Nombre producto
+            </div>
+            <div style="padding: 10px; text-align: center; border: 1px #212529 solid;">
+            Codigo
+            </div>
+            <div style="padding: 10px; text-align: center; border: 1px #212529 solid;">
+            Empresa
+            </div>
+            <div style="padding: 10px; text-align: center; border: 1px #212529 solid;">
+            Precio 
+            </div>
+    <% Catalogo.all.each do |su|%>
+  
+      
+     
+      <div style="padding: 10px; text-align: center; border: 1px #212529 solid;">
+            
+       <%= su.nombre %>
+     
+   
+       </div>
+       <div style="padding: 10px; text-align: center; border: 1px #212529 solid;">
+       
+       
+       <%= su.codigo %>
+     
+   
+       </div>
+       <div style="padding: 10px; text-align: center; border: 1px #212529 solid;">
+       
+       
+       <%= su.empresa %>
+     
+       </div>
+       <div style="padding: 10px; text-align: center; border: 1px #212529 solid;">
+       
+     
+       
+       <%= su.precio %>
+     
+       </div>
+     
+       
+     
+     </div>
+     
+     <% end%>
+  
 </div>
 
-  <div>
+  <!--<div>
     <%= form.label :nombre, style: "display: block" %>
     <%= form.text_field :nombre %>
   </div>
@@ -45,15 +93,14 @@
     <%= form.label :responsable, style: "display: block" %>
     <%= form.text_field :responsable %>
   </div>
+  -->
+  <br>
 
   <div class="conteiner" align="center">
   
-    <div><br>
-    <% if session[:userlog]==-1 %>
-    <a href="/vendedors" class="btn btn-primary" style="background-color: #F71406; font-size: 22px; border: 0;">Cancelar</a>
-    <% else %>
-    <a href="/supervisors" class="btn btn-primary" style="background-color: #F71406; font-size: 22px; border: 0;">Cancelar</a>
-    <% end %>
+    <div>
+    <a href="/catalogos" class="btn btn-primary" style="background-color: #F71406; font-size: 22px; border: 0;">Cancelar</a>
+    
     <button class="btn btn-primary" type="submit" style="background-color: #F79206; font-size: 22px; border: 0;">Finalizar</button>
     </div>
   </div>

@@ -1,9 +1,11 @@
 class LoginController < ApplicationController
 def formulario_login
     session[:userlog]=nil
+    session[:vendedo]=nil
 end
 def f
     session[:userlog]=nil
+    session[:vendedo]=nil
     render "formulario_login"
 end
 def login

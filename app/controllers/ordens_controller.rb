@@ -3,7 +3,11 @@ class OrdensController < ApplicationController
 
   # GET /ordens or /ordens.json
   def index
+    if session[:vendedo] != nil
     @ordens = Orden.all
+    else
+    render template: "login/formulario_login"
+  end
   end
 
   # GET /ordens/1 or /ordens/1.json
@@ -12,7 +16,11 @@ class OrdensController < ApplicationController
 
   # GET /ordens/new
   def new
+    if session[:vendedo] != nil
     @orden = Orden.new
+  else
+    render template: "login/formulario_login"
+  end
   end
 
   # GET /ordens/1/edit
@@ -67,4 +75,5 @@ class OrdensController < ApplicationController
     def orden_params
       params.require(:orden).permit(:nombre, :precio, :cantidad, :total, :punto_venta, :responsable)
     end
+  
 end
