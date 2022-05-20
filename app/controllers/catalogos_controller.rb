@@ -36,15 +36,26 @@ class CatalogosController < ApplicationController
 
   # PATCH/PUT /catalogos/1 or /catalogos/1.json
   def update
-    respond_to do |format|
-      if @catalogo.update(catalogo_params)
-        format.html { redirect_to catalogo_url(@catalogo), notice: "Catalogo was successfully updated." }
-        format.json { render :show, status: :ok, location: @catalogo }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @catalogo.errors, status: :unprocessable_entity }
+    if session[:userlog]==-1
+      respond_to do |format|
+        if @catalogo.update(catalogo_params)
+          format.html { redirect_to vendedors_path, notice: "Fue creado el producto." }
+          format.json { render :show, status: :ok, location: @catalogo }
+        else
+          format.html { render :edit, status: :unprocessable_entity }
+          format.json { render json: @catalogo.errors, status: :unprocessable_entity }
+        end
       end
-    end
+    else
+      respond_to do |format|
+        if @catalogo.update(catalogo_params)
+          format.html { redirect_to supervisors_path, notice: "Fue creado el producto." }
+          format.json { render :show, status: :ok, location: @catalogo }
+        else
+          format.html { render :edit, status: :unprocessable_entity }
+          format.json { render json: @catalogo.errors, status: :unprocessable_entity }
+        end
+      end
   end
 
   # DELETE /catalogos/1 or /catalogos/1.json
