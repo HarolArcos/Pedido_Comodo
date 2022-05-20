@@ -1,0 +1,90 @@
+
+<!--Inicio de la barra de navegacion-->
+    <nav class="navbar" style="background-color: #1D3153;">
+      <div class="container-fluid">
+        <% if session[:userlog]==-1 %>
+        <a class="navbar-brand" href="/vendedors">
+        <img src="/assets/a-d9abbccf6ec068c782702faf5587c416d15fba6911666a57be0c9ccd3e2128c6.png" alt="" width="200" height="100" style="object-fit: cover;">
+        <% else %>
+        <a class="navbar-brand" href="/supervisors">
+          <img src="/assets/a-d9abbccf6ec068c782702faf5587c416d15fba6911666a57be0c9ccd3e2128c6.png" alt="" width="200" height="100" style="object-fit: cover;">
+            <% end %>
+        </a>
+        <a class="navbar-brand text-white" href="/login" align="right" style="font-size: 22px">CERRAR SESIÓN</a>
+      </div>
+    </nav>
+  <!--Fin de la barra de navegacion-->
+  <head>
+  <link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet'>
+<style>
+  body {
+    font-family: 'Comfortaa';font-size: 22px;
+  }
+</style>
+
+</head>
+<body>
+<h1 align="center" style="margin-top: 78px"><b>Reporte Pedido</b></h1>
+
+<div class="col-lg-4"  ><br>
+          <label for="validationCustom02" class="form-label" style="position:relative;left:50px"  >Nombre del punto de venta:</label>
+          <label for="validationCustom02" class="form-label" style="position:relative;left:50px"  >De todo</label>
+          <br>
+          <label for="validationCustom02" class="form-label" style="position:relative;left:50px"  >Nombre del responsable:</label>
+          <label for="validationCustom02" class="form-label" style="position:relative;left:50px"  >Juan</label>
+          
+</div>
+
+<br><br>
+    <div class="container-fluid" style="width: 90%;">
+      <div class="row row-cols-4">
+            <div style="padding: 10px; text-align: center; border: 1px #212529 solid;">
+                Nombre producto
+            </div>
+            <div style="padding: 10px; text-align: center; border: 1px #212529 solid;">
+                Precio unitario
+            </div>
+            <div style="padding: 10px; text-align: center; border: 1px #212529 solid;">
+                Cantidad
+            </div>
+            <div style="padding: 10px; text-align: center; border: 1px #212529 solid;">
+                Precio total
+            </div>
+            
+      </div>
+    </div>
+</body>
+<div id="ordens">
+
+  <% @ordens.each do |orden| %>
+    <%= render orden %>
+  <% end %>
+</div>
+<div class="container-fluid"style="width: 90%;">
+  <div class="row row-cols-4">
+    <div class="col-9" style="text-align: center; border: 1px #212529 solid; grid-column: 1/6;">
+      Precio total de los producto
+    </div>
+    <div style="text-align: center; border: 1px #212529 solid;">
+      60
+    </div>
+  </div>
+</div>
+
+<div class="conteiner" align="center">
+<label class="btn btn-primary" type="submit" style="background-color: #F79206; border:0;font-size: 22px;">
+      <div>
+      <%= link_to "Agregar", new_orden_path %>
+      </div>
+  </label>
+  <br>
+<button class="btn btn-primary" type="submit" style="background-color: #F79206; font-size: 22px; border: 0;">Agregar</button>
+    <div><br>
+    <% if session[:userlog]==-1 %>
+    <a href="/vendedors" class="btn btn-primary" style="background-color: #F71406; font-size: 22px; border: 0;">Cancelar</a>
+    <% else %>
+    <a href="/supervisors" class="btn btn-primary" style="background-color: #F71406; font-size: 22px; border: 0;">Cancelar</a>
+    <% end %>
+    <button class="btn btn-primary" type="submit" style="background-color: #F79206; font-size: 22px; border: 0;">Finalizar</button>
+    </div>
+  </div>

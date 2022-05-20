@@ -1,0 +1,60 @@
+<%= form_with(model: orden) do |form| %>
+  <% if orden.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(orden.errors.count, "error") %> prohibited this orden from being saved:</h2>
+
+      <ul>
+        <% orden.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div id="catalogos">
+  <% @catalogo.each do |cataloo| %>
+    <%= render cataloo %>
+  <% end %>
+</div>
+
+  <div>
+    <%= form.label :nombre, style: "display: block" %>
+    <%= form.text_field :nombre %>
+  </div>
+
+  <div>
+    <%= form.label :precio, style: "display: block" %>
+    <%= form.number_field :precio %>
+  </div>
+
+  <div>
+    <%= form.label :cantidad, style: "display: block" %>
+    <%= form.number_field :cantidad %>
+  </div>
+
+  <div>
+    <%= form.label :total, style: "display: block" %>
+    <%= form.number_field :total %>
+  </div>
+
+  <div>
+    <%= form.label :punto_venta, style: "display: block" %>
+    <%= form.text_field :punto_venta %>
+  </div>
+
+  <div>
+    <%= form.label :responsable, style: "display: block" %>
+    <%= form.text_field :responsable %>
+  </div>
+
+  <div class="conteiner" align="center">
+  
+    <div><br>
+    <% if session[:userlog]==-1 %>
+    <a href="/vendedors" class="btn btn-primary" style="background-color: #F71406; font-size: 22px; border: 0;">Cancelar</a>
+    <% else %>
+    <a href="/supervisors" class="btn btn-primary" style="background-color: #F71406; font-size: 22px; border: 0;">Cancelar</a>
+    <% end %>
+    <button class="btn btn-primary" type="submit" style="background-color: #F79206; font-size: 22px; border: 0;">Finalizar</button>
+    </div>
+  </div>
+<% end %>
