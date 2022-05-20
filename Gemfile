@@ -7,10 +7,15 @@ gem "mini_magick"
 gem "tzinfo-data"
 gem 'validates_email_format_of'
 gem "validate_url"
+
+
 #gemas para usar el bootstrap
 gem "bootstrap"
 gem "jquery-rails"
 gem "webpacker"
+
+
+
 
 #gema para tipo y tamaño de la foto
 gem 'active_storage_validations'

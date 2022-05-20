@@ -7,15 +7,16 @@
 </style>
 
 </head>
+
 <body>
 
 
 
-<h1 align="center" style="margin-top: 78px"><b>Registrar Empresa</b></h1>
-<br>
+<h1 align="center" style="margin-top: 78px"><b>Registrar Nuevo Producto Para Catálogo De Empresa</b></h1>
+<br><br>
 <div class="conteiner" align="center">
-<%= form_with(model: company) do |form| %>
-  <% if company.errors.any? %>
+<%= form_with(model: catalogo) do |form| %>
+  <% if catalogo.errors.any? %>
     <div style="color: red">
      
 
@@ -25,7 +26,7 @@
     </div>
   <% end %>
   </div>
-  
+  <br><br>
 
 
 
@@ -38,11 +39,11 @@
       <div class="col-lg-6"  ><br>
           
   
-           <label for="validationCustom01" class="form-label  " style="position:relative;left:-88px" >Nombre</label>
+           <label for="validationCustom01" class="form-label  " style="position:relative;left:-10px" >Nombre del producto</label>
            <br>
            <%= form.text_field :nombre ,:style=>"background-color: #C4C4C4 ; border:0" %>
            <div style="color: red">
-          <% @company.errors[:nombre].each do | msg| %>
+          <% @catalogo.errors[:nombre].each do | msg| %>
             <p><%= msg %></p>
             <% end %>
             </div>
@@ -51,13 +52,13 @@
       <div class="col-lg-6"  ><br>
 
   
-      <label for="validationCustom03" class="form-label" style="position:relative;left:-114px" style: "display: block">NIT</label>
+      <label for="validationCustom03" class="form-label" style="position:relative;left:-15px" style: "display: block">Código del producto</label>
       <br>
 
-      <%= form.text_field :nit ,:style=>"background-color: #C4C4C4 ; border:0" %>
+      <%= form.number_field :codigo ,:style=>"background-color: #C4C4C4 ; border:0" %>
       <div style="color: red">
       
-        <% @company.errors[:nit].each do | msg| %>
+        <% @catalogo.errors[:codigo].each do | msg| %>
           <p><%= msg %></p>
           <% end %>
         </div>
@@ -66,13 +67,13 @@
         <div class="col-lg-6"  ><br>
 
   
-          <label for="validationCustom03" class="form-label" style="position:relative;left:-84px" style: "display: block">Teléfono</label>
+          <label for="validationCustom03" class="form-label" style="position:relative;left:-84px" style: "display: block">Empresa</label>
           <br>
   
-          <%= form.number_field :telefono ,:style=>"background-color: #C4C4C4 ; border:0" %>
+          <%= form.text_field :empresa ,:style=>"background-color: #C4C4C4 ; border:0" %>
           <div style="color: red">
           
-            <% @company.errors[:telefono].each do | msg| %>
+            <% @catalogo.errors[:empresa].each do | msg| %>
               <p><%= msg %></p>
               <% end %>
             </div>
@@ -81,23 +82,24 @@
         <div class="col-lg-6"  ><br>
 
   
-          <label for="validationCustom02" class="form-label" style="position:relative;left:-110px" style: "display: block" >Mail</label>
+          <label for="validationCustom02" class="form-label" style="position:relative;left:-50px" style: "display: block" >Precio unitario</label>
           <br>
-          <%= form.text_field :mail  ,:style=>"background-color: #C4C4C4 ; border:0" %>
+          <%= form.number_field :precio  ,:style=>"background-color: #C4C4C4 ; border:0" %>
           <div style="color: red">
-          <% @company.errors[:mail].each do | msg| %>
+          <% @catalogo.errors[:precio].each do | msg| %>
             <p><%= msg %></p>
             <% end %>
             </div>
           </div>
+          
   
-        <div class="col-lg-6"  ><br>
+        <div class="col-lg-8"  ><br>
   
-          <label for="validationCustom05" class="form-label" style="position:relative;left:-81px" style: "display: block">Dirección</label>
+          <label for="validationCustom05" class="form-label" style="position:relative;left:+13px" style: "display: block">Descripción del producto</label>
           <br>
-          <%= form.text_field :direccion  ,:style=>"background-color: #C4C4C4 ; border:0",:placeholder => "https://goo.gl/maps/..." %>
+          <%= form.text_area :descripcion  ,:style=>"background-color: #C4C4C4 ; border:0" %>
           <div style="color: red">
-          <% @company.errors[:direccion].each do | msg| %>
+          <% @catalogo.errors[:descripcion].each do | msg| %>
             <p><%= msg %></p>
             <% end %>
             </div>
@@ -113,13 +115,12 @@
 <div class="conteiner" align="center">
   
   <div><br>
-
   <% if session[:userlog]==-1 %>
   <a href="/vendedors" class="btn btn-primary" style="background-color: #F71406; font-size: 22px; border: 0;height:51px; width:260px">Cancelar</a>
   <% else %>
   <a href="/supervisors" class="btn btn-primary" style="background-color: #F71406; font-size: 22px; border: 0;height:51px; width:260px">Cancelar</a>
   <% end %>
-    <button class="btn btn-primary" type="submit" style="background-color: #F79206; font-size: 22px; border: 0;height:51px; width:260px">Agregar empresa</button>
+    <button class="btn btn-primary" type="submit" style="background-color: #F79206; font-size: 22px; border: 0;height:51px; width:260px">Agregar</button>
     
     <div>
   

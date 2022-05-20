@@ -2,10 +2,10 @@ class Validar_Nombree < ActiveModel::Validator
     def validate (record)
        #validaciones de Nombre
        if record.Nombre==nil || record.Nombre=="" 
-        record.errors.add(:Nombre, "*Debe estar llenado")
+        record.errors.add(:Nombre, "*Campo obligatorio")
     else
         
-            if record.Nombre =~ /\A[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,}(?:[\s-]{1}[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,})?(?:[\s-]{1}[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,})?(?:[\s-])?\z/
+            if record.Nombre =~ /\A[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC\u00DC]{2,}(?:[\s-]{1}[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC\u00DC]{2,})?(?:[\s-]{1}[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC\u00DC]{2,})?(?:[\s-])?\z/
                 if record.Nombre.length()>21 
                     record.errors.add(:Nombre, "*Tiene que tener máximo 21 caracteres")
                 end
@@ -14,43 +14,44 @@ class Validar_Nombree < ActiveModel::Validator
                     record.errors.add(:Nombre, "*No debe iniciar con un espacio")
                 else
                     if record.Nombre =~ /\s\s+/
-                        record.errors.add(:Nombre, "*Solo se acepta 1 espacio despues de una palabra")
+                        record.errors.add(:Nombre, "*Solo se acepta 1 espacio después de una palabra")
                     else
 
-                            if record.Nombre =~ /\A[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,}(?:[\s-]{1}[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,})?(?:[\s-]{1}[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,})?(?:[\s-]{1}[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,})?(?:[\s-]{1}[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,})+(?:[\s-])?\z/
+                            if record.Nombre =~ /\A[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC\u00DC]{2,}(?:[\s-]{1}[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC\u00DC]{1,}){3,}(?:[\s-])?\z/
                                 #/\A[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,}(?:[\s-]{1}[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,})?(?:[\s-]{1}[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,})+(?:[\s-])+\z/
                                 record.errors.add(:Nombre, "*Solo acepta máximo 3 palabras")
-                                if record.Nombre.length()>21 
-                                    record.errors.add(:Nombre, "*Tiene que tener máximo 21 caracteres")
-                                end
+                                
                             else
                                 
-                                if record.Nombre =~ /[0-9]/
+                                if record.Nombre =~ /\d/
                                     record.errors.add(:Nombre, "*Solo acepta letras ")
 
                                 else
-                                
-                                    if record.Nombre =~ /[a-zA-Z]/ 
-                                        record.errors.add(:Nombre, "*Cada nombre debe tener mínimo 2 letras")
-
-                                    else
-                                    
+                                    if record.Nombre =~ /[^a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC\u00DC\s]/
                                         record.errors.add(:Nombre, "*Solo acepta letras ")
+                                    else
+                                
+                                        if record.Nombre =~ /[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC\u00DC]/ 
+                                            record.errors.add(:Nombre, "*Cada nombre debe tener mínimo 2 letras")
+
+                                        else
+                                        
+                                            record.errors.add(:Nombre, "*Solo acepta letras ")
+                                        end
                                     end
                                 end
                                     
                             end
                      end
                 end
-            end
-        
+            end        
     end
    
        #validaciones de responsable
 
 
        if record.Responsable==nil || record.Responsable==""
-        record.errors.add(:Responsable, "*Debe estar llenado")
+        record.errors.add(:Responsable, "*Campo obligatorio")
     else
         
             if record.Responsable =~ /\A[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,}(?:[\s-]{1}[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,})?(?:[\s-]{1}[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,})?(?:[\s-])?\z/
@@ -62,15 +63,13 @@ class Validar_Nombree < ActiveModel::Validator
                     record.errors.add(:Responsable, "*No debe iniciar con un espacio")
                 else
                     if record.Responsable =~ /\s\s+/
-                        record.errors.add(:Responsable, "*Solo se acepta 1 espacio despues de una palabra")
+                        record.errors.add(:Responsable, "*Solo se acepta 1 espacio después de una palabra")
                     else
 
-                            if record.Responsable =~ /\A[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,}(?:[\s-]{1}[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,})?(?:[\s-]{1}[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,})?(?:[\s-]{1}[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,})?(?:[\s-]{1}[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,})+(?:[\s-])?\z/
+                            if record.Responsable =~ /\A[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC\u00DC]{2,}(?:[\s-]{1}[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC\u00DC]{1,}){3,}(?:[\s-])?\z/
                                 #/\A[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,}(?:[\s-]{1}[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,})?(?:[\s-]{1}[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC]{2,})+(?:[\s-])+\z/
                                 record.errors.add(:Responsable, "*Solo acepta máximo 3 palabras")
-                                if record.Responsable.length()>21 
-                                    record.errors.add(:Responsable, "*Tiene que tener máximo 21 caracteres")
-                                end
+                                
                             else
                                 
                                 if record.Responsable =~ /[0-9]/
@@ -98,7 +97,7 @@ class Validar_Nombree < ActiveModel::Validator
        #validaciones telefono
        
    if record.Telefono==nil || record.Telefono==""
-       record.errors.add(:Telefono, "*Debe estar llenado")
+       record.errors.add(:Telefono, "*Campo obligatorio")
    else
        if record.Telefono > 0
        
@@ -115,12 +114,12 @@ class Validar_Nombree < ActiveModel::Validator
                record.errors.add(:Telefono,"*Tiene que tener 8 dígitos")
            end
        else
-           record.errors.add(:Telefono,"Solo acepta dígitos numéricos")
+           record.errors.add(:Telefono,"*Solo acepta dígitos numéricos")
        end
    end
    #validaciones de Mail
    if record.Mail==nil || record.Mail==""
-    record.errors.add(:"Mail", "*Debe estar llenado")
+    record.errors.add(:"Mail", "*Campo obligatorio")
     else
         if record.Mail =~ /\A\w+(\.*)\w*+([@\s]*)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
         
@@ -128,7 +127,11 @@ class Validar_Nombree < ActiveModel::Validator
             if record.Mail.start_with?(" ")
             record.errors.add(:Mail, "*No debe iniciar con un espacio")
             else
-            record.errors.add(:"Mail", "*Tiene que ser como el siguiente ejemplo: juan@example.com")
+                if record.Mail =~ /\W/
+                    record.errors.add(:"Mail", "*Se esta ingresando caracteres especiales no validos")
+                else
+                    record.errors.add(:"Mail", "*Tiene que ser como el siguiente ejemplo: juan@example.com")
+                end
             
             end
         
@@ -138,15 +141,15 @@ class Validar_Nombree < ActiveModel::Validator
 
    #validaciones de direccion
    if record.Direccion==nil || record.Direccion==""
-       record.errors.add(:"Direccion", "debe estar llenado")
+       record.errors.add(:"Direccion", "*Campo obligatorio")
    else
        if record.Direccion =~ /https:\/\/goo.gl\/maps/ || record.Direccion =~ /https:\/\/maps.app.goo.gl/
            
        else 
         if record.Direccion.start_with?(" ")
-            record.errors.add(:Direccion, "* No debe iniciar con un espacio")
+            record.errors.add(:Direccion, "*No debe iniciar con un espacio")
         else
-           record.errors.add(:"Direccion", "tiene que ser un link de google maps")
+           record.errors.add(:"Direccion", "*Tiene que ser un link de google maps")
         end
        end
    end
@@ -163,10 +166,10 @@ class Validar_Nombree < ActiveModel::Validator
        mount_uploader :perfil, PerfilUploader
        
        validates_with Validar_Nombree 
-       validates :Telefono, :Mail, uniqueness: {message:"ya existe usuario"}
+       validates :Telefono, :Mail, uniqueness: {message:"*Ya existe un registro de venta con esta información"}
        
        validate :formato_correcto
-   
+
        private 
        def formato_correcto
         if imagen.attached?

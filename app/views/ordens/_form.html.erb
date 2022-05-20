@@ -1,0 +1,107 @@
+<%= form_with(model: orden) do |form| %>
+  <% if orden.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(orden.errors.count, "error") %> prohibited this orden from being saved:</h2>
+
+      <ul>
+        <% orden.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <br>
+  <div class="container-fluid" style="width: 90%;">
+      <div class="row row-cols-4">
+            <div style="padding: 10px; text-align: center; border: 1px #212529 solid;">
+            Nombre producto
+            </div>
+            <div style="padding: 10px; text-align: center; border: 1px #212529 solid;">
+            Codigo
+            </div>
+            <div style="padding: 10px; text-align: center; border: 1px #212529 solid;">
+            Empresa
+            </div>
+            <div style="padding: 10px; text-align: center; border: 1px #212529 solid;">
+            Precio 
+            </div>
+    <% Catalogo.all.each do |su|%>
+  
+      
+     
+      <div style="padding: 10px; text-align: center; border: 1px #212529 solid;">
+            
+       <%= su.nombre %>
+     
+   
+       </div>
+       <div style="padding: 10px; text-align: center; border: 1px #212529 solid;">
+       
+       
+       <%= su.codigo %>
+     
+   
+       </div>
+       <div style="padding: 10px; text-align: center; border: 1px #212529 solid;">
+       
+       
+       <%= su.empresa %>
+     
+       </div>
+       <div style="padding: 10px; text-align: center; border: 1px #212529 solid;">
+       
+     
+       
+       <%= su.precio %>
+     
+       </div>
+     
+       
+     
+     </div>
+     
+     <% end%>
+  
+</div>
+
+  <!--<div>
+    <%= form.label :nombre, style: "display: block" %>
+    <%= form.text_field :nombre %>
+  </div>
+
+  <div>
+    <%= form.label :precio, style: "display: block" %>
+    <%= form.number_field :precio %>
+  </div>
+
+  <div>
+    <%= form.label :cantidad, style: "display: block" %>
+    <%= form.number_field :cantidad %>
+  </div>
+
+  <div>
+    <%= form.label :total, style: "display: block" %>
+    <%= form.number_field :total %>
+  </div>
+
+  <div>
+    <%= form.label :punto_venta, style: "display: block" %>
+    <%= form.text_field :punto_venta %>
+  </div>
+
+  <div>
+    <%= form.label :responsable, style: "display: block" %>
+    <%= form.text_field :responsable %>
+  </div>
+  -->
+  <br>
+
+  <div class="conteiner" align="center">
+  
+    <div>
+    <a href="/catalogos" class="btn btn-primary" style="background-color: #F71406; font-size: 22px; border: 0;">Cancelar</a>
+    
+    <button class="btn btn-primary" type="submit" style="background-color: #F79206; font-size: 22px; border: 0;">Finalizar</button>
+    </div>
+  </div>
+<% end %>

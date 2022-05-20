@@ -1,14 +1,153 @@
-<p style="color: green"><%= notice %></p>
+<div align="center">
 
-<h1>Companies</h1>
+<h1>Compañias</h1>
+<div class="container d-flex justify-content-center "  >
+  <div class="row d-flex align-self-center justify-content-center "> 
 
-<div id="companies">
+
+   
   <% @companies.each do |company| %>
+    <div class="col-lg-4"  >
     <%= render company %>
-    <p>
-      <%= link_to "Show this company", company %>
-    </p>
+    </div>
   <% end %>
-</div>
 
-<%= link_to "New company", new_company_path %>
+</div>
+</div>
+<h1>Catalogos</h1>
+<div class="container d-flex justify-content-center "  >
+  <div class="row d-flex align-self-center justify-content-center "> 
+<% Catalogo.all.each do |su|%>
+  
+   <div class="col-lg-4"  >
+  <p>
+    <strong>Nombre:</strong>
+    <%= su.nombre %>
+  </p>
+
+  <p>
+    <strong>Codigo:</strong>
+    <%= su.codigo %>
+  </p>
+
+  <p>
+    <strong>Empresa:</strong>
+    <%= su.empresa %>
+  </p>
+
+  <p>
+    <strong>Precio:</strong>
+    <%= su.precio %>
+  </p>
+
+  <p>
+    <strong>Descripcion:</strong>
+    <%= su.descripcion %>
+  </p>
+  </div>
+  
+  <% end%>
+  </div>
+  </div>
+  <h1>Vendedores</h1>
+  <div class="container d-flex justify-content-center "  >
+    <div class="row d-flex align-self-center justify-content-center "> 
+  <% Vendedor.all.each do |su|%>
+    
+     <div class="col-lg-4" style="width: 22rem" >
+    <% if su.imagen.attached? %>
+    
+    <%= image_tag su.imagen , class: "figure-img img-fluid rounded"%>
+    <% else %>
+  <%= image_tag su.perfil.thumb.url, class: "figure-img img-fluid rounded"%>
+  <%end %>
+ 
+
+    <p>
+    <strong>Nombre:</strong>
+    <%= su.Nombre %>
+  </p>
+
+  <p>
+    <strong>Apellido Paterno:</strong>
+    <%= su.Apellido_Paterno %>
+    
+  </p>
+
+  <p>
+    <strong>Apellido Materno:</strong>
+    <%= su.Apellido_Materno %>
+  </p>
+
+  <p>
+    <strong>Telefono:</strong>
+    <%= su.Telefono %>
+  </p>
+
+  <p>
+    <strong>Mail:</strong>
+    <%= su.Mail %>
+  </p>
+
+  <p>
+    <strong>Direccion:</strong>
+    <%= su.Direccion %>
+  </p>
+  </div>
+  
+    <% end%>
+    </div>
+  </div>
+
+
+  <h1>Supervisores</h1>
+
+  <div class="container d-flex justify-content-center "  >
+    <div class="row d-flex align-self-center justify-content-center "> 
+  <% Supervisor.all.each do |su|%>
+    
+     <div class="col-lg-4" style="width: 22rem" >
+    <% if su.imagen.attached? %>
+    
+    <%= image_tag su.imagen , class: "figure-img img-fluid rounded"%>
+    <% else %>
+  <%= image_tag su.perfil.thumb.url, class: "figure-img img-fluid rounded"%>
+  <%end %>
+ 
+
+  <p>
+  <strong>Nombre:</strong>
+  <%= su.Nombre %>
+</p>
+
+<p>
+  <strong>Apellido paterno:</strong>
+  <%= su.Apellido_Paterno %>
+</p>
+
+<p>
+  <strong>Apellido materno:</strong>
+  <%= su.Apellido_Materno %>
+</p>
+
+<p>
+  <strong>Teléfono:</strong>
+  <%= su.Teléfono %>
+</p>
+
+<p>
+  <strong>Mail:</strong>
+  <%= su.Mail %>
+</p>
+
+<p>
+  <strong>Dirección:</strong>
+  <%= su.Dirección %>
+</p>
+  </div>
+  
+    <% end%>
+    </div>
+  </div>
+
+  </div>

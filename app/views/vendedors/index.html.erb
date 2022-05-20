@@ -23,21 +23,21 @@
 					<img src="/assets/a-d9abbccf6ec068c782702faf5587c416d15fba6911666a57be0c9ccd3e2128c6.png" alt="" width="200" height="100" style="object-fit: cover;">
 						<% end %>
 		  	</a>
-				<a class="navbar-brand text-white" href="/login" align="right">CERRAR SESIÓN</a>
+				<a class="navbar-brand text-white" href="/login" align="right" style="font-size: 22px">CERRAR SESIÓN</a>
 			</div>
  		</nav>
 <!--Fin de la barra de navegacion-->
 <p style="color: green"><%= notice %></p>
 
 <!--Inicio del Body -->
-<h1 align="center"><b>MENU DE ADMINISTRADOR</b></h1>
-<br><br><br><br><br>
+<h1 align="center"><b>MENÚ DE ADMINISTRADOR</b></h1>
+<br>
 	<div class="container">
 		<div class="row">
 				<!--Inicio de la ventana hija de puta-->
     		<div class="col">
-      			<div class="card" style="width: 18rem;background-color: #1D3153;" >
-  						<img class="card-img-top" src="/assets/b-8f1948fc6fa4d45064bf80df8ca02ed31028d646f5638aac946656c5d0a7419e.png" alt="Card image cap">
+      			<div class="card" style="width: 22rem;background-color: #1D3153;" >
+  						<img class="card-img-top" src="/assets/default-5f31450b21ea7b55df8700b55543030cf05c5878c4dff6792b9d1d52742651d6.jpg" alt="Card image cap">
  								<div class="card-body">
     							<h5 class="text-white" align="Center">Administrador</h5>
     							<p class="text-white">Nombre: Juan</p>
@@ -52,16 +52,20 @@
 				<div class="col">
    					<div class="row">
       				<div class="col-lg-4"  >
-	  						<%= link_to "Agregar Supervisor", new_supervisor_path,:class => "btn btn-primary" ,:style=> "background-color: #F79206; border: 0;"  %> 
+					  <br><br><br>
+	  						<%= link_to "Agregar supervisor", new_supervisor_path,:class => "btn btn-primary" ,:style=> "background-color: #F79206 ; font-size: 22px; border: 0;"  %> 
 	  						<br><br><br>
-	  						<%= link_to "Agregar Empresa", new_company_path,:class => "btn btn-primary" ,:style=> "background-color: #F79206; border: 0;"   %>
+	  						<%= link_to "Agregar empresa", new_company_path,:class => "btn btn-primary" ,:style=> "background-color: #F79206 ; font-size: 22px; border: 0;"   %>
+							<br><br><br>
+	  						<%= link_to "Agregar productos", new_catalogo_path,:class => "btn btn-primary" ,:style=> "background-color: #F79206 ; font-size: 22px; border: 0;"   %>
 	  					</div>
   
       				<div class="col-lg-4"  >
+					  <br><br><br>
 								<!--	<button type="button" class="btn btn-primary" style="background-color: #F79206;">Registrar Supervisores</button>-->
-      					<%= link_to "Agregar Vendedor", new_vendedor_path,:class => "btn btn-primary" ,:style=> "background-color: #F79206; border: 0;"   %>
+      					<%= link_to "Agregar vendedor", new_vendedor_path,:class => "btn btn-primary" ,:style=> "background-color: #F79206 ; font-size: 22px; border: 0;"   %>
 	  						<br><br><br>
-	  						<%= link_to "Agregar Punto de Venta", new_rventum_path,:class => "btn btn-primary" ,:style=> "background-color: #F79206; border: 0;"   %>
+	  						<%= link_to "Agregar punto de venta", new_rventum_path,:class => "btn btn-primary" ,:style=> "background-color: #F79206 ; font-size: 22px; border: 0;"   %>
 	  					</div>
   					</div>
 				</div>

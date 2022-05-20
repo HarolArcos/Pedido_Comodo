@@ -11,16 +11,15 @@
   }
 </style>
 <body>
+
 <!--Inicio de la barra de navegacion-->
     <nav class="navbar" style="background-color: #1D3153;">
       <div class="container-fluid">
-        <% if session[:userlog]==-1 %>
-        <a class="navbar-brand" href="/vendedors">
+        
+        <a class="navbar-brand" href="/catalogos">
         <img src="/assets/a-d9abbccf6ec068c782702faf5587c416d15fba6911666a57be0c9ccd3e2128c6.png" alt="" width="200" height="100" style="object-fit: cover;">
-        <% else %>
-        <a class="navbar-brand" href="/supervisors">
-          <img src="/assets/a-d9abbccf6ec068c782702faf5587c416d15fba6911666a57be0c9ccd3e2128c6.png" alt="" width="200" height="100" style="object-fit: cover;">
-            <% end %>
+       
+        
         </a>
         <a class="navbar-brand text-white" href="/login" align="right" style="font-size: 22px">CERRAR SESIÓN</a>
       </div>
@@ -29,7 +28,7 @@
 <p style="color: green"><%= notice %></p>
 
 <!--Inicio del Body -->
-<h1 align="center"><b>MENÚ DE SUPERVISOR</b></h1>
+<h1 align="center"><b>MENÚ DE VENDEDOR</b></h1>
 <br>
   <div class="container">
     <div class="row">
@@ -37,17 +36,17 @@
         <div class="col">
             <div class="card" style="width: 22rem;background-color: #1D3153;" >
               
-            <% Supervisor.all.each do |uno| %>
-              <% if session[:userlog]==uno.id %>
+            <% Vendedor.all.each do |uno| %>
+              <% if session[:vendedo]==uno.id %>
               <% if uno.imagen.attached? %>
-                  <%= image_tag uno.imagen , class: "figure-img img-fluid rounded" %>
+              <%= image_tag uno.imagen , class: "figure-img img-fluid rounded" %>
               <% else %>
               
                   <%= image_tag uno.perfil.thumb.url, class: "figure-img img-fluid rounded"%>
               <%end %>
               
                     <div class="card-body" style="color: white">
-                      <h5 class="text-white" align="Center">Supervisor</h5>
+                      <h5 class="text-white" align="Center">Vendedor</h5>
                       <p>
                       <label>Nombre:</label>
                       
@@ -80,18 +79,17 @@
         <div class="col">
             <div class="row">
               <div class="col-lg-4"  >
-              <br><br>
-                <%= link_to "Agregar vendedor", new_vendedor_path,:class => "btn btn-primary" ,:style=> "background-color: #F79206; font-size: 22px; border: 0;height:110px; width:166px"  %> 
+              <br><br><br>
+                <!--  <button type="button" class="btn btn-primary" style="background-color: #F79206;">Registrar Supervisores</button>-->
+                <%= link_to "Registrar Pedido", ordens_path ,:class => "btn btn-primary" ,:style=> "background-color: #F79206; font-size: 22px; border: 0;"   %>
                 <br><br><br>
-	  						<%= link_to "Agregar productos", new_catalogo_path,:class => "btn btn-primary" ,:style=> "background-color: #F79206 ; font-size: 22px; border: 0;height:110px; width:166px"   %>
+
+                
+                
               </div>
   
               <div class="col-lg-4"  >
-              <br><br>
-                <!--  <button type="button" class="btn btn-primary" style="background-color: #F79206;">Registrar Supervisores</button>-->
-                <%= link_to "Registrar punto de venta", new_rventum_path,:class => "btn btn-primary" ,:style=> "background-color: #F79206; font-size: 22px; border: 0;  height:110px; width:166px"   %>
-                <br><br><br>
-
+              
               </div>
             </div>
         </div>

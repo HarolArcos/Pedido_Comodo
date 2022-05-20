@@ -9,19 +9,19 @@
 
 <body>
 <h1 align="center" style="margin-top: 78px"><b>Registro Punto de Venta</b></h1>
-<br><br>
+<br>
   <div class="conteiner" align="center">
 
     <%= form_with(model: rventum) do |form| %>
       
   </div>
 
-  <br> <br>
+  
 
 <div class="container d-flex justify-content-center " align="center" >
 
   <div class="row d-flex align-self-center justify-content-center ">
-  <div class="col-lg-4"  ><br>
+  <div class="col-lg-6"  ><br>
           
   
            <label for="validationCustom01" class="form-label  " style="position:relative;left:-88px" >Nombre</label>
@@ -37,7 +37,7 @@
            
       </div>
 
-  <div class="col-lg-4"  ><br>
+  <div class="col-lg-6"  ><br>
           <label for="validationCustom02" class="form-label" style="position:relative;left:-61px"  >Responsable</label>
           <br>
           <%= form.text_field :Responsable ,:style=>"background-color: #C4C4C4 ; border:0" %>
@@ -48,13 +48,13 @@
             </div>
       </div>
 
-  <div class="col-lg-4"  ><br>
+  <div class="col-lg-6"  ><br>
 
   
           <label for="validationCustom03" class="form-label" style="position:relative;left:-84px" style: "display: block">Teléfono</label>
           <br>
   
-          <%= form.phone_field :Telefono ,:style=>"background-color: #C4C4C4 ; border:0" %>
+          <%= form.number_field :Telefono ,:style=>"background-color: #C4C4C4 ; border:0" %>
           <div style="color: red">
           <% @rventum.errors[:Telefono].each do | msg| %>
             <p><%= msg %></p>
@@ -63,7 +63,7 @@
         </div>
  
 
-  <div class="col-lg-4"  ><br>
+  <div class="col-lg-6"  ><br>
 
   
           <label for="validationCustom02" class="form-label" style="position:relative;left:-110px" style: "display: block">Mail</label>
@@ -77,7 +77,7 @@
             </div>
         </div>
 
-  <div class="col-lg-4"  ><br>
+  <div class="col-lg-6"  ><br>
   
           <label for="validationCustom05" class="form-label" style="position:relative;left:-81px" style: "display: block">Dirección</label>
           <br>
@@ -91,32 +91,32 @@
 </div>
 </div>
 
-<br><br><br><br>
+<br><br>
 
   <div class="conteiner" align="center">
   
-    <label class="btn btn-primary" type="submit" style="background-color: #F79206; border:0;font-size: 22px;">
+    <label class="btn btn-primary" type="submit" style="background-color: #F79206; border:0;font-size: 22px;height:51px; width:260px">
     Seleccionar Imagen
     <span style="display:none; ">
       <%= form.file_field :imagen, id: "fileUploader"%>
-          <% @rventum.errors[:imagen].each do | msg| %>
-            <p><%= msg %></p>
-            <% end %>
+          
     </span>
     </label>
+    <div style="color: red">
     <% @rventum.errors[:imagen].each do | msg| %>
       <p><%= msg %></p>
       <% end %>
+      </div>
 
     
   
   <div><br>
   <% if session[:userlog]==-1 %>
-  <a href="/vendedors" class="btn btn-primary" style="background-color: #F79206; font-size: 22px; border: 0;">Cancelar</a>
+  <a href="/vendedors" class="btn btn-primary" style="background-color: #F71406; font-size: 22px; border: 0;height:51px; width:260px">Cancelar</a>
   <% else %>
-  <a href="/supervisors" class="btn btn-primary" style="background-color: #F79206; font-size: 22px; border: 0;">Cancelar</a>
+  <a href="/supervisors" class="btn btn-primary" style="background-color: #F71406; font-size: 22px; border: 0;height:51px; width:260px">Cancelar</a>
   <% end %>
-    <button class="btn btn-primary" type="submit" style="background-color: #F79206; font-size: 22px; border: 0;">Agregar Punto de Venta</button>
+    <button class="btn btn-primary" type="submit" style="background-color: #F79206; font-size: 22px; border: 0;height:51px; width:260px">Agregar punto de venta</button>
     
     <div>
   

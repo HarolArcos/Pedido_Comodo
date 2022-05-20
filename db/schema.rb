@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_04_002952) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_20_002036) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -49,12 +49,33 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_04_002952) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "catalogos", force: :cascade do |t|
+    t.string "nombre"
+    t.integer "codigo"
+    t.string "empresa"
+    t.integer "precio"
+    t.text "descripcion"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "companies", force: :cascade do |t|
     t.string "nombre"
     t.integer "nit"
     t.integer "telefono"
     t.string "mail"
     t.string "direccion"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "ordens", force: :cascade do |t|
+    t.string "nombre"
+    t.integer "precio"
+    t.integer "cantidad"
+    t.integer "total"
+    t.string "punto_venta"
+    t.string "responsable"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
