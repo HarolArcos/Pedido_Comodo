@@ -22,16 +22,27 @@ class CatalogosController < ApplicationController
   # POST /catalogos or /catalogos.json
   def create
     @catalogo = Catalogo.new(catalogo_params)
-
+    if session[:userlog]==-1
     respond_to do |format|
       if @catalogo.save
-        format.html { redirect_to catalogo_url(@catalogo), notice: "Catalogo was successfully created." }
+        format.html { redirect_to vendedors_path, notice: "Catalogo was successfully created." }
         format.json { render :show, status: :created, location: @catalogo }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @catalogo.errors, status: :unprocessable_entity }
       end
     end
+  else
+    respond_to do |format|
+      if @catalogo.save
+        format.html { redirect_to supervisors_path, notice: "Catalogo was successfully created." }
+        format.json { render :show, status: :created, location: @catalogo }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @catalogo.errors, status: :unprocessable_entity }
+      end
+    end
+  end
   end
 
   # PATCH/PUT /catalogos/1 or /catalogos/1.json

@@ -171,59 +171,13 @@ class Validar_Catalogo < ActiveModel::Validator
 class Catalogo < ApplicationRecord
     include ActiveModel::Validations
     has_one_attached:imagen
-    mount_uploader :perfil, PerfilUploader
+    
     
     validates_with Validar_Catalogo
     validates :nombre, :codigo, uniqueness: {message:"*Ya existe usuario"}
     
     
 
-    private 
     
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-    
-    def supervisor?
-     Supervisor.all.each do |supervisor|
-         if Mail == supervisor.Mail && Teléfono == supervisor.Teléfono.to_s
-         
-         return true 
-         else
-             return false
-         end
-      end
-
- end
- def vendedor?
-     Vendedor.all.each do |vendedor|
-         if Mail == vendedor.Mail && Teléfono == vendedor.Telefono.to_s
-         
-         return true 
-         else
-             return false
-         end
-      end
-
- end
- def administrador?
-     return Mail == "juantopo@gmail.com" 
-     
- end
     
 end
