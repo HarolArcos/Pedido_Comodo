@@ -8,6 +8,18 @@ class Validar_Pedido < ActiveModel::Validator
             if record.tiendita =~ /\A[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC\u00DC]{2,}(?:[\s-]{1}[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC\u00DC]{2,})?(?:[\s-]{1}[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC\u00DC]{2,})?(?:[\s-])?\z/
                 if record.tiendita.length()>21 
                     record.errors.add(:tiendita, "*Tiene que tener máximo 21 caracteres")
+                else
+                    nombr=nil
+                    Rventum.all.each do |nos|
+                        
+                        if record.nombre==nos.nombr
+                            nombr=nos
+                        end
+                    end
+                    if nombr!=nil
+                    else
+                        record.errors.add(:"tiendita", "*El punto de venta no está registrado en la base de datos")
+                    end
                 end
             else 
                 if record.tiendita.start_with?(" ")
@@ -53,6 +65,18 @@ else
         if record.responsable =~ /\A[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC\u00DC]{2,}(?:[\s-]{1}[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC\u00DC]{2,})?(?:[\s-]{1}[a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC\u00DC]{2,})?(?:[\s-])?\z/
             if record.responsable.length()>21 
                 record.errors.add(:responsable, "*Tiene que tener máximo 21 caracteres")
+            else
+                nombre=nil
+                Rventum.all.each do |no|
+                    
+                    if record.responsable==no.nombre
+                        nombre=no
+                    end
+                end
+                if nombre!=nil
+                else
+                    record.errors.add(:"responsable", "*El responsable no está en la base de datos")
+                end
             end
         else 
             if record.responsable.start_with?(" ")
