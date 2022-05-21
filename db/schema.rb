@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_20_002036) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_21_133943) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -76,6 +76,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_20_002036) do
     t.integer "total"
     t.string "punto_venta"
     t.string "responsable"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "rpedidos", force: :cascade do |t|
+    t.string "tiendita"
+    t.string "responsable"
+    t.string "id_producto"
+    t.string "cantidad"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

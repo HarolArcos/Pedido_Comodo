@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :rpedidos
   resources :ordens
   resources :catalogos
   resources :companies

@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @rpedido %>
+
+<div>
+  <%= link_to "Edit this rpedido", edit_rpedido_path(@rpedido) %> |
+  <%= link_to "Back to rpedidos", rpedidos_path %>
+
+  <%= button_to "Destroy this rpedido", @rpedido, method: :delete %>
+</div>

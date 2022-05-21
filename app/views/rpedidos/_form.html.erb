@@ -1,0 +1,37 @@
+<%= form_with(model: rpedido) do |form| %>
+  <% if rpedido.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(rpedido.errors.count, "error") %> prohibited this rpedido from being saved:</h2>
+
+      <ul>
+        <% rpedido.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :tiendita, style: "display: block" %>
+    <%= form.text_field :tiendita %>
+  </div>
+
+  <div>
+    <%= form.label :responsable, style: "display: block" %>
+    <%= form.text_field :responsable %>
+  </div>
+
+  <div>
+    <%= form.label :id_producto, style: "display: block" %>
+    <%= form.text_field :id_producto %>
+  </div>
+
+  <div>
+    <%= form.label :cantidad, style: "display: block" %>
+    <%= form.text_field :cantidad %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

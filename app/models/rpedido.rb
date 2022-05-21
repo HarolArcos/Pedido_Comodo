@@ -1,0 +1,2 @@
+class Rpedido < ApplicationRecord
+end
