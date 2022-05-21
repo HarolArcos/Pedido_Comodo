@@ -122,7 +122,6 @@ end
    
 class Rpedido < ApplicationRecord
     include ActiveModel::Validations
-    has_one_attached:imagen
     
     validates_with Validar_Pedido
 end
