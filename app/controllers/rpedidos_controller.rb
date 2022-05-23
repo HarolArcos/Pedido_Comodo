@@ -5,20 +5,28 @@ class RpedidosController < ApplicationController
   def index
     @rpedidos = Rpedido.all
   end
-  def agregar_producto
-    render "new"
-  end
+ 
 
 
   
 
   # GET /rpedidos/1 or /rpedidos/1.json
   def show
+    if session[:vendedo]!=nil
+      
+    else
+      render template: "login/formulario_login"
+    end
   end
 
   # GET /rpedidos/new
   def new
-    @rpedido = Rpedido.new
+    if session[:vendedo]!=nil
+      @rpedido = Rpedido.new
+    else
+      render template: "login/formulario_login"
+    end
+    
   end
 
   # GET /rpedidos/1/edit
@@ -78,7 +86,7 @@ class RpedidosController < ApplicationController
     @rpedido.destroy
 
     respond_to do |format|
-      format.html { redirect_to catalogos_path, notice: "Rpedido was successfully destroyed." }
+      format.html { redirect_to catalogos_path, notice: "" }
       format.json { head :no_content }
     end
   end

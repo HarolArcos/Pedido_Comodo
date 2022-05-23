@@ -1,5 +1,10 @@
 class AgregapController < ApplicationController
     def agregapro
+        if session[:vendedo]!=nil && session[:pedido]!=nil
+      
+        else
+            redirect_to catalogos_path
+        end
     end
     def agregap
         p=nil
@@ -17,19 +22,15 @@ class AgregapController < ApplicationController
             end
             
         end
-        puts params["#{p.nombre}"]
-        puts params["#{p.nombre}"]
-        puts params["#{p.nombre}"]
-        puts params["#{p.nombre}"]
-        puts params["#{p.nombre}"]
-        g = params["#{p.nombre}"]
+        
+       
         if  p!=nil
             if pp!=nil
                 @pend = "solo deve ingresar la catidad de un producto a la vez"
                 render "agregapro"
             else
 
-            
+                g = params["#{p.nombre}"]
                 rpedido = Rpedido.find(session[:pedido])
                 detalle = Detallep.new
                 detalle.cantidad = g.to_i
@@ -44,7 +45,7 @@ class AgregapController < ApplicationController
             redirect_to rpedido_path(session[:pedido])
             end
         else
-            @pend= "debe ingresar la cantidad de el producto que sea en su campo correspondiente"
+            @pend= "debe ingresar la cantidad de el producto que sea en su campo"
             render "agregapro"
         end
 

@@ -21,7 +21,7 @@ class LoginController < ApplicationController
             if usuario !=nil && usuario.Teléfono.to_s==params[:password]
                 session[:userlog]=usuario.id
                 
-                    render template: "supervisors/index"
+                redirect_to supervisors_path
                 
                     
                         
@@ -32,7 +32,7 @@ class LoginController < ApplicationController
                 
                 if params[:ail] == "juantopo@gmail.com" && params[:password]=="74185296"
                     session[:userlog]=-1
-                    render template: "vendedors/index"
+                    redirect_to vendedors_path
                 else
                 #if usuario.vendedor?
                     #render template: "vendedors/index"
@@ -44,7 +44,7 @@ class LoginController < ApplicationController
                     end
                     if usuario !=nil && usuario.Telefono.to_s==params[:password]
                         session[:vendedo]=usuario.id
-                        render template: "catalogos/index"
+                        redirect_to catalogos_path
                     else
                                 if params[:ail] == "" || params[:password] == ""
                                         @error = "Todos los compos son obligatorios"
