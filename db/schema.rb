@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_20_002036) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_22_221002) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -69,6 +69,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_20_002036) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "detalleps", force: :cascade do |t|
+    t.integer "cantidad"
+    t.integer "catalogo_id", null: false
+    t.integer "rpedido_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["catalogo_id"], name: "index_detalleps_on_catalogo_id"
+    t.index ["rpedido_id"], name: "index_detalleps_on_rpedido_id"
+  end
+
   create_table "ordens", force: :cascade do |t|
     t.string "nombre"
     t.integer "precio"
@@ -76,6 +86,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_20_002036) do
     t.integer "total"
     t.string "punto_venta"
     t.string "responsable"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "rpedidos", force: :cascade do |t|
+    t.string "tiendita"
+    t.string "responsable"
+    t.string "id_producto"
+    t.string "cantidad"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -125,4 +144,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_20_002036) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "detalleps", "catalogos"
+  add_foreign_key "detalleps", "rpedidos"
 end

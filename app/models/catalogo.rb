@@ -171,6 +171,7 @@ class Validar_Catalogo < ActiveModel::Validator
 class Catalogo < ApplicationRecord
     include ActiveModel::Validations
     has_one_attached:imagen
+    has_many :detallep
     
     
     validates_with Validar_Catalogo

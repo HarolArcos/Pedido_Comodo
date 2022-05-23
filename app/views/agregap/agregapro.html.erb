@@ -1,0 +1,170 @@
+<link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet'>
+<style>
+  body {
+    font-family: 'Comfortaa';font-size: 22px;
+  }
+</style>
+<!--Inicio de la barra de navegacion-->
+    <nav class="navbar" style="background-color: #1D3153;">
+      <div class="container-fluid">
+      <a class="navbar-brand" href="" >
+      <label class="btn" style="padding:0px;border:0px">
+      <img src="/assets/a-d9abbccf6ec068c782702faf5587c416d15fba6911666a57be0c9ccd3e2128c6.png" alt="" width="200" height="100" style="object-fit: cover;">
+      <span style="display:none; ">
+      <%= button_to "Destroy this rpedido", Rpedido.find(session[:pedido]), method: :delete %>
+    
+        
+  </span>
+        </a>
+        <a class="navbar-brand text-white" href="/login" align="right">CERRAR SESIÓN</a>
+      </div>
+    </nav>
+<!--Fin de la barra de navegacion-->
+
+<br><br>
+
+
+
+
+
+
+<%= form_with url: "/agregap", method: :post do |form| %>
+
+
+<div class="container-fluid" style="width: 90%;">
+<div class="row row-cols-6">
+      <div style="padding: 10px; text-align: center; border: 1px #212529 solid;">
+      Nombre producto
+      </div>
+      <div style="padding: 10px; text-align: center; border: 1px #212529 solid;">
+      Codigo
+      </div>
+      <div style="padding: 10px; text-align: center; border: 1px #212529 solid;">
+      Empresa
+      </div>
+      <div style="padding: 10px; text-align: center; border: 1px #212529 solid;">
+      Precio 
+      </div>
+      <div>
+      </div>
+      <div>
+      </div>
+<% Catalogo.all.each do |su|%>
+  <% if Rpedido.find(session[:pedido]).detallep.exists?%>
+  <% a= Rpedido.find(session[:pedido]).detallep%>
+  <% r=nil%>
+  <% a.each do |s|%>
+    <% if s.catalogo.id == su.id%>
+    <% r=s%>
+    <% end%>
+  <% end%>
+  <% if r!=nil%>
+  <% else%>
+  <div style="padding: 10px; text-align: center; border: 1px #212529 solid;">
+                
+  <%= su.nombre %>
+
+
+  </div>
+  <div style="padding: 10px; text-align: center; border: 1px #212529 solid;">
+  
+  
+  <%= su.codigo %>
+
+
+  </div>
+  <div style="padding: 10px; text-align: center; border: 1px #212529 solid;">
+  
+  
+  <%= su.empresa %>
+
+  </div>
+  <div style="padding: 10px; text-align: center; border: 1px #212529 solid;">
+  
+
+  
+  <%= su.precio %>
+  <% @producto= su.id %>
+  </div>
+  
+  <div >
+  <!--input style="background-color: #C4C4C4 ; border:0" type="number" name="supervisor[Teléfono]" id="supervisor_Teléfono"-->
+  <input style="background-color: #C4C4C4 ; border:0;height:25px; width:80px "  type="number" name="<%=su.nombre%>" id= "<%=su.nombre%>" >
+  <button class="btn btn-primary" type="submit" style="background-color: #F79206; font-size: 22px; border: 0;">Agregar</button>
+  </div>
+  <div>
+
+  
+  
+  
+  </div>
+    
+    <% end%>
+
+  <%else%>
+    
+
+            <div style="padding: 10px; text-align: center; border: 1px #212529 solid;">
+                
+            <%= su.nombre %>
+
+
+            </div>
+            <div style="padding: 10px; text-align: center; border: 1px #212529 solid;">
+            
+            
+            <%= su.codigo %>
+
+
+            </div>
+            <div style="padding: 10px; text-align: center; border: 1px #212529 solid;">
+            
+            
+            <%= su.empresa %>
+
+            </div>
+            <div style="padding: 10px; text-align: center; border: 1px #212529 solid;">
+            
+
+            
+            <%= su.precio %>
+            <% @producto= su.id %>
+            </div>
+            
+            <div >
+            <!--input style="background-color: #C4C4C4 ; border:0" type="number" name="supervisor[Teléfono]" id="supervisor_Teléfono"-->
+            <input style="background-color: #C4C4C4 ; border:0;height:25px; width:80px "  type="number" name="<%=su.nombre%>" id= "<%=su.nombre%>" >
+            <button class="btn btn-primary" type="submit" style="background-color: #F79206; font-size: 22px; border: 0;">Agregar</button>
+            </div>
+            <div>
+
+            
+            
+            
+            </div>
+    
+  <% end%>
+  
+
+
+
+<% end%>
+</div>
+
+</div>
+
+
+
+<br>
+
+<div class="conteiner" align="center">
+<div style="color: red">
+<%= @pend%>
+    </div>
+
+<div>
+<%= link_to "Cancelar", rpedido_path(session[:pedido]),:class => "btn btn-primary" ,:style=> "background-color: #F71406 ; font-size: 22px; border: 0;"   %>
+
+</div>
+
+<% end%>

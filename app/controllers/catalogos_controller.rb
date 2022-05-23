@@ -4,6 +4,7 @@ class CatalogosController < ApplicationController
   # GET /catalogos or /catalogos.json
   def index
     if session[:vendedo] != nil
+      session[:pedido]=nil
     @catalogos = Catalogo.all
   else
     render template: "login/formulario_login"

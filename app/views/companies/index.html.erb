@@ -147,6 +147,103 @@
   </div>
   
     <% end%>
+
+
+
+
+     <h1>Supervisores</h1>
+
+  <div class="container d-flex justify-content-center "  >
+    <div class="row d-flex align-self-center justify-content-center "> 
+  <% Supervisor.all.each do |su|%>
+    
+     <div class="col-lg-4" style="width: 22rem" >
+    <% if su.imagen.attached? %>
+    
+    <%= image_tag su.imagen , class: "figure-img img-fluid rounded"%>
+    <% else %>
+  <%= image_tag su.perfil.thumb.url, class: "figure-img img-fluid rounded"%>
+  <%end %>
+ 
+
+  <p>
+  <strong>Nombre:</strong>
+  <%= su.Nombre %>
+</p>
+
+<p>
+  <strong>Apellido paterno:</strong>
+  <%= su.Apellido_Paterno %>
+</p>
+
+<p>
+  <strong>Apellido materno:</strong>
+  <%= su.Apellido_Materno %>
+</p>
+
+<p>
+  <strong>Teléfono:</strong>
+  <%= su.Teléfono %>
+</p>
+
+<p>
+  <strong>Mail:</strong>
+  <%= su.Mail %>
+</p>
+
+<p>
+  <strong>Dirección:</strong>
+  <%= su.Dirección %>
+</p>
+  </div>
+  
+    <% end%>
+
+
+
+    </div>
+  </div>
+
+
+
+
+  <h1>punto de venta</h1>
+
+  <div class="container d-flex justify-content-center "  >
+    <div class="row d-flex align-self-center justify-content-center "> 
+  <% Rventum.all.each do |su|%>
+    
+     <div class="col-lg-4" style="width: 22rem" >
+     <p>
+     <strong>Nombre:</strong>
+     <%= su.Nombre %>
+   </p>
+ 
+   <p>
+     <strong>Responsable:</strong>
+     <%= su.Responsable %>
+   </p>
+ 
+   <p>
+     <strong>Telefono:</strong>
+     <%= su.Telefono %>
+   </p>
+ 
+   <p>
+     <strong>Mail:</strong>
+     <%= su.Mail %>
+   </p>
+ 
+   <p>
+     <strong>Direccion:</strong>
+     <%= su.Direccion %>
+   </p>
+  </div>
+  
+    <% end%>
+
+
+
     </div>
   </div>
 

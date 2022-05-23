@@ -149,7 +149,7 @@ else
                     record.errors.add(:"Telefono", "*Ya existe este número")
                 end
             end
-            if record.Telefono=="74185296"
+            if record.Telefono.to_s=="74185296"
                 record.errors.add(:"Telefono", "*Ya existe este número")
             end
             if record.Telefono > 59999999 && record.Telefono < 80000000 
@@ -243,7 +243,7 @@ include ActiveModel::Validations
     mount_uploader :perfil, PerfilUploader
     
     validates_with Validar_Nombre3 
-    validates :Telefono, :Mail, uniqueness: {message:"*Ya existe este Mail"}
+    validates :Telefono, :Mail, uniqueness: {message:"*Ya existe este en la base de datos"}
     
     validate :formato_correcto
 

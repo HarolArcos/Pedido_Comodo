@@ -1,0 +1,76 @@
+<head>
+  <link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet'>
+<style>
+  body {
+    font-family: 'Comfortaa';font-size: 22px;
+  }
+</style>
+
+</head>
+<body>
+
+
+<h1 align="center" style="margin-top: 78px"><b>Nuevo Pedido</b></h1>
+<br>
+<div class="conteiner" align="center">
+<%= form_with(model: rpedido) do |form| %>
+  <% if rpedido.errors.any? %>
+    <div style="color: red">
+     
+
+      <ul>
+      
+      </ul>
+    </div>
+  <% end %>
+  </div>
+  
+
+<div class="container d-flex justify-content-center " align="center" >
+
+  <div class="row d-flex align-self-center justify-content-center ">
+    
+      <div class="col-lg-8"  ><br>
+           <label for="validationCustom01" class="form-label  " style="position:relative;left:-88px" >Nombre</label>
+           <br>
+           <%= form.text_field :responsable ,:style=>"background-color: #C4C4C4 ; border:0" %>
+           <div style="color: red">
+          <% @rpedido.errors[:responsable].each do | msg| %>
+            <p><%= msg %></p>
+            <% end %>
+            </div>
+      </div>
+  
+      <div class="col-lg-8"  ><br>
+          <label for="validationCustom02" class="form-label" style="position:relative;left:-38px"  >Tienda</label>
+          <br>
+          <%= form.text_field :tiendita ,:style=>"background-color: #C4C4C4 ; border:0" %>
+           <div style="color: red">
+          <% @rpedido.errors[:tiendita].each do | msg| %>
+            <p><%= msg %></p>
+            <% end %>
+            </div>
+          </div>
+    </div>
+</div>
+
+<br><br>
+
+<div class="conteiner" align="center">
+  
+
+  
+    <div><br>
+    
+      <a href="/catalogos" class="btn btn-primary" style="background-color: #F71406; font-size: 22px; border: 0; height:51px; width:260px">Cancelar</a>
+    
+      <button class="btn btn-primary" type="submit" style="background-color: #F79206; font-size: 22px; border: 0; height:51px; width:260px">Continuar</button>
+    
+    <div>
+  
+    </div>
+   </div>
+   <% end %>
+   
+<br>
+</body>
