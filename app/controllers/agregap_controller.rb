@@ -11,7 +11,7 @@ class AgregapController < ApplicationController
         pp=nil
 
         Catalogo.all.each do |su|    
-            if params["#{su.nombre}"]!=""
+            if params["#{su.nombre}"]!="" && params["#{su.nombre}"]!=nil
                 if p==nil
                 p= su
                 else
@@ -39,6 +39,7 @@ class AgregapController < ApplicationController
                 detalle.save
                 rpedido.detallep.push(detalle)
                 rpedido.save
+                
             
             
             
