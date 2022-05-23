@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   root "login#formulario_login"
   get "login", to: "login#formulario_login"
   post "login", to: "login#login"
+  get "agregap", to: "agregap#agregapro"
+  post "agregap", to: "agregap#agregap"
   get "main", to: "usuario#menuprincipal"
   get "fil", to: "usuario#f"
   resources :usuarios

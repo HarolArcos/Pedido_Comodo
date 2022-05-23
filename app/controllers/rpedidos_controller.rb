@@ -5,6 +5,12 @@ class RpedidosController < ApplicationController
   def index
     @rpedidos = Rpedido.all
   end
+  def agregar_producto
+    render "new"
+  end
+
+
+  
 
   # GET /rpedidos/1 or /rpedidos/1.json
   def show
@@ -38,9 +44,26 @@ class RpedidosController < ApplicationController
   def update
     respond_to do |format|
       if @rpedido.update(rpedido_params)
-        format.html { redirect_to rpedido_url(@rpedido), notice: "Rpedido was successfully updated." }
-        format.json { render :show, status: :ok, location: @rpedido }
+        @detalle = Detallep
+        @detalle.catalogo = Catalogo.find(@producto)
+        @detalle.cantidad = params[@producto]
+        @detalle.save
+        @rpedido.detallep.push(@detalle)
+        @rpedido.save
       else
+        if @producto==2
+          @error1=123456789
+        end
+        @error1=12345678888889
+        
+        puts @error1
+        puts @error1
+        @error1= params[:pito]
+        puts @error1
+        puts @producto
+        puts @error1
+        puts @error1
+        puts @error1
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @rpedido.errors, status: :unprocessable_entity }
       end
@@ -49,10 +72,13 @@ class RpedidosController < ApplicationController
 
   # DELETE /rpedidos/1 or /rpedidos/1.json
   def destroy
+    @rpedido.detallep.each do |det|
+      det.destroy
+    end
     @rpedido.destroy
 
     respond_to do |format|
-      format.html { redirect_to rpedidos_url, notice: "Rpedido was successfully destroyed." }
+      format.html { redirect_to catalogos_path, notice: "Rpedido was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -65,6 +91,6 @@ class RpedidosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def rpedido_params
-      params.require(:rpedido).permit(:tiendita, :responsable, :id_producto, :cantidad)
+      params.require(:rpedido).permit(:tiendita, :responsable, :id_producto, :cantidad )
     end
 end

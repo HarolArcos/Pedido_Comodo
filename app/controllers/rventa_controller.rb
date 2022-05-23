@@ -99,6 +99,6 @@ class RventaController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def rventum_params
-      params.require(:rventum).permit(:Nombre, :Responsable, :Telefono, :Mail, :Direccion)
+      params.require(:rventum).permit(:Nombre, :Responsable, :Telefono, :Mail, :Direccion, :imagen)
     end
 end

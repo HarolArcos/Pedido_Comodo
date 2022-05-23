@@ -27,7 +27,7 @@
 
 
 
-
+<%= form_with url: "/agregap", method: :post do |form| %>
 
 
 <div class="container-fluid" style="width: 90%;">
@@ -49,46 +49,49 @@
       <div>
       </div>
 <% Catalogo.all.each do |su|%>
+    <% a = Rpedido.find(session[:pedido]).detallep.find(su.id)%>
+    <%if a==nil%>
 
 
-
-<div style="padding: 10px; text-align: center; border: 1px #212529 solid;">
-      
- <%= su.nombre %>
-
-
- </div>
- <div style="padding: 10px; text-align: center; border: 1px #212529 solid;">
- 
- 
- <%= su.codigo %>
+            <div style="padding: 10px; text-align: center; border: 1px #212529 solid;">
+                
+            <%= su.nombre %>
 
 
- </div>
- <div style="padding: 10px; text-align: center; border: 1px #212529 solid;">
- 
- 
- <%= su.empresa %>
+            </div>
+            <div style="padding: 10px; text-align: center; border: 1px #212529 solid;">
+            
+            
+            <%= su.codigo %>
 
- </div>
- <div style="padding: 10px; text-align: center; border: 1px #212529 solid;">
- 
 
- 
- <%= su.precio %>
- <% @producto= su.id %>
- </div>
- 
- <div >
- <!--input style="background-color: #C4C4C4 ; border:0" type="number" name="supervisor[Teléfono]" id="supervisor_Teléfono"-->
- <input style="background-color: #C4C4C4 ; border:0;height:25px; width:80px "  type="number" name="<%=su.nombre%>" id= "<%=su.nombre%>" >
- <a href="/catalogos" class="btn btn-primary" style="background-color: #F79206; font-size: 22px; border: 0;">Agregar</a> 
- </div>
-  <div>
+            </div>
+            <div style="padding: 10px; text-align: center; border: 1px #212529 solid;">
+            
+            
+            <%= su.empresa %>
 
-  <%= link_to "Agregara", rpedido_path(@producto),:class => "btn btn-primary" ,:style=> "background-color: #F79206 ; font-size: 22px; border: 0;"   %>
-  
-  </div>
+            </div>
+            <div style="padding: 10px; text-align: center; border: 1px #212529 solid;">
+            
+
+            
+            <%= su.precio %>
+            <% @producto= su.id %>
+            </div>
+            
+            <div >
+            <!--input style="background-color: #C4C4C4 ; border:0" type="number" name="supervisor[Teléfono]" id="supervisor_Teléfono"-->
+            <input style="background-color: #C4C4C4 ; border:0;height:25px; width:80px "  type="number" name="<%=su.nombre%>" id= "<%=su.nombre%>" >
+            <button class="btn btn-primary" type="submit" style="background-color: #F79206; font-size: 22px; border: 0;">Agregar</button>
+            </div>
+            <div>
+
+            
+            
+            
+            </div>
+    <% end%>
 
   
 
@@ -99,32 +102,15 @@
 
 </div>
 
-<%= @producto%><%= @producto%><%= @producto%>
+<%= @pend%>
+
 <br>
 
 <div class="conteiner" align="center">
 
 <div>
-<%= link_to "Cancelar", @rpedido,:class => "btn btn-primary" ,:style=> "background-color: #F71406 ; font-size: 22px; border: 0;"   %>
+<%= link_to "Cancelar", rpedido_path(session[:pedido]),:class => "btn btn-primary" ,:style=> "background-color: #F71406 ; font-size: 22px; border: 0;"   %>
 
 </div>
-</div>
 
-
-
-
-
-
-
-
-
-<h1>Editing rpedido</h1>
-
-<%= render "form", rpedido: @rpedido %>
-
-<br>
-
-<div>
-  <%= link_to "Show this rpedido", @rpedido %> |
-  <%= link_to "Back to rpedidos", rpedidos_path %>
-</div>
+<% end%>
