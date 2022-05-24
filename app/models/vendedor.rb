@@ -218,7 +218,20 @@ if record.Direccion==nil || record.Direccion==""
     record.errors.add(:"Dirección", "*Campo obligatorio")
 else
     if record.Direccion =~ /https:\/\/goo.gl\/maps/ || record.Direccion =~ /https:\/\/maps.app.goo.gl/
-        
+        req=nil
+            req = Net::HTTP.get_response(URI(record.Direccion))
+            
+            case req
+            when Net::HTTPSuccess then
+              req
+            when Net::HTTPRedirection then
+                
+              #location = req['location']
+              #warn "redirected to #{location}"
+              #fetch(location, limit - 1)
+            else
+                record.errors.add(:Dirección, "*Debe poner un link correcto")
+            end
     else 
         if record.Direccion.start_with?(" ")
             record.errors.add(:Dirección, "*No debe iniciar con un espacio")
