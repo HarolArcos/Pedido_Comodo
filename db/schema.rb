@@ -79,15 +79,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_22_221002) do
     t.index ["rpedido_id"], name: "index_detalleps_on_rpedido_id"
   end
 
-  create_table "empresas", force: :cascade do |t|
-    t.string "codigo"
-    t.string "nombre"
-    t.integer "telefono"
-    t.string "direccion"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "ordens", force: :cascade do |t|
     t.string "nombre"
     t.integer "precio"
