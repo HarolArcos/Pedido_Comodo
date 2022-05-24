@@ -144,7 +144,22 @@ class Validar_Nombree < ActiveModel::Validator
        record.errors.add(:"Direccion", "*Campo obligatorio")
    else
        if record.Direccion =~ /https:\/\/goo.gl\/maps/ || record.Direccion =~ /https:\/\/maps.app.goo.gl/
-           
+        req=nil
+        req = Net::HTTP.get_response(URI(record.Direccion))
+        
+        case req
+        when Net::HTTPSuccess then
+          req
+        when Net::HTTPRedirection then
+            
+          #location = req['location']
+          #warn "redirected to #{location}"
+          #fetch(location, limit - 1)
+        else
+            record.errors.add(:Direccion, "*Debe poner un link correcto")
+        end
+    
+
        else 
         if record.Direccion.start_with?(" ")
             record.errors.add(:Direccion, "*No debe iniciar con un espacio")
