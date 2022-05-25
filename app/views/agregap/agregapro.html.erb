@@ -16,12 +16,14 @@
         
   </span>
         </a>
-        <a class="navbar-brand text-white" href="/login" align="right">CERRAR SESIÓN</a>
+        <a class="navbar-brand text-white" href="/login" align="right" style="font-size: 22px">CERRAR SESIÓN</a>
       </div>
     </nav>
 <!--Fin de la barra de navegacion-->
 
-<br><br>
+<br>
+<h1 align="center" style="margin-top: 78px"><b>Reporte Pedido</b></h1>
+<br>
 
 
 
@@ -32,7 +34,7 @@
 
 
 <div class="container-fluid" style="width: 90%;">
-<div class="row row-cols-6">
+<div class="row row-cols-5">
       <div style="padding: 10px; text-align: center; border: 1px #212529 solid;">
       Nombre producto
       </div>
@@ -45,10 +47,10 @@
       <div style="padding: 10px; text-align: center; border: 1px #212529 solid;">
       Precio 
       </div>
-      <div>
+      <div style="padding: 10px; text-align: center; border: 1px #212529 solid;width:140px">
+      Cantidad 
       </div>
-      <div>
-      </div>
+      
 <% Catalogo.all.each do |su|%>
   <% if Rpedido.find(session[:pedido]).detallep.exists?%>
   <% a= Rpedido.find(session[:pedido]).detallep%>
@@ -88,16 +90,11 @@
   </div>
   
   <div >
-  <!--input style="background-color: #C4C4C4 ; border:0" type="number" name="supervisor[Teléfono]" id="supervisor_Teléfono"-->
-  <input style="background-color: #C4C4C4 ; border:0;height:25px; width:80px "  type="number" name="<%=su.nombre%>" id= "<%=su.nombre%>" >
-  <button class="btn btn-primary" type="submit" style="background-color: #F79206; font-size: 22px; border: 0;">Agregar</button>
-  </div>
-  <div>
-
-  
-  
-  
-  </div>
+            <!--input style="background-color: #C4C4C4 ; border:0" type="number" name="supervisor[Teléfono]" id="supervisor_Teléfono"-->
+            <input style="background-color: #C4C4C4 ; border:0;height:25px; width:140px "  type="number" name="<%=su.nombre%>" id= "<%=su.nombre%>" >
+            <button class="btn btn-primary" type="submit" style="background-color: #F79206; font-size: 22px; border: 0;">Agregar</button>
+            
+            </div>
     
     <% end%>
 
@@ -133,15 +130,11 @@
             
             <div >
             <!--input style="background-color: #C4C4C4 ; border:0" type="number" name="supervisor[Teléfono]" id="supervisor_Teléfono"-->
-            <input style="background-color: #C4C4C4 ; border:0;height:25px; width:80px "  type="number" name="<%=su.nombre%>" id= "<%=su.nombre%>" >
+            <input style="background-color: #C4C4C4 ; border:0;height:25px; width:140px "  type="number" name="<%=su.nombre%>" id= "<%=su.nombre%>" >
             <button class="btn btn-primary" type="submit" style="background-color: #F79206; font-size: 22px; border: 0;">Agregar</button>
-            </div>
-            <div>
-
-            
-            
             
             </div>
+            
     
   <% end%>
   

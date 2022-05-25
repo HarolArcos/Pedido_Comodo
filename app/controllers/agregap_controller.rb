@@ -26,11 +26,16 @@ class AgregapController < ApplicationController
        
         if  p!=nil
             if pp!=nil
-                @pend = "solo deve ingresar la catidad de un producto a la vez"
+                @pend = "*Solo deve ingresar la catidad de un producto a la vez"
                 render "agregapro"
             else
-
                 g = params["#{p.nombre}"]
+                if g.to_i == 0
+                    @pend = "*Debe ingresar un cantidad mayor a 0"
+                    render "agregapro"
+                else
+
+                
                 rpedido = Rpedido.find(session[:pedido])
                 detalle = Detallep.new
                 detalle.cantidad = g.to_i
@@ -40,13 +45,15 @@ class AgregapController < ApplicationController
                 rpedido.detallep.push(detalle)
                 rpedido.save
                 
+                
             
             
             
-            redirect_to rpedido_path(session[:pedido])
+                    redirect_to rpedido_path(session[:pedido])
+                end
             end
         else
-            @pend= "debe ingresar la cantidad de el producto que sea en su campo"
+            @pend= "*Cantidad no ingresa"
             render "agregapro"
         end
 

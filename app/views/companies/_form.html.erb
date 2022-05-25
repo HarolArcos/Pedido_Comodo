@@ -54,7 +54,7 @@
       <label for="validationCustom03" class="form-label" style="position:relative;left:-114px" style: "display: block">NIT</label>
       <br>
 
-      <%= form.text_field :nit ,:style=>"background-color: #C4C4C4 ; border:0" %>
+      <%= form.number_field :nit ,:style=>"background-color: #C4C4C4 ; border:0" %>
       <div style="color: red">
       
         <% @company.errors[:nit].each do | msg| %>

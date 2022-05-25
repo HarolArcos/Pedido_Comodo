@@ -72,7 +72,7 @@ class Validar_Nombre5 < ActiveModel::Validator
      if record.nit==nil || record.nit==""
         record.errors.add(:nit, "*Campo obligatorio")
     else
-        if record.nit > 0
+        
             if record.nit.digits.count()>5
                 if record.nit.digits.count()<22
                     
@@ -82,9 +82,7 @@ class Validar_Nombre5 < ActiveModel::Validator
             else
                 record.errors.add(:nit,"*Tiene que tener mínimo 6 dígitos")
             end
-        else
-            record.errors.add(:nit,"*Solo acepta dígitos numéricos")
-        end
+        
     end
    #validaciones de Mail
    if record.mail==nil || record.mail==""

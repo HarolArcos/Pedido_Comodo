@@ -95,13 +95,55 @@
 
   <div class="conteiner" align="center">
   
-    <label class="btn btn-primary" type="submit" style="background-color: #F79206; border:0;font-size: 22px;height:51px; width:260px">
-    Seleccionar Imagen
-    <span style="display:none; ">
-      <%= form.file_field :imagen, id: "fileUploader"%>
-          
-    </span>
-    </label>
+  <meta charset="utf-8">
+  <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+  <style>
+     
+      #listFile {                
+          font-size:22px;
+          margin:5px 0px;
+      }
+      form {
+          margin:10px;
+      }
+  </style>
+  <script>
+      $(document).ready(function(){    
+
+          // Cuando se modifique el input type=file se pone el nombre del
+          // archivo seleccionado en el div listFile
+          $("#rventum_imagen").change(function(){
+              if($(this).val())
+              {
+                  // Si tiene valor, se muestra en div
+                  $("#listFile").html($(this).val());
+              }else{
+                  // Si no tiene valor, se muestran los puntos ...
+                  $("#listFile").html("");
+              }
+          });
+      });
+  </script>
+</head>
+
+
+
+  
+
+  
+
+      
+  <label class="btn btn-primary" type="submit" style="background-color: #F79206; border:0;font-size: 22px; height:51px; width:260px">
+  Seleccionar Imagen
+  <span style="display:none; ">
+    <%= form.file_field :imagen%>
+    
+        
+  </span>
+  </label>
+
+      <!-- muestra el archivo seleccionado -->
+      <div id="listFile"></div>
     <div style="color: red">
     <% @rventum.errors[:imagen].each do | msg| %>
       <p><%= msg %></p>
