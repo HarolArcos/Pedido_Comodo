@@ -132,19 +132,11 @@ class Validar_Catalogo < ActiveModel::Validator
         record.errors.add(:precio, "*Campo obligatorio")
     else
         if record.precio > 0
-        
-            if record.precio.digits.count() < 5
-                if record.precio > 0 && record.precio < 1001 
-                    
-                    
+                if record.precio < 10000    
                 else
-                       record.errors.add(:precio,"*El máximo valor de un producto es 1000 Bs.")
-    
-                  
+                       record.errors.add(:precio,"*El máximo valor de un producto es 9999.99 Bs.")
+      
                 end
-            else
-                record.errors.add(:precio,"*El máximo valor de un producto es 999 Bs.")
-            end
         else
             if record.precio <= 0
             record.errors.add(:precio,"*El valor mínimo de un producto es de 1 Bs.")
