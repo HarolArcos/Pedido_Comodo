@@ -9,6 +9,11 @@ class Validar_Nombre5 < ActiveModel::Validator
                 if record.nombre.length()>21 
                     record.errors.add(:nombre, "*Tiene que tener máximo 21 caracteres")
                 end
+                Company.all.each do |com|
+                    if com.nombre.upcase == record.nombre.upcase
+                        record.errors.add(:nombre, "*Ya existe en la base de datos")
+                    end
+                end
             else 
                 if record.nombre.start_with?(" ")
                     record.errors.add(:nombre, "*No debe iniciar con un espacio")
@@ -153,6 +158,6 @@ class Validar_Nombre5 < ActiveModel::Validator
    include ActiveModel::Validations
        
        validates_with Validar_Nombre5
-       validates :telefono, :mail, :nombre, :nit, uniqueness: {message:"*Ya existe una empresa con esta información"}
+       validates :telefono, :mail, :nit,:direccion, uniqueness: {message:"*Ya existe una empresa con esta información"}
        
    end
