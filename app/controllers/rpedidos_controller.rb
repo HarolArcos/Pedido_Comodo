@@ -39,7 +39,7 @@ class RpedidosController < ApplicationController
 
     respond_to do |format|
       if @rpedido.save
-        format.html { redirect_to rpedido_url(@rpedido), notice: "Rpedido was successfully created." }
+        format.html { redirect_to rpedido_url(@rpedido), notice: "Se ha registrado el pedido" }
         format.json { render :show, status: :created, location: @rpedido }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -86,7 +86,7 @@ class RpedidosController < ApplicationController
     @rpedido.destroy
 
     respond_to do |format|
-      format.html { redirect_to catalogos_path, notice: "" }
+      format.html { redirect_to catalogos_path, notice: "No se registro el pedido" }
       format.json { head :no_content }
     end
   end

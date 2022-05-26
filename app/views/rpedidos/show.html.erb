@@ -3,9 +3,7 @@
 <%= render @rpedido %>
 
 <div class="conteiner" align="center">
- 
-  
-  <a href="/catalogos" class="btn btn-primary" style="background-color: #F79206; font-size: 22px; border: 0;">Finalizar</a>
+
   <label class="btn btn-primary" type="submit" style="background-color: #F71406; border:0;font-size: 22px; ">
     Cancelar
     <span style="display:none; ">
@@ -14,7 +12,20 @@
           
     </span>
     </label>
-  
+    
+  <%if @rpedido.detallep.exists?%>
+  <a href="/catalogos" class="btn btn-primary" style="background-color: #F79206; font-size: 22px; border: 0;">Finalizar</a>  
+  <%else%>
+  <label class="btn btn-primary" type="submit" style="background-color: #F79206; border:0;font-size: 22px; ">
+  Finalizar
+    <span style="display:none; ">
+    <%= button_to "Destroy this rpedido", @rpedido, method: :delete %>
+      
+          
+    </span>
+    </label>
+  <%end%>
     
     
 </div>
+<br>

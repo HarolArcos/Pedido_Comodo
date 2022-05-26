@@ -140,18 +140,18 @@ else
         if record.Telefono.digits.count()==8
             Supervisor.all.each do |ss|
                 if record.Telefono==ss.Teléfono
-                    record.errors.add(:"Telefono", "*Ya existe este número")
+                    record.errors.add(:"Telefono", "*Ya existe en la base de datos")
                 end
             end
             
             Company.all.each do |ss|
                 if record.Telefono==ss.telefono
-                    record.errors.add(:"Telefono", "*Ya existe este número")
+                    record.errors.add(:"Telefono", "*Ya existe en la base de datos")
                 end
             end
-            if record.Telefono.to_s=="74185296"
-                record.errors.add(:"Telefono", "*Ya existe este número")
-            end
+                if record.Telefono.to_s=="74185296"
+                    record.errors.add(:"Telefono", "*Ya existe en la base de datos")
+                end
             if record.Telefono > 59999999 && record.Telefono < 80000000 
                 
                 
@@ -177,17 +177,17 @@ else
     if record.Mail =~ /\A\w+(\.*)\w*+([@\s]*)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
         Supervisor.all.each do |ss|
             if record.Mail==ss.Mail
-                record.errors.add(:"Mail", "*Ya existe este Mail")
+                record.errors.add(:"Mail", "*Ya existe en la base de datos")
             end
         end
         
         Company.all.each do |ss|
             if record.Mail==ss.mail
-                record.errors.add(:"Mail", "*Ya existe este Mail")
+                record.errors.add(:"Mail", "*Ya existe en la base de datos")
             end
         end
         if record.Mail=="juantopo@gmail.com"
-            record.errors.add(:"Mail", "*Ya existe este Mail")
+            record.errors.add(:"Mail", "*Ya existe en la base de datos")
         end
         
     else 
@@ -196,7 +196,7 @@ else
         else
             
                 if record.Mail =~ /\W/
-                    record.errors.add(:"Mail", "*Se esta ingresando caracteres especiales no validos")
+                    record.errors.add(:"Mail", "*Se esta ingresando caracteres especiales no válidos")
                 else
                     
 
@@ -219,7 +219,20 @@ if record.Direccion==nil || record.Direccion==""
 else
 
     if record.Direccion =~ /https:\/\/goo.gl\/maps/ || record.Direccion =~ /https:\/\/maps.app.goo.gl/
-        
+        req=nil
+            req = Net::HTTP.get_response(URI(record.Direccion))
+            
+            case req
+            when Net::HTTPSuccess then
+              req
+            when Net::HTTPRedirection then
+                
+              #location = req['location']
+              #warn "redirected to #{location}"
+              #fetch(location, limit - 1)
+            else
+                record.errors.add(:Dirección, "*Debe poner un link correcto")
+            end
     else 
         if record.Direccion.start_with?(" ")
             record.errors.add(:Dirección, "*No debe iniciar con un espacio")
@@ -243,7 +256,7 @@ include ActiveModel::Validations
     mount_uploader :perfil, PerfilUploader
     
     validates_with Validar_Nombre3 
-    validates :Telefono, :Mail, uniqueness: {message:"*Ya existe este en la base de datos"}
+    validates :Telefono, :Mail, uniqueness: {message:"*Ya existe en la base de datos"}
     
     validate :formato_correcto
 

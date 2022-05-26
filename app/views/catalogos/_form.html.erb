@@ -84,7 +84,7 @@
   
           <label for="validationCustom02" class="form-label" style="position:relative;left:-50px" style: "display: block" >Precio unitario</label>
           <br>
-          <%= form.number_field :precio  ,:style=>"background-color: #C4C4C4 ; border:0" %>
+          <%= form.number_field :precio  ,step: 0.01,:style=>"background-color: #C4C4C4 ; border:0" %>
           <div style="color: red">
           <% @catalogo.errors[:precio].each do | msg| %>
             <p><%= msg %></p>
@@ -115,12 +115,13 @@
 <div class="conteiner" align="center">
   
   <div><br>
+  <button class="btn btn-primary" type="submit" style="background-color: #F79206; font-size: 22px; border: 0;height:51px; width:260px">Agregar</button>
   <% if session[:userlog]==-1 %>
-  <a href="/vendedors" class="btn btn-primary" style="background-color: #F71406; font-size: 22px; border: 0;height:51px; width:260px">Cancelar</a>
+  <a href="/vendedors" class="btn btn-primary" style="background-color: #F71406; font-size: 22px; border: 0;height:51px; width:260px;Padding: 10px">Cancelar</a>
   <% else %>
-  <a href="/supervisors" class="btn btn-primary" style="background-color: #F71406; font-size: 22px; border: 0;height:51px; width:260px">Cancelar</a>
+  <a href="/supervisors" class="btn btn-primary" style="background-color: #F71406; font-size: 22px; border: 0;height:51px; width:260px;Padding: 10px">Cancelar</a>
   <% end %>
-    <button class="btn btn-primary" type="submit" style="background-color: #F79206; font-size: 22px; border: 0;height:51px; width:260px">Agregar</button>
+    
     
     <div>
   

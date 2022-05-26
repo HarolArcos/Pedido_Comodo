@@ -35,7 +35,7 @@
     <div class="row">
         <!--Inicio de la ventana hija de puta-->
         <div class="col">
-            <div class="card" style="width: 22rem;background-color: #1D3153;" >
+            <div class="card" style="width: 26rem;background-color: #1D3153;" >
               
             <% Supervisor.all.each do |uno| %>
               <% if session[:userlog]==uno.id %>
@@ -43,7 +43,7 @@
                   <%= image_tag uno.imagen , class: "figure-img img-fluid rounded" %>
               <% else %>
               
-                  <%= image_tag uno.perfil.thumb.url, class: "figure-img img-fluid rounded"%>
+              <img class="card-img-top" src="/assets/b.png" alt="Card image cap">
               <%end %>
               
                     <div class="card-body" style="color: white">
@@ -56,8 +56,8 @@
                       <p>
                       <label>Apellido:</label>
                       
-                      <%= uno.Apellido_Materno %>
                       <%= uno.Apellido_Paterno %>
+                      <%= uno.Apellido_Materno %>
                       </p>
                       <p>
                       <label>Correo:</label>
@@ -81,15 +81,15 @@
             <div class="row">
               <div class="col-lg-4"  >
               <br><br>
-                <%= link_to "Agregar vendedor", new_vendedor_path,:class => "btn btn-primary" ,:style=> "background-color: #F79206; font-size: 22px; border: 0;height:110px; width:166px"  %> 
+                <%= link_to "Agregar vendedor", new_vendedor_path,:class => "btn btn-primary" ,:style=> "background-color: #F79206; font-size: 22px; border: 0;height:110px; width:140px;Padding: 20px 1px"  %> 
                 <br><br><br>
-	  						<%= link_to "Agregar productos", new_catalogo_path,:class => "btn btn-primary" ,:style=> "background-color: #F79206 ; font-size: 22px; border: 0;height:110px; width:166px"   %>
+	  						<%= link_to "Agregar productos", new_catalogo_path,:class => "btn btn-primary" ,:style=> "background-color: #F79206 ; font-size: 22px; border: 0;height:110px; width:140px;Padding: 20px 1px"   %>
               </div>
   
               <div class="col-lg-4"  >
               <br><br>
                 <!--  <button type="button" class="btn btn-primary" style="background-color: #F79206;">Registrar Supervisores</button>-->
-                <%= link_to "Registrar punto de venta", new_rventum_path,:class => "btn btn-primary" ,:style=> "background-color: #F79206; font-size: 22px; border: 0;  height:110px; width:166px"   %>
+                <%= link_to "Registrar punto de venta", new_rventum_path,:class => "btn btn-primary" ,:style=> "background-color: #F79206; font-size: 22px; border: 0;  height:110px; width:140px"   %>
                 <br><br><br>
 
               </div>
@@ -97,6 +97,7 @@
         </div>
         <!--Fin de los botones del lado derecho-->
     </div>
+    <br><br>
   </div>      
 
 

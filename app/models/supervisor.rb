@@ -140,17 +140,17 @@ class Validar_Nombre2 < ActiveModel::Validator
             if record.Teléfono.digits.count()==8
                 Vendedor.all.each do |ss|
                     if record.Teléfono==ss.Telefono
-                        record.errors.add(:"Teléfono", "*Ya existe este número")
+                        record.errors.add(:"Teléfono", "*Ya existe usuario con este dato")
                     end
                 end
                 
                 Company.all.each do |ss|
                     if record.Teléfono==ss.telefono
-                        record.errors.add(:"Teléfono", "*Ya existe este número")
+                        record.errors.add(:"Teléfono", "*Ya existe usuario con este dato")
                     end
                 end
                 if record.Teléfono=="74185296"
-                    record.errors.add(:"Teléfono", "*Ya existe este número")
+                    record.errors.add(:"Teléfono", "*Ya existe usuario con este dato")
                 end
                 if record.Teléfono > 59999999 && record.Teléfono < 80000000 
                     
@@ -174,17 +174,17 @@ class Validar_Nombre2 < ActiveModel::Validator
             if record.Mail =~ /\A\w+(\.*)\w*+([@\s]*)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
                 Vendedor.all.each do |ss|
                     if record.Mail==ss.Mail
-                        record.errors.add(:"Mail", "*Ya existe este Mail")
+                        record.errors.add(:"Mail", "*Ya existe usuario con este dato")
                     end
                 end
                 
                 Company.all.each do |ss|
                     if record.Mail==ss.mail
-                        record.errors.add(:"Mail", "*Ya existe este Mail")
+                        record.errors.add(:"Mail", "*Ya existe usuario con este dato")
                     end
                 end
                 if record.Mail=="juantopo@gmail.com"
-                    record.errors.add(:"Mail", "*Ya existe este Mail")
+                    record.errors.add(:"Mail", "*Ya existe usuario con este dato")
                 end
                 
             else 
@@ -192,7 +192,7 @@ class Validar_Nombre2 < ActiveModel::Validator
                     record.errors.add(:Mail, "*No debe iniciar con un espacio")
                 else
                     if record.Mail =~ /\W/
-                        record.errors.add(:"Mail", "*Se esta ingresando caracteres especiales no validos")
+                        record.errors.add(:"Mail", "*Se esta ingresando caracteres especiales no válidos")
                     else
                         record.errors.add(:"Mail", "*Tiene que ser como el siguiente ejemplo: juan@example.com")
                     end
@@ -206,10 +206,23 @@ class Validar_Nombre2 < ActiveModel::Validator
         record.errors.add(:"Dirección", "*Campo obligatorio")
     else
         if record.Dirección =~ /https:\/\/goo.gl\/maps/ || record.Dirección =~ /https:\/\/maps.app.goo.gl/
+            req=nil
+            req = Net::HTTP.get_response(URI(record.Dirección))
             
+            case req
+            when Net::HTTPSuccess then
+              req
+            when Net::HTTPRedirection then
+                
+              #location = req['location']
+              #warn "redirected to #{location}"
+              #fetch(location, limit - 1)
+            else
+                record.errors.add(:"Dirección", "*Debe poner un link correcto")
+            end
         else 
             if record.Dirección.start_with?(" ")
-                record.errors.add(:Dirección, "*No debe iniciar con un espacio")
+                record.errors.add(:"Dirección", "*No debe iniciar con un espacio")
             else
                 record.errors.add(:"Dirección", "*Tiene que ser un link de google maps")
                 
@@ -230,7 +243,7 @@ class Validar_Nombre2 < ActiveModel::Validator
        mount_uploader :perfil, PerfilUploader
        
        validates_with Validar_Nombre2
-       validates :Teléfono, :Mail, uniqueness: {message:"*Ya existe usuario"}
+       validates :Teléfono, :Mail, uniqueness: {message:"*Ya existe usuario con este dato"}
        
        validate :formato_correcto1
    

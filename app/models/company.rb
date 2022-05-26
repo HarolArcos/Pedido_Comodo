@@ -9,6 +9,11 @@ class Validar_Nombre5 < ActiveModel::Validator
                 if record.nombre.length()>21 
                     record.errors.add(:nombre, "*Tiene que tener máximo 21 caracteres")
                 end
+                Company.all.each do |com|
+                    if com.nombre.upcase == record.nombre.upcase
+                        record.errors.add(:nombre, "*Ya existe en la base de datos")
+                    end
+                end
             else 
                 if record.nombre.start_with?(" ")
                     record.errors.add(:nombre, "*No debe iniciar con un espacio")
@@ -72,7 +77,7 @@ class Validar_Nombre5 < ActiveModel::Validator
      if record.nit==nil || record.nit==""
         record.errors.add(:nit, "*Campo obligatorio")
     else
-        if record.nit > 0
+        
             if record.nit.digits.count()>5
                 if record.nit.digits.count()<22
                     
@@ -82,9 +87,7 @@ class Validar_Nombre5 < ActiveModel::Validator
             else
                 record.errors.add(:nit,"*Tiene que tener mínimo 6 dígitos")
             end
-        else
-            record.errors.add(:nit,"*Solo acepta dígitos numéricos")
-        end
+        
     end
    #validaciones de Mail
    if record.mail==nil || record.mail==""
@@ -111,7 +114,29 @@ class Validar_Nombre5 < ActiveModel::Validator
         record.errors.add(:direccion, "*Campo obligatorio")
     else
         if record.direccion =~ /https:\/\/goo.gl\/maps/ || record.direccion =~ /https:\/\/maps.app.goo.gl/
+            #copen esto , cambien el record.direccion por la direccion de la direccion de el correspondiente
+            req=nil
+            req = Net::HTTP.get_response(URI(record.direccion))
             
+            case req
+            when Net::HTTPSuccess then
+              req
+            when Net::HTTPRedirection then
+                
+              #location = req['location']
+              #warn "redirected to #{location}"
+              #fetch(location, limit - 1)
+            else
+                record.errors.add(:direccion, "*Debe poner un link correcto")
+            end
+            #hasta aqui
+
+
+
+
+            
+            
+
         else 
             if record.direccion.start_with?(" ")
                 record.errors.add(:direccion, "*No debe iniciar con un espacio")
@@ -133,6 +158,6 @@ class Validar_Nombre5 < ActiveModel::Validator
    include ActiveModel::Validations
        
        validates_with Validar_Nombre5
-       validates :telefono, :mail, :nombre, :nit, uniqueness: {message:"*Ya existe una empresa con esta información"}
+       validates :telefono, :mail, :nit,:direccion, uniqueness: {message:"*Ya existe una empresa con esta información"}
        
    end

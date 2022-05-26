@@ -9,6 +9,7 @@ class Validar_Catalogo < ActiveModel::Validator
                  if record.nombre.length()>21 
                      record.errors.add(:nombre, "*Tiene que tener máximo 21 caracteres")
                  end
+                 
              else 
                  if record.nombre.start_with?(" ")
                      record.errors.add(:nombre, "*No debe iniciar con un espacio")
@@ -21,7 +22,7 @@ class Validar_Catalogo < ActiveModel::Validator
                                  record.errors.add(:nombre, "*Solo acepta máximo 3 palabras")
                              else
                                  if record.nombre =~ /\d/
-                                     #record.errors.add(:nombre, "*Solo acepta letras ")
+                                     record.errors.add(:nombre, "*Solo acepta letras ")
  
                                  else
                                      if record.nombre != /[^a-zA-Z-ÿ\u00f1\u00d1\u00E0-\u00FC\u00DC\s]/ 
@@ -131,19 +132,11 @@ class Validar_Catalogo < ActiveModel::Validator
         record.errors.add(:precio, "*Campo obligatorio")
     else
         if record.precio > 0
-        
-            if record.precio.digits.count() < 5
-                if record.precio > 0 && record.precio < 1000 
-                    
-                    
+                if record.precio < 10000    
                 else
-                       record.errors.add(:precio,"*El máximo valor de un producto es 999 Bs.")
-    
-                  
+                       record.errors.add(:precio,"*El máximo valor de un producto es 9999.99 Bs.")
+      
                 end
-            else
-                record.errors.add(:precio,"*El máximo valor de un producto es 999 Bs.")
-            end
         else
             if record.precio <= 0
             record.errors.add(:precio,"*El valor mínimo de un producto es de 1 Bs.")
