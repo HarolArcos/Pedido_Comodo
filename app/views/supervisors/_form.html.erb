@@ -123,7 +123,7 @@
 
 <div class="conteiner" align="center">
         
-<%= form.file_field :imagen%>
+<%= form.file_field :imagen,:accept=>"image/*"%>
     <div style="color: red">
     <% @supervisor.errors[:imagen].each do | msg| %>
       <p><%= msg %></p>

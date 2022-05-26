@@ -97,7 +97,7 @@
   
   
   
-    <%= form.file_field :imagen%>
+    <%= form.file_field :imagen,:accept=>"image/*"%>
       
     <div style="color: red">
     <% @rventum.errors[:imagen].each do | msg| %>
