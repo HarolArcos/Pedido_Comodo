@@ -44,7 +44,7 @@
                   <%= image_tag uno.imagen , class: "figure-img img-fluid rounded" %>
               <% else %>
               
-              <img class="card-img-top" src="/assets/b.png" alt="Card image cap">
+              <%= image_tag uno.perfil.thumb.url, class: "figure-img img-fluid rounded"%>
               <%end %>
               
                     <div class="card-body" style="color: white">
