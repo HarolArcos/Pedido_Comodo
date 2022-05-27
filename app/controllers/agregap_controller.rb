@@ -53,7 +53,7 @@ class AgregapController < ApplicationController
                 end
             end
         else
-            @pend= "*Cantidad no ingresa"
+            @pend= "*Cantidad no ingresada"
             render "agregapro"
         end
 
