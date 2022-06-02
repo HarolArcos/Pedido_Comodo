@@ -31,7 +31,7 @@
   <div class="row d-flex align-self-center justify-content-center ">
     
       <div class="col-lg-8"  ><br>
-           <label for="validationCustom01" class="form-label  " style="position:relative;left:-88px" >Nombre</label>
+           <label for="validationCustom01" class="form-label  " style="position:relative;left:-61px" >Responsable</label>
            <br>
            <%= form.text_field :responsable ,:style=>"background-color: #C4C4C4 ; border:0" %>
            <div style="color: red">
@@ -57,14 +57,19 @@
 <br><br>
 
 <div class="conteiner" align="center">
+<div style="color: red">
+<% @rpedido.errors[:pendejo].each do | msg| %>
+  <p><%= msg %></p>
+  <% end %>
   
+</div>
 
   
     <div><br>
     
-      <a href="/catalogos" class="btn btn-primary" style="background-color: #F71406; font-size: 22px; border: 0; height:51px; width:260px;Padding: 10px ;">Cancelar</a>
-    
+      
       <button class="btn btn-primary" type="submit" style="background-color: #F79206; font-size: 22px; border: 0; height:51px; width:260px;Padding: 10px ;">Continuar</button>
+      <a href="/catalogos" class="btn btn-primary" style="background-color: #F71406; font-size: 22px; border: 0; height:51px; width:260px;Padding: 10px ;">Cancelar</a>
     
     <div>
   

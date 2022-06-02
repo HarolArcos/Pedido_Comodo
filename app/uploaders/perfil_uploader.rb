@@ -30,7 +30,7 @@ class PerfilUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
    version :thumb do
-    process resize_to_fill: [150,150]
+    process resize_to_fill: [10,10]
    end
    version :medium do
     process resize_to_fill: [1500, 150]

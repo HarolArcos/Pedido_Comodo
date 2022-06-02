@@ -191,8 +191,8 @@ class Validar_Nombre2 < ActiveModel::Validator
                 if record.Mail.start_with?(" ")
                     record.errors.add(:Mail, "*No debe iniciar con un espacio")
                 else
-                    if record.Mail =~ /\W/
-                        record.errors.add(:"Mail", "*Se esta ingresando caracteres especiales no válidos")
+                    if record.Mail =~ /[^\w\.@\s]/
+                        record.errors.add(:"Mail", "*Se está ingresando caracteres especiales no válidos")
                     else
                         record.errors.add(:"Mail", "*Tiene que ser como el siguiente ejemplo: juan@example.com")
                     end

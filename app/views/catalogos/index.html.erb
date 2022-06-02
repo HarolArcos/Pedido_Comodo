@@ -42,7 +42,7 @@
               <%= image_tag uno.imagen , class: "figure-img img-fluid rounded" %>
               <% else %>
               
-                  <%= image_tag uno.perfil.thumb.url, class: "figure-img img-fluid rounded"%>
+                  <%= image_tag uno.perfil.url%>
               <%end %>
               
                     <div class="card-body" style="color: white">
@@ -80,8 +80,12 @@
         <!--Inicio de los botones de lado derecho-->
         <div class="col">
             <div class="row">
+            <div class="col-lg-4"  >
+              
+              </div>
               <div class="col-lg-4"  >
               <br><br><br>
+              
                 <!--  <button type="button" class="btn btn-primary" style="background-color: #F79206;">Registrar Supervisores</button>-->
                 <%= link_to "Registrar Pedido", new_rpedido_path ,:class => "btn btn-primary" ,:style=> "background-color: #F79206; font-size: 22px; border: 0;"   %>
                 <br><br><br>
@@ -90,9 +94,7 @@
                 
               </div>
   
-              <div class="col-lg-4"  >
               
-              </div>
             </div>
         </div>
         <!--Fin de los botones del lado derecho-->

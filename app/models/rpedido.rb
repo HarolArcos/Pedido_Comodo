@@ -119,7 +119,7 @@ nombre=nil
                 if nombr!= nil && nombre!=nil
                     if nombre.id==nombr.id
                     else
-                        record.error.add(:pendejo, "*Los campos de no coinciden a un mismo registro")
+                        record.errors.add(:pendejo, "*Los campos de no coinciden a un mismo registro")
                     end
                 end
    

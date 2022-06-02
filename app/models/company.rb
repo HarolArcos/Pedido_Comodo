@@ -9,10 +9,14 @@ class Validar_Nombre5 < ActiveModel::Validator
                 if record.nombre.length()>21 
                     record.errors.add(:nombre, "*Tiene que tener máximo 21 caracteres")
                 end
+                a=nil
                 Company.all.each do |com|
                     if com.nombre.upcase == record.nombre.upcase
-                        record.errors.add(:nombre, "*Ya existe en la base de datos")
+                        a=1
                     end
+                end
+                if a==1
+                record.errors.add(:nombre, "*Ya existe en la base de datos")
                 end
             else 
                 if record.nombre.start_with?(" ")
@@ -99,8 +103,8 @@ class Validar_Nombre5 < ActiveModel::Validator
                 if record.mail.start_with?(" ")
                     record.errors.add(:mail, "*No debe iniciar con un espacio")
                 else
-                    if record.Mail =~ /\W/
-                        record.errors.add(:"Mail", "*Se esta ingresando caracteres especiales no validos")
+                    if record.Mail =~ /[^\w\.@\s]/
+                        record.errors.add(:"Mail", "*Se está ingresando caracteres especiales no validos")
                     else
                         record.errors.add(:"Mail", "*Tiene que ser como el siguiente ejemplo: juan@example.com")
                     end

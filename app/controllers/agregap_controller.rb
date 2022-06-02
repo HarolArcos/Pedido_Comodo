@@ -31,7 +31,7 @@ class AgregapController < ApplicationController
             else
                 g = params["#{p.nombre}"]
                 if g.to_i == 0
-                    @pend = "*Debe ingresar un cantidad mayor a 0"
+                    @pend = "*Debe ingresar una cantidad mayor a 0"
                     render "agregapro"
                 else
 

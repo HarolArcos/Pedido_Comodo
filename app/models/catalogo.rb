@@ -168,7 +168,7 @@ class Catalogo < ApplicationRecord
     
     
     validates_with Validar_Catalogo
-    validates :nombre, :codigo, uniqueness: {message:"*Ya existe usuario"}
+    validates :nombre, :codigo, uniqueness: {message:"*Ya existe producto"}
     
     
 
