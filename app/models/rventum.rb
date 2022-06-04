@@ -99,10 +99,11 @@ class Validar_Nombree < ActiveModel::Validator
    if record.Telefono==nil || record.Telefono==""
        record.errors.add(:Telefono, "*Campo obligatorio")
    else
-       if record.Telefono > 0
+
+       if record.Telefono =~ /\D/
        
-           if record.Telefono.digits.count()==8
-               if record.Telefono > 59999999 && record.Telefono < 80000000 
+           if record.Telefono.to_i.digits.count()==8
+               if record.Telefono.to_i > 59999999 && record.Telefono.to_i < 80000000 
                    
                    
                else

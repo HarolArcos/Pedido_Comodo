@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_03_214965) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_04_202712) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -102,7 +102,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_03_214965) do
   create_table "rventa", force: :cascade do |t|
     t.string "Nombre"
     t.string "Responsable"
-    t.integer "Telefono"
+    t.string "Telefono"
     t.string "Mail"
     t.string "Direccion"
     t.datetime "created_at", null: false
@@ -134,7 +134,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_03_214965) do
     t.string "Nombre"
     t.string "Apellido_Paterno"
     t.string "Apellido_Materno"
-    t.integer "Telefono"
+    t.string "Telefono"
     t.string "Mail"
     t.string "Direccion"
     t.datetime "created_at", null: false
