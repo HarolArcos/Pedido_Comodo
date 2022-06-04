@@ -80,7 +80,7 @@
           <label for="validationCustom03" class="form-label" style="position:relative;left:-84px" style: "display: block">Teléfono</label>
           <br>
   
-          <%= form.number_field :Teléfono ,:style=>"background-color: #C4C4C4 ; border:0" %>
+          <%= form.text_field :Teléfono ,:style=>"background-color: #C4C4C4 ; border:0" %>
           <div style="color: red">
           
             <% @supervisor.errors[:Teléfono].each do | msg| %>

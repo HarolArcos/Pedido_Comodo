@@ -50,25 +50,29 @@ class Validar_Catalogo < ActiveModel::Validator
      if record.codigo==nil || record.codigo==""
         record.errors.add(:codigo, "*Campo obligatorio")
     else
-        if record.codigo > 0
+        if record.codigo =~ /\D/
+            
+                    record.errors.add(:codigo,"*Solo acepta dígitos numéricos")
+                    
         
-            if record.codigo.digits.count() < 6
-                if record.codigo > 99 && record.codigo < 100000 
-                    
-                    
-                else
-                       record.errors.add(:codigo,"*El código debe tener como mínimo 3 dígitos")
-    
-                  
-                end
-            else
-                record.errors.add(:codigo,"*El código debe tener como máximo 5 dígitos")
-            end
+           
         else
-            if record.codigo <= 2
-            record.errors.add(:codigo,"*El código debe tener al menos 3 dígitos")
-            else
-                record.errors.add(:codigo,"*Solo acepta dígitos numéricos")
+            
+
+
+
+
+                if record.codigo.to_i.digits.count() < 6
+                    if record.codigo.to_i > 99 && record.codigo.to_i < 100000 
+                        
+                        
+                    else
+                           record.errors.add(:codigo,"*El código debe tener como mínimo 3 dígitos")
+        
+                      
+                    end
+                else
+                    record.errors.add(:codigo,"*El código debe tener como máximo 5 dígitos")
                 end
         end
     end
@@ -131,18 +135,28 @@ class Validar_Catalogo < ActiveModel::Validator
      if record.precio==nil || record.precio==""
         record.errors.add(:precio, "*Campo obligatorio")
     else
-        if record.precio > 0
-                if record.precio < 10000    
-                else
-                       record.errors.add(:precio,"*El máximo valor de un producto es 9999.99 Bs.")
-      
-                end
+        if record.precio =~ /[^0-9\.]/
+            
+                    record.errors.add(:precio,"*Solo acepta dígitos numéricos")
+                    
+                
         else
-            if record.precio <= 0
-            record.errors.add(:precio,"*El valor mínimo de un producto es de 1 Bs.")
-            else
-                record.errors.add(:precio,"*Solo acepta dígitos numéricos")
+            if record.precio =~ /\A\d+(\.{1}\d{1,2}){0,1}\z/
+                if record.precio.to_f <= 0
+                    record.errors.add(:precio,"*El valor mínimo de un producto es de 1 Bs.")
+                    else
+
+
+                    if record.precio.to_f < 10000    
+                    else
+                        record.errors.add(:precio,"*El máximo valor de un producto es 9999.99 Bs.")
+        
+                    end
                 end
+            else
+                record.errors.add(:precio,"*El valor debe de ser escrito de forma [xxxx.xx] .")
+            
+            end
         end
     end     
      #Validaciones descripcion

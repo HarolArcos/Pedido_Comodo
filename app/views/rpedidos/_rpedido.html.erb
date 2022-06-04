@@ -61,12 +61,12 @@
                 <%= deta.catalogo.nombre%>
               </div>
               <div style="padding: 10px; text-align: center; border: 1px #212529 solid;">
-              <%= deta.catalogo.precio%>
+              <%= deta.catalogo.precio.to_f%>
               </div>
               <div style="padding: 10px; text-align: center; border: 1px #212529 solid;">
               <%= deta.cantidad%>
               </div>
-              <% a= deta.catalogo.precio.to_i*deta.cantidad.to_i%>
+              <% a= deta.catalogo.precio.to_f*deta.cantidad.to_i%>
               <% b=b+a%>
               <div style="padding: 10px; text-align: center; border: 1px #212529 solid;">
               <%= a%>
@@ -91,6 +91,8 @@
 <br>
 <div class="conteiner" align="center">
 <%session[:pedido]=rpedido.id %>
+<%session[:recarga]=nil%>
+<%session[:recarga2]=nil%>
 
   <%= link_to "Agregar", agregap_path,:class => "btn btn-primary" ,:style=> "background-color: #F79206 ; font-size: 22px; border: 0;"   %>
   <br>

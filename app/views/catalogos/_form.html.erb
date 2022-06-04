@@ -55,7 +55,7 @@
       <label for="validationCustom03" class="form-label" style="position:relative;left:-15px" style: "display: block">Código de producto</label>
       <br>
 
-      <%= form.number_field :codigo ,:style=>"background-color: #C4C4C4 ; border:0" %>
+      <%= form.text_field :codigo ,:style=>"background-color: #C4C4C4 ; border:0" %>
       <div style="color: red">
       
         <% @catalogo.errors[:codigo].each do | msg| %>
@@ -84,7 +84,7 @@
   
           <label for="validationCustom02" class="form-label" style="position:relative;left:-50px" style: "display: block" >Precio unitario</label>
           <br>
-          <%= form.number_field :precio  ,step: 0.01,:style=>"background-color: #C4C4C4 ; border:0" %>
+          <%= form.text_field :precio  ,step: 0.01,:style=>"background-color: #C4C4C4 ; border:0" %>
           <div style="color: red">
           <% @catalogo.errors[:precio].each do | msg| %>
             <p><%= msg %></p>

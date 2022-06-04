@@ -59,10 +59,12 @@ class Validar_Nombre5 < ActiveModel::Validator
     if record.telefono==nil || record.telefono==""
         record.errors.add(:telefono, "*Campo obligatorio")
     else
-        if record.telefono > 0
-        
-            if record.telefono.digits.count()==8
-                if record.telefono > 59999999 && record.telefono < 80000000 
+        if record.telefono =~ /\D/
+            record.errors.add(:telefono,"*Solo acepta dígitos numéricos")
+            
+        else
+            if record.telefono.to_i.digits.count()==8
+                if record.telefono.to_i > 59999999 && record.telefono.to_i < 80000000 
                     
                     
                 else
@@ -73,17 +75,17 @@ class Validar_Nombre5 < ActiveModel::Validator
             else
                 record.errors.add(:telefono,"*Tiene que tener 8 dígitos")
             end
-        else
-            record.errors.add(:telefono,"*Solo acepta dígitos numéricos")
         end
     end
      #validaciones nit  
      if record.nit==nil || record.nit==""
         record.errors.add(:nit, "*Campo obligatorio")
     else
-        
-            if record.nit.digits.count()>5
-                if record.nit.digits.count()<22
+        if record.nit =~ /\D/
+            record.errors.add(:nit,"*Solo acepta dígitos numéricos")
+        else
+            if record.nit.to_i.digits.count()>5
+                if record.nit.to_i.digits.count()<22
                     
                 else
                        record.errors.add(:nit,"*Tiene que tener máximo 21 dígitos")
@@ -91,6 +93,7 @@ class Validar_Nombre5 < ActiveModel::Validator
             else
                 record.errors.add(:nit,"*Tiene que tener mínimo 6 dígitos")
             end
+        end
         
     end
    #validaciones de Mail
