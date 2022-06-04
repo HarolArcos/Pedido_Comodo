@@ -28,7 +28,7 @@ class AgregapController < ApplicationController
         
         if params["#{p.nombre}"] =~ /[\D]/ || pp!= nil && params["#{pp.nombre}"] =~ /[\D]/
             if session[:recarga]!=params["#{p.nombre}"] ||  pp!= nil && session[:recarga2]!=params["#{pp.nombre}"] 
-                @pend = "*Solo debe ingresar digitos númericos"
+                @pend = "*Solo debe ingresar dígitos númericos enteros"
                 session[:recarga]=params["#{p.nombre}"]    
                 if   pp!=nil
                 session[:recarga2]=params["#{pp.nombre}"]              
