@@ -101,6 +101,9 @@ class Validar_Nombree < ActiveModel::Validator
    else
 
        if record.Telefono =~ /\D/
+        record.errors.add(:Telefono,"*Solo acepta dígitos numéricos")
+       else
+        
        
            if record.Telefono.to_i.digits.count()==8
                if record.Telefono.to_i > 59999999 && record.Telefono.to_i < 80000000 
@@ -114,8 +117,7 @@ class Validar_Nombree < ActiveModel::Validator
            else
                record.errors.add(:Telefono,"*Tiene que tener 8 dígitos")
            end
-       else
-           record.errors.add(:Telefono,"*Solo acepta dígitos numéricos")
+       
        end
    end
    #validaciones de Mail
