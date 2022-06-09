@@ -52,10 +52,10 @@
       <div class="col-lg-6"  ><br>
 
   
-      <label for="validationCustom03" class="form-label" style="position:relative;left:-15px" style: "display: block">Código del producto</label>
+      <label for="validationCustom03" class="form-label" style="position:relative;left:-15px" style: "display: block">Código de producto</label>
       <br>
 
-      <%= form.number_field :codigo ,:style=>"background-color: #C4C4C4 ; border:0" %>
+      <%= form.text_field :codigo ,:style=>"background-color: #C4C4C4 ; border:0" %>
       <div style="color: red">
       
         <% @catalogo.errors[:codigo].each do | msg| %>
@@ -84,7 +84,7 @@
   
           <label for="validationCustom02" class="form-label" style="position:relative;left:-50px" style: "display: block" >Precio unitario</label>
           <br>
-          <%= form.number_field :precio  ,step: 0.01,:style=>"background-color: #C4C4C4 ; border:0" %>
+          <%= form.text_field :precio  ,step: 0.01,:style=>"background-color: #C4C4C4 ; border:0" %>
           <div style="color: red">
           <% @catalogo.errors[:precio].each do | msg| %>
             <p><%= msg %></p>
@@ -107,23 +107,30 @@
     </div>
 </div>
 
-<br><br>
+<br>
 
 
 
 
-<div class="conteiner" align="center">
+<div class="container d-flex justify-content-center " align="center" >
+
+  <div class="row d-flex align-self-center justify-content-center ">
+  <div class="col-lg-6"  ><br>
+    <button class="btn btn-primary" type="submit" style="background-color: #F79206; font-size: 22px; border: 0;height:51px; width:260px">Agregar</button>
+    
+    </div>
+
+  <div class="col-lg-6"  ><br>
   
-  <div><br>
-  <button class="btn btn-primary" type="submit" style="background-color: #F79206; font-size: 22px; border: 0;height:51px; width:260px">Agregar</button>
+  
   <% if session[:userlog]==-1 %>
   <a href="/vendedors" class="btn btn-primary" style="background-color: #F71406; font-size: 22px; border: 0;height:51px; width:260px;Padding: 10px">Cancelar</a>
   <% else %>
   <a href="/supervisors" class="btn btn-primary" style="background-color: #F71406; font-size: 22px; border: 0;height:51px; width:260px;Padding: 10px">Cancelar</a>
   <% end %>
-    
-    
-    <div>
+  </div>
+  
+  
   
 
     </div>

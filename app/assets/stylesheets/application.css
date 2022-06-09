@@ -10,10 +10,28 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
-
+input[type=file]::
  */
  input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button { 
   -webkit-appearance: none; 
   margin: 0; 
+}
+
+
+input[type=file]{
+  position:relative;left:157px
+}
+
+
+input[type=file]::-webkit-file-upload-button {
+  background: #F79206;
+  border:0;
+  height:51px; 
+  width:260px;
+  Padding: 10px;
+  color: #fff;
+  border-radius: 0.25rem;
+  cursor: pointer;
+
 }

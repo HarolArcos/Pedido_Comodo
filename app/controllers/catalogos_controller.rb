@@ -34,7 +34,7 @@ class CatalogosController < ApplicationController
     if session[:userlog]==-1
     respond_to do |format|
       if @catalogo.save
-        format.html { redirect_to vendedors_path, notice: "Catalogo was successfully created." }
+        format.html { redirect_to vendedors_path, notice: "El producto fue guardado" }
         format.json { render :show, status: :created, location: @catalogo }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -44,7 +44,7 @@ class CatalogosController < ApplicationController
   else
     respond_to do |format|
       if @catalogo.save
-        format.html { redirect_to supervisors_path, notice: "Catalogo was successfully created." }
+        format.html { redirect_to supervisors_path, notice: "El producto fue guardado" }
         format.json { render :show, status: :created, location: @catalogo }
       else
         format.html { render :new, status: :unprocessable_entity }

@@ -135,25 +135,28 @@ class Validar_Nombre2 < ActiveModel::Validator
     if record.Teléfono==nil || record.Teléfono==""
         record.errors.add(:Teléfono, "*Campo obligatorio")
     else
-        if record.Teléfono > -1
+        if record.Teléfono =~ /\D/
+            record.errors.add(:Teléfono,"*Solo acepta dígitos numericos")
+        else
+           
         
-            if record.Teléfono.digits.count()==8
-                Vendedor.all.each do |ss|
-                    if record.Teléfono==ss.Telefono
-                        record.errors.add(:"Teléfono", "*Ya existe usuario con este dato")
-                    end
-                end
+            if record.Teléfono.to_i.digits.count()==8
                 
-                Company.all.each do |ss|
-                    if record.Teléfono==ss.telefono
+                if record.Teléfono.to_i > 59999999 && record.Teléfono.to_i < 80000000 
+                    Vendedor.all.each do |ss|
+                        if record.Teléfono.to_i==ss.Telefono.to_i
+                            record.errors.add(:"Teléfono", "*Ya existe usuario con este dato")
+                        end
+                    end
+                    
+                    Company.all.each do |ss|
+                        if record.Teléfono.to_i==ss.telefono.to_i
+                            record.errors.add(:"Teléfono", "*Ya existe usuario con este dato")
+                        end
+                    end
+                    if record.Teléfono=="74185296"
                         record.errors.add(:"Teléfono", "*Ya existe usuario con este dato")
                     end
-                end
-                if record.Teléfono=="74185296"
-                    record.errors.add(:"Teléfono", "*Ya existe usuario con este dato")
-                end
-                if record.Teléfono > 59999999 && record.Teléfono < 80000000 
-                    
                     
                 else
                        record.errors.add(:Teléfono,"*Tiene que empezar con el dígito 6 o 7")
@@ -163,8 +166,7 @@ class Validar_Nombre2 < ActiveModel::Validator
             else
                 record.errors.add(:Teléfono,"*Tiene que tener 8 dígitos")
             end
-        else
-            record.errors.add(:Teléfono,"*Solo acepta dígitos positivos")
+        
         end
     end
    #validaciones de Mail
@@ -191,8 +193,8 @@ class Validar_Nombre2 < ActiveModel::Validator
                 if record.Mail.start_with?(" ")
                     record.errors.add(:Mail, "*No debe iniciar con un espacio")
                 else
-                    if record.Mail =~ /\W/
-                        record.errors.add(:"Mail", "*Se esta ingresando caracteres especiales no válidos")
+                    if record.Mail =~ /[^\w\.@\s]/
+                        record.errors.add(:"Mail", "*Se está ingresando caracteres especiales no válidos")
                     else
                         record.errors.add(:"Mail", "*Tiene que ser como el siguiente ejemplo: juan@example.com")
                     end

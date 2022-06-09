@@ -132,41 +132,43 @@ class Validar_Nombre3 < ActiveModel::Validator
     #validaciones telefono
   
     
-if record.Telefono==nil || record.Telefono==""
-    record.errors.add(:Teléfono, "*Campo obligatorio")
-else
-    if record.Telefono > -1
-    
-        if record.Telefono.digits.count()==8
-            Supervisor.all.each do |ss|
-                if record.Telefono==ss.Teléfono
-                    record.errors.add(:"Telefono", "*Ya existe en la base de datos")
-                end
-            end
-            
-            Company.all.each do |ss|
-                if record.Telefono==ss.telefono
-                    record.errors.add(:"Telefono", "*Ya existe en la base de datos")
-                end
-            end
-                if record.Telefono.to_s=="74185296"
-                    record.errors.add(:"Telefono", "*Ya existe en la base de datos")
-                end
-            if record.Telefono > 59999999 && record.Telefono < 80000000 
-                
-                
-            else
-                   record.errors.add(:Teléfono,"*Tiene que empezar con el dígito 6 o 7")
-
-              
-            end
-        else
-            record.errors.add(:Teléfono,"*Tiene que tener 8 dígitos")
-        end
+    if record.Telefono==nil || record.Telefono==""
+        record.errors.add(:Telefono, "*Campo obligatorio")
     else
-        record.errors.add(:Teléfono,"*Solo acepta dígitos positivos")
+        if record.Telefono =~ /\D/
+            record.errors.add(:Telefono,"*Solo acepta dígitos numericos")
+        else
+           
+        
+            if record.Telefono.to_i.digits.count()==8
+                
+                if record.Telefono.to_i > 59999999 && record.Telefono.to_i < 80000000 
+                    Supervisor.all.each do |ss|
+                        if record.Telefono.to_i==ss.Teléfono.to_i
+                            record.errors.add(:"Telefono", "*Ya existe en la base de datos")
+                        end
+                    end
+                    
+                    Company.all.each do |ss|
+                        if record.Telefono.to_i==ss.telefono.to_i
+                            record.errors.add(:"Telefono", "*Ya existe usuario con este dato")
+                        end
+                    end
+                    if record.Telefono=="74185296"
+                        record.errors.add(:"Telefono", "*Ya existe usuario con este dato")
+                    end
+                    
+                else
+                       record.errors.add(:Telefono,"*Tiene que empezar con el dígito 6 o 7")
+    
+                  
+                end
+            else
+                record.errors.add(:Telefono,"*Tiene que tener 8 dígitos")
+            end
+        
+        end
     end
-end
 #validaciones de Mail
 if record.Mail==nil || record.Mail==""
     record.errors.add(:"Mail", "*Campo obligatorio")
@@ -195,8 +197,8 @@ else
             record.errors.add(:Mail, "*No debe iniciar con un espacio")
         else
             
-                if record.Mail =~ /\W/
-                    record.errors.add(:"Mail", "*Se esta ingresando caracteres especiales no válidos")
+                if record.Mail =~ /[^\w\.@\s]/
+                    record.errors.add(:"Mail", "*Se está ingresando caracteres especiales no válidos")
                 else
                     
 

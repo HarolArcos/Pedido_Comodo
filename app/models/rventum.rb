@@ -99,10 +99,14 @@ class Validar_Nombree < ActiveModel::Validator
    if record.Telefono==nil || record.Telefono==""
        record.errors.add(:Telefono, "*Campo obligatorio")
    else
-       if record.Telefono > 0
+
+       if record.Telefono =~ /\D/
+        record.errors.add(:Telefono,"*Solo acepta dígitos numéricos")
+       else
+        
        
-           if record.Telefono.digits.count()==8
-               if record.Telefono > 59999999 && record.Telefono < 80000000 
+           if record.Telefono.to_i.digits.count()==8
+               if record.Telefono.to_i > 59999999 && record.Telefono.to_i < 80000000 
                    
                    
                else
@@ -113,8 +117,7 @@ class Validar_Nombree < ActiveModel::Validator
            else
                record.errors.add(:Telefono,"*Tiene que tener 8 dígitos")
            end
-       else
-           record.errors.add(:Telefono,"*Solo acepta dígitos numéricos")
+       
        end
    end
    #validaciones de Mail
@@ -127,8 +130,8 @@ class Validar_Nombree < ActiveModel::Validator
             if record.Mail.start_with?(" ")
             record.errors.add(:Mail, "*No debe iniciar con un espacio")
             else
-                if record.Mail =~ /\W/
-                    record.errors.add(:"Mail", "*Se esta ingresando caracteres especiales no validos")
+                if record.Mail =~ /[^\w\.@\s]/
+                    record.errors.add(:"Mail", "*Se está ingresando caracteres especiales no validos")
                 else
                     record.errors.add(:"Mail", "*Tiene que ser como el siguiente ejemplo: juan@example.com")
                 end

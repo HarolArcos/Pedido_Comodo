@@ -47,7 +47,7 @@
       <div style="padding: 10px; text-align: center; border: 1px #212529 solid;">
       Precio 
       </div>
-      <div style="padding: 10px; text-align: center; border: 1px #212529 solid;width:140px">
+      <div style="padding: 10px; text-align: center; border: 1px #212529 solid;">
       Cantidad 
       </div>
       
@@ -91,7 +91,7 @@
   
   <div >
             <!--input style="background-color: #C4C4C4 ; border:0" type="number" name="supervisor[Teléfono]" id="supervisor_Teléfono"-->
-            <input style="background-color: #C4C4C4 ; border:0;height:25px; width:140px "  type="number" name="<%=su.nombre%>" id= "<%=su.nombre%>" >
+            <input style="background-color: #C4C4C4 ; border:0;height:25px; width:140px "  type="text" name="<%=su.nombre%>" id= "<%=su.nombre%>" >
             <button class="btn btn-primary" type="submit" style="background-color: #F79206; font-size: 22px; border: 0;">Agregar</button>
             
             </div>
@@ -124,13 +124,13 @@
             
 
             
-            <%= su.precio %>
+            <%= su.precio.to_f %>
             <% @producto= su.id %>
             </div>
             
             <div >
             <!--input style="background-color: #C4C4C4 ; border:0" type="number" name="supervisor[Teléfono]" id="supervisor_Teléfono"-->
-            <input style="background-color: #C4C4C4 ; border:0;height:25px; width:140px "  type="number" name="<%=su.nombre%>" id= "<%=su.nombre%>" >
+            <input style="background-color: #C4C4C4 ; border:0;height:25px; width:140px "  type="text" name="<%=su.nombre%>" id= "<%=su.nombre%>" >
             <button class="btn btn-primary" type="submit" style="background-color: #F79206; font-size: 22px; border: 0;">Agregar</button>
             
             </div>
@@ -152,7 +152,9 @@
 
 <div class="conteiner" align="center">
 <div style="color: red">
+
 <%= @pend%>
+
     </div>
 
 <div>
